@@ -9,7 +9,7 @@ namespace nalydmod.Items.Placeables.Special
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Music Box (CaveShrine)");
+			DisplayName.SetDefault("Music Box (Cave Shrine)");
 		}
 
 		public override void SetDefaults()

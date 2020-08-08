@@ -25,8 +25,8 @@ namespace nalydmod.Items.Accessories
 
         public override void SetDefaults()
         {
-            item.width = 28;
-            item.height = 28;
+            item.width = 32;
+            item.height = 32;
             item.value = 20000;
             item.rare = ItemRarityID.Expert;
             item.accessory = true;

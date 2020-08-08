@@ -7,8 +7,8 @@ namespace nalydmod.Items.Weapons
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("godman"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault("Somehow more powerful than most swords");
+            DisplayName.SetDefault("Rock Man");
+            Tooltip.SetDefault("Likes to think its more powerful than other swords");
         }
 
         public override void SetDefaults()
@@ -30,7 +30,7 @@ namespace nalydmod.Items.Weapons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Wood, 25);
+            recipe.AddIngredient(ItemID.StoneBlock, 25);
             recipe.AddIngredient(ItemID.IronBar, 8);
             recipe.AddIngredient(ItemID.Acorn, 3);
             recipe.AddIngredient(ItemID.SandBlock, 10);

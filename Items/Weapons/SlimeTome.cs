@@ -8,6 +8,10 @@ namespace nalydmod.Items.Weapons
 {
     public class SlimeTome : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Slime Tome");
+        }
         public override void SetDefaults()
         {
             item.damage = 18;

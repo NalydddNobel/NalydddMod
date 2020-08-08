@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "3pQhNuOOdYTaggmEBfimz+wF/kjkoOwM2s+Pn/oXO/gWPlZ/THJoZvk9IpIrQVrAArAgajiIfIztNi0PgW+EqQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nalyddd\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\nalydmod\\nalydmod.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nalyddd\\.nuget\\packages\\tmodloader.codeassist\\0.1.1\\tmodloader.codeassist.0.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

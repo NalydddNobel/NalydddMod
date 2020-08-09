@@ -5,3 +5,4 @@ hideCode = true
 hideResources = true
 includeSource = false
 includePBD = False
+homepage = https://forums.terraria.org/index.php?threads/nalydmod-work-in-progress.96822/

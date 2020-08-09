@@ -1,17 +1,17 @@
-(Disclaimer. Many items iin this mod are unobtainable. Use a cheat mod if you want to see all items.)
+(Disclaimer. Many items in this mod are unobtainable. Use a cheat mod if you want to see all items.)
 Nalyd Moddd V1.0.3 is a project I'm working on in order to try out some 'C#' code. Has some items, most of them don't do anything. But as I update the mod, and learn new things, I will add new items and features, or learn that I cannot do some features. So far this mod includes:
--46 Items
+-50 Items
 -0 Npcs
 -5 Projectiles
--8 Tiles
--4 Music Tracks
+-9 Tiles
+-5 Music Tracks
 -1 Tree Variant
 Version History
 V1.0.3
--11 New Items
+-15 New Items
 -New Boss Drops
 -New Recipes
--4 new Music Tracks (Music Boxes only)
+-5 new Music Tracks (Music Boxes only)
 -2 New Projectiles
 -Animated Item Icons Added
 -1 Tree Added

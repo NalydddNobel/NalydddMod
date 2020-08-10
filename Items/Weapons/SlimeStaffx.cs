@@ -13,6 +13,7 @@ namespace nalydmod.Items.Weapons
         {
             DisplayName.SetDefault("Slime Staff");
             Tooltip.SetDefault("Not to be confused with the Summoner Weapon.");
+            Terraria.Item.staff[item.type] = true;
         }
 
         public override void SetDefaults()

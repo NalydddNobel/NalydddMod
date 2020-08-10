@@ -4,46 +4,45 @@ using Terraria.ModLoader;
 
 namespace nalydmod.Npcs.Enemies
 {
-    class CorruptedZombie : ModNPC
+    class WaterMage: ModNPC
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Corrupted Zombie");
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Zombie];
+            DisplayName.SetDefault("Ancient Mage");
+            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.RuneWizard];
         }
 		public override void SetDefaults()
 		{
-			npc.width = 18;
-			npc.height = 40;
-			npc.damage = 45;
-			npc.defense = 3;
-			npc.lifeMax = 180;
+			npc.width = 21;
+			npc.height = 31;
+			npc.damage = 5;
+			npc.defense = 15;
+			npc.lifeMax = 3200;
 			npc.HitSound = SoundID.NPCHit1;
-			npc.DeathSound = SoundID.NPCDeath2;
+			npc.DeathSound = SoundID.NPCDeath1;
 			npc.value = 60f;
-			npc.knockBackResist = 0.35f;
-			npc.aiStyle = 3;
+			npc.knockBackResist = 0f;
+			npc.aiStyle = 8;
 			npc.dripping = true;
-			npc.onFire2 = false;
-			aiType = NPCID.AngryBones;
-			animationType = NPCID.Zombie;
-			banner = Item.NPCtoBanner(NPCID.Zombie);
+			aiType = NPCID.RuneWizard;
+			animationType = NPCID.RuneWizard;
+			banner = Item.NPCtoBanner(NPCID.WanderingEye);
 			bannerItem = Item.BannerToItem(banner);
 		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			return SpawnCondition.Corruption.Chance * 10f;
+			return SpawnCondition.Meteor.Chance * 0.22f;
 		}
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			for (int i = 0; i < 10; i++)
 			{
-				int dustType = 220;
+				int dustType = 43;
 				int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, dustType);
 				Dust dust = Main.dust[dustIndex];
 				dust.velocity.X = dust.velocity.X + Main.rand.Next(-50, 51) * 0.01f;
 				dust.velocity.Y = dust.velocity.Y + Main.rand.Next(-50, 51) * 0.01f;
-				dust.scale *= 1f + Main.rand.Next(-30, 31) * 0.01f;
+				dust.scale *= 1f + Main.rand.Next(-30, 31) * 0.30f;
 			}
 		}
 	}

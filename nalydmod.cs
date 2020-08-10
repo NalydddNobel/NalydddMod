@@ -2,6 +2,11 @@ using IL.Terraria.GameContent.UI;
 using IL.Terraria.ID;
 using nalydmod.Items;
 using Terraria.ModLoader;
+using Terraria.ID;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Terraria;
 
 
 namespace nalydmod
@@ -19,7 +24,8 @@ namespace nalydmod
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CaveShrine"), ItemType("MusicBoxcaveshrine"), TileType("MusicBoxcaveshrineTile"));
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CaveShrineAlt"), ItemType("MusicBoxcaveshrinealt"), TileType("MusicBoxcaveshrinealtTile"));
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/BossType1"), ItemType("MusicBoxboss1"), TileType("MusicBoxboss1Tile"));
-        } 
+        }
+
     }
 }
 

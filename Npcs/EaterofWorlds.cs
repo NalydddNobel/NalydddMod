@@ -19,6 +19,10 @@ namespace nalydmod.NPCs
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulofCrime"));
                 }
+                if (Main.rand.Next(2) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood"));
+                }
             }
             if (npc.type == NPCID.EaterofWorldsBody)
             {
@@ -30,6 +34,10 @@ namespace nalydmod.NPCs
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SoulofCrime"));
                 }
+                if (Main.rand.Next(2) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood"));
+                }
             }
             if (npc.type == NPCID.EaterofWorldsBody)
             {
@@ -40,7 +48,11 @@ namespace nalydmod.NPCs
                 if (Main.rand.Next(2) == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MassiveWormTooth"));
-                }              
+                }
+                if (Main.rand.Next(2) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood"));
+                }
             }
         }
     }

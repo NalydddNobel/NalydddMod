@@ -20,7 +20,9 @@ namespace nalydmod.Items.Weapons
 			item.shoot = ModContent.ProjectileType<CursedBeamProjectile>();
 			item.crit = 25;
 			item.knockBack = 0.35f;
-			item.mana = 5;
+            item.mana = 4;
+            item.useTime = 23;
+            item.useAnimation = 23;
         }
         public override void AddRecipes()
         {
@@ -71,7 +73,10 @@ namespace nalydmod.Items.Weapons
         {
             projectile.damage = (int)(projectile.damage * 0.8);
         }
-
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(BuffID.CursedInferno, 20);
+        }
         public override void AI()
         {
             projectile.localAI[0] += 1f;

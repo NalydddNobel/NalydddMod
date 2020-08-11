@@ -6,8 +6,6 @@ namespace nalydmod.Projectiles
 {
     public class harpyarrow : ModProjectile
     {
-
-
         public override void SetDefaults()
         {
             projectile.Name = "harpyarrow";

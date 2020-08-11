@@ -13,13 +13,26 @@ namespace nalydmod.NPCs
         {
 
             //Random Passive Enemy Drops
-
+            if (npc.type == NPCID.Scorpion)
+            {
+                if (Main.rand.Next(2) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood"));
+                }
+            }
+            if (npc.type == NPCID.ScorpionBlack)
+            {
+                if (Main.rand.Next(2) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood"));
+                }
+            }
             if (Main.expertMode)
             {
                 if (npc.type == NPCID.Scorpion)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ScorpionTail"));
-                }
+                }               
                 if (npc.type == NPCID.ScorpionBlack)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ScorpionTail"));

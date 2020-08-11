@@ -11,13 +11,13 @@ namespace nalydmod.Items.Weapons.Ammo
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dirt Arrow"); 
-            Tooltip.SetDefault("May poision enemies.");
+            DisplayName.SetDefault("Worm Arrow"); 
+            Tooltip.SetDefault("Goes through blocks.");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 8;
+            item.damage = 4;
             item.ranged = true;
             item.width = 18;
             item.height = 30;

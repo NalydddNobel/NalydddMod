@@ -1,106 +1,23 @@
-(Disclaimer. Many items in this mod are unobtainable. Use a cheat mod if you want to see all items.)
-Nalyd Moddd V1.0.3 is a project I'm working on in order to try out some 'C#' code. Has some items, most of them don't do anything. But as I update the mod, and learn new things, I will add new items and features, or learn that I cannot do some features. So far this mod includes:
--50 Items
--0 Npcs
--5 Projectiles
+(Disclaimer. Many items in this mod are unobtainable and unfinished. Use a cheat mod if you want to see all items.)
+Nalyd Moddd V1.1.0 is a project I'm working on in order to try out some 'C#' code. Has some items, most of them don't do anything. But as I update the mod, and learn new things, I will add new items and features, or learn that I cannot do some features. So far this mod includes:
+-62 Items
+-5 Npcs
+-0 Bosses
+-8 Projectiles
 -9 Tiles
 -5 Music Tracks
 -1 Tree Variant
 Version History
-V1.0.3
--15 New Items
+V1.1.0
+-Fixed the staff issue
+-12 New Items
 -New Boss Drops
--New Recipes
--5 new Music Tracks (Music Boxes only)
--2 New Projectiles
--Animated Item Icons Added
--1 Tree Added
--TestItemII can now place "Mossy Blue Brick"
-.
-.
-.
-Some Abbreviations I might use:
-(M) = modded item
-(NM) = not a modded item
-(DM) = from different mod, might have the mod's name in ()'s afterwards
-(MW) = Melee Weapon
-(RW) = Ranged Weapon
-(MgW) = Mage Weapon
-(SW) = Summon Weapon
-(Mtr) = Material Item
-(SpkI) = Spelunker Item
-(Acc) = Accessory
-(Arr) = Armor
-(EqP) = Pet
-(EqLP) = Light Pet
-(Evil) = Corruption or Crimson releated, or a biome Infects blocks like the Corruption and Crimson.
-.
-.
-~Planned Features (Not added yet)~
-.
-Features
-1.Spelunker dedicated equipable slot. Would be in the equipment menu. Can hold accessories that give spelunker type buffs 
-(Examples)
--Metal Detector (NM)
--Xray (M)
--Unlimited Spelunker (DM) (Luiafk)
-2.SuperHardMode. 
--When activated (by killing the void pillar probably) it would add new enemies that should tourture you as much as a prehardmode player going into hardmode
--When activated it should show the message "The Portals lightyears away have opened up"
--5 new (Evil) biomes (Might change it to 1 evil biome)
--Ancient Altars would spawn in the dungeoun / jungle temple. They are the SuperHardMode's Demon Altars, so you must smash them with a new hammer to get new ores
-.
-.
-.
-Biomes-
-.
-Biome 1 - Dungeon Garden
-1.It will (away from nearby stone) Contain Corruption or Crimsion blocks so you can have the both evil types in one world.
-2.This biome would be an extension of the dungeon
-3.Locked by a Temple Key
-4.Has a boss that can enable the cultists / martians to spawn (meaning that when the boss is defeated you are technically post golem, so you dont even have to defeat golem)
-5.Has new dungeon moss that acts like grass / moss, but grows on dungeon brick.
-6.Has new trees that grow on dungeon bricks / dungeon brick moss
-7.New npcs / music / items / tiles for the biome
-8.Will have new biome chests / keys
-- Forest Chest, Cavern Chest, Sky Chest, Ocean Chest, Hell Chest. 
-(Planned chest items)
-- (Forest) Bunny Staff (SW). Changes stats depending on what biome you're in, also changes appearance depending on biome, holiday, or if a party is happening.
-- (Cavern) Xray, Spelunker Item. Gives a permanent spelunker effect when active, also counts as a Metal Detector (NM) , even when not active.
-- (Sky) Ultimate Harpy Bow (RW). 4 Unlimited "AmmoType" Tokens (Mtr). Three different items. First is a bow. And the second item is actually 4 items, 1 for each ammo type - Arrow, Bullet, Rocket, and misc, it can be crafted into an unlimited version of whatever ammo of it's ammo type you want but only once. 
-(EXAMPLE) 
-If you choose to use your Unlimited Bullet Token for infinte chloropyte bullets, you can only have infinite chlorophyte bullets, and you cannot change it back in order to get infinte of some other bullet.
-- (Ocean) 10 Star Molds (Mtr). Can be crafted with the all 4 pillar fragments into otherworldy stars in order it increase max mana to 400
-- (Hell) Flare Gauntlet (Acc) (Mtr). Better fire gauntlet, can be combined with fire gauntlet (and solar fragments) in order to create the Solar Flare Gauntlet, which inflicts the solar flare debuff on all weapons.
-.
-.
-.
-Bosses / minibosses-
-.
-1.Solar Soul - Dungeon Boss
--Can be fought post Plantera
--Counts as killing Golem
--Gives Treasure bag
--New Music
--Might trigger new ores to generate
--Might give a different type of ectoplasm
--Might make new enemies spawn in dungeon / jungle temple
-2. Arch Wyvern - Sky Miniboss
--was one of my favorite enemies on Terraria console edition
--will be just a retexture of a wyvern with better stats (Will have a different texture from the original console edition so if you have that mod that adds all of the console edition stuff you can differentiate them)
--might drop a new soul?
--might have a rare drop?
-3.Void Pillar - Lunar Boss
--Post Moonlord
--spawns after moonlord has been defeated
--acts like a lunar pillar but spawns at the center of the world
--shouldn't block the spawn of the martians / cultists (meaning you can have 5 pillars up at the same time O.O)
--new fragment
--new enemies (Will be 4x stronger than the pillar enemies)
--shouldn't give you a new tier of equipment (So that post moonlord weapons arent thrown away or crafted into some new powerful weapon)
--Sends you a moon dimension?
--Sends you to the void?
--activates SuperHardMode? 
+-New / Changed Recipes
+-Item Balancing 
+-3 New Projectiles
+-Some items are now in HD
+-Adding Infinite Boss Summon Items
+-5 Basic enemies
 .
 .
 .

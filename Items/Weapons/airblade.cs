@@ -10,25 +10,25 @@ namespace nalydmod.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Air Blade");
-            Tooltip.SetDefault("Slap them with the air.");
+            Tooltip.SetDefault("The hitbox of this weapon sucks!");
         }
 
         public override void SetDefaults()
         {
             item.damage = 12;
             item.melee = true;
-            item.width = 40;
-            item.height = 40;
-            item.useTime = 40;
+            item.width = 60;
+            item.height = 60;
+            item.useTime = 5;
             item.useAnimation = 5;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 15;
             item.value = 20000;
-            item.rare = ItemRarityID.Expert;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
             item.expertOnly = true;
+            item.rare = ItemRarityID.White;
         }
 
         public override void AddRecipes()
@@ -38,6 +38,7 @@ namespace nalydmod.Items.Weapons
             recipe.AddIngredient(ItemID.PeaceCandle, 1);
             recipe.AddIngredient(ItemID.Feather, 20);
             recipe.AddIngredient(ItemID.RainCloud, 75);
+            recipe.AddIngredient(mod.ItemType("SoulofTime"), 10);
             recipe.AddTile(TileID.SkyMill);
             recipe.SetResult(this);
         }

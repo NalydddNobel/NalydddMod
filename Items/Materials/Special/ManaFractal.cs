@@ -1,7 +1,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace nalydmod.Items.Materials
+namespace nalydmod.Items.Materials.Special
 {
     public class ManaFractal : ModItem
     {
@@ -15,7 +15,6 @@ namespace nalydmod.Items.Materials
         {
             item.width = 32;
             item.height = 32;
-            item.value = 2000;
             item.maxStack = 999;
             item.useTime = 30;
             item.useAnimation = 30;
@@ -31,7 +30,6 @@ namespace nalydmod.Items.Materials
             recipe.AddIngredient(ItemID.FragmentVortex, 25);
             recipe.AddIngredient(ItemID.FragmentNebula, 25);
             recipe.AddIngredient(ItemID.FragmentStardust, 25);
-            recipe.AddIngredient(mod.ItemType("Susblueflower"), 100);
             recipe.AddIngredient(ItemID.LunarBar, 15);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this);

@@ -26,6 +26,24 @@ namespace nalydmod.Items.Materials
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(itemID: ItemID.Gel, 50);
             recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("RoyalGel"), 5);
+            recipe.AddIngredient(ItemID.PinkGel, 1);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(itemID: ItemID.SlimeCrown);
+            recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("RoyalGel"), 5);
+            recipe.AddIngredient(ItemID.GoldBar, 5);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(itemID: ItemID.SlimeCrown);
+            recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("RoyalGel"), 5);
+            recipe.AddIngredient(ItemID.PlatinumBar, 5);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(itemID: ItemID.SlimeCrown);
+            recipe.AddRecipe();
         }
     }
 }

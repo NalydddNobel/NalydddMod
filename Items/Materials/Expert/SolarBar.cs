@@ -18,17 +18,13 @@ namespace nalydmod.Items.Materials.Expert
 
             item.width = 30;
             item.height = 24;
-            item.value = 20000;
+            item.value = 1000;
             item.maxStack = 999;
             item.rare = ItemRarityID.Expert;
             item.expertOnly = true;
             item.expert = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
             ItemID.Sets.ItemIconPulse[item.type] = true;
-            item.lifeRegen = -1;
-            item.buffType = 1;
-            item.noWet = true;
-            item.shopSpecialCurrency = 1;
         }
 
 

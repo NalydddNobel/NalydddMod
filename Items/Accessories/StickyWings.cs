@@ -58,6 +58,7 @@ namespace nalydmod.Items.Accessories
             recipe.AddIngredient(ItemID.Gel, 100);
             recipe.AddIngredient(ItemID.PinkGel, 30);
             recipe.AddIngredient(mod.ItemType("RoyalGel"), 20);
+            recipe.AddIngredient(mod.ItemType("SoulofSlime"), 4);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(this);
             recipe.AddRecipe();

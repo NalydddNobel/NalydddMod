@@ -17,7 +17,7 @@ namespace nalydmod.Items.Accessories
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Swarmer Wings");
-            Tooltip.SetDefault("Dry.");
+            Tooltip.SetDefault("Can glide at rapid speeds.");
         }
         public override void SetDefaults()
         {
@@ -29,20 +29,20 @@ namespace nalydmod.Items.Accessories
         }
         public override void UpdateAccessory(Terraria.Player player, bool hideVisual)
         {
-            player.wingTimeMax = 40;
+            player.wingTimeMax = 560;
         }
         public override void VerticalWingSpeeds(Terraria.Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
         {
-            ascentWhenFalling = 0.50f;
-            ascentWhenRising = 0.10f;
-            maxCanAscendMultiplier = 0.8f;
-            maxAscentMultiplier = 1.5f;
-            constantAscend = 0.055f;         
+            ascentWhenFalling = 0.10f;
+            ascentWhenRising = 0.02f;
+            maxCanAscendMultiplier = 0.2f;
+            maxAscentMultiplier = 0.22f;
+            constantAscend = 0.012f;         
         }
         public override void HorizontalWingSpeeds(Terraria.Player player, ref float speed, ref float acceleration)
         {
-            speed = 6;
-            acceleration = 1f;          
+            speed = 16;
+            acceleration = .066f;          
         }
         public override void AddRecipes()
         {

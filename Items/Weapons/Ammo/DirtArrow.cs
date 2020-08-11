@@ -17,7 +17,7 @@ namespace nalydmod.Items.Weapons.Ammo
 
         public override void SetDefaults()
         {
-            item.damage = 6;
+            item.damage = 3;
             item.ranged = true;
             item.width = 12;
             item.height = 24;

@@ -27,7 +27,7 @@ namespace nalydmod.Items.Accessories
         {
             item.width = 32;
             item.height = 32;
-            item.value = 20000;
+            item.value =  1000000;
             item.rare = ItemRarityID.Expert;
             item.accessory = true;
             item.expert = true;

@@ -31,7 +31,7 @@ namespace nalydmod.Items.TreasureBags
         {
             player.TryGettingDevArmor();
 
-            player.QuickSpawnItem(mod.ItemType("Nalydwings"));
+            player.QuickSpawnItem(mod.ItemType("Nalydwings"), 1);
         }
     }
     

@@ -26,7 +26,7 @@ namespace nalydmod.Items.Placeables.Special
 			item.width = 24;
 			item.height = 24;
 			item.rare = ItemRarityID.Blue;
-			item.value = 100000;
+			item.value = 10000;
 		}
 		
 	}

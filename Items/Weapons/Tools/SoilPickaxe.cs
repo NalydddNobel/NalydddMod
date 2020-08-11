@@ -30,7 +30,7 @@ namespace nalydmod.Items.Weapons.Tools
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Wood, 3);
+			recipe.AddIngredient(ItemID.CopperPickaxe);
 			recipe.AddIngredient(ItemID.DirtBlock, 25);
 			recipe.AddIngredient(ItemID.StoneBlock, 10);
 			recipe.AddTile(TileID.WorkBenches);

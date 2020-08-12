@@ -38,12 +38,6 @@ namespace nalydmod.Items.Materials
             recipe.AddTile(TileID.SkullLanterns);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            
-            recipe = new ModRecipe(mod);            
-            recipe.AddIngredient(mod.ItemType("corrupteyes"), 2);
-            recipe.AddTile(TileID.DyeVat);
-            recipe.SetResult(itemID: ItemID.CorruptSeeds);
-            recipe.AddRecipe();
         }        
     }
 }

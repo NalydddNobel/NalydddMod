@@ -5,11 +5,13 @@ using IL.Terraria;
 
 namespace nalydmod.Items.Placeables.Special
 {
-	public class MusicBoxboss1 : ModItem
+	public class Painting1 : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Music Box (Geode Worm)");
+			DisplayName.SetDefault("Sunset Under the Rainbow");
+			Tooltip.SetDefault("Kn. Nobel.");
+
 		}
 
 		public override void SetDefaults()
@@ -20,12 +22,11 @@ namespace nalydmod.Items.Placeables.Special
 			item.useTime = 10;
 			item.autoReuse = true;
 			item.consumable = true;
-			item.createTile = mod.TileType("MusicBoxboss1Tile");
-			item.width = 24;
-			item.height = 24;
-			item.rare = ItemRarityID.LightRed;
-			item.value = 100000;
-			item.accessory = true;
+			item.createTile = mod.TileType("Painting1Tile");
+			item.width = 48;
+			item.height = 32;
+			item.rare = ItemRarityID.White;
+			item.value = 100;
 		}
 	}
 }

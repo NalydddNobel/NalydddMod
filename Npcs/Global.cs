@@ -57,7 +57,7 @@ namespace nalydmod.NPCs
             //Random Enemy Drops (PreHardmode) (NormalDifficulty)
 
             //Slimes
-    
+
             if (Main.rand.Next(44) == 0)
             {
                 if (npc.type == NPCID.GreenSlime)
@@ -65,10 +65,6 @@ namespace nalydmod.NPCs
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RoyalGel"));
                 }          
                 if (npc.type == NPCID.BlueSlime)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RoyalGel"));
-                }
-                if (npc.type == NPCID.RedSlime)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RoyalGel"));
                 }
@@ -139,7 +135,6 @@ namespace nalydmod.NPCs
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RoyalGel"));
                 }
             }
-            
             if (Main.rand.Next(99) == 0)
             {
                 if (npc.type == NPCID.SmallSlimedZombie)

@@ -13,7 +13,16 @@ namespace nalydmod
 {
     public class nalydmod : Mod
     {
-        
+        public override void UpdateMusic(ref int music, ref MusicPriority priority)
+        {
+            if (NPC.AnyNPCs(Terraria.ID.NPCID.KingSlime))
+            {
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/KingSlime"); ;
+                priority = MusicPriority.BossMedium;
+            }
+            
+        }
+
 
         public static int CustomCurrencyID;
 
@@ -24,6 +33,8 @@ namespace nalydmod
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CaveShrine"), ItemType("MusicBoxcaveshrine"), TileType("MusicBoxcaveshrineTile"));
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CaveShrineAlt"), ItemType("MusicBoxcaveshrinealt"), TileType("MusicBoxcaveshrinealtTile"));
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/BossType1"), ItemType("MusicBoxboss1"), TileType("MusicBoxboss1Tile"));
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/KingSlime"), ItemType("MusicBoxkingslime"), TileType("MusicBoxkingslimeTile"));
+
         }
     }
 }

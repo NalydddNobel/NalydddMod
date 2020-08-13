@@ -15,7 +15,7 @@ namespace nalydmod.Items.Weapons
         public override void SetDefaults()
 		{
             item.CloneDefaults(ItemID.ShadowbeamStaff);
-            item.rare = 2;
+            item.rare = ItemRarityID.Green;
 			item.damage = 18;
 			item.shoot = ModContent.ProjectileType<CursedBeamProjectile>();
 			item.crit = 25;
@@ -30,7 +30,7 @@ namespace nalydmod.Items.Weapons
             recipe.AddIngredient(mod.ItemType("CursedSparks"), 20);
             recipe.AddIngredient(mod.ItemType("SoulofTime"), 10);
             recipe.AddIngredient(mod.ItemType("corrupteyes"), 3);
-            recipe.AddIngredient(ItemID.Gel, 100);
+            recipe.AddIngredient(ItemID.RottenChunk, 6);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

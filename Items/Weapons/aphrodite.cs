@@ -20,10 +20,10 @@ namespace nalydmod.Items.Weapons
 			item.height = 40;
 			item.useTime = 23;
 			item.useAnimation = 23;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 2;
 			item.value = 1;
-			item.rare = 0;
+			item.rare = ItemRarityID.White;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 		}

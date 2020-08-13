@@ -12,13 +12,13 @@ namespace nalydmod.Items.Weapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Slime Sniper");
-            Tooltip.SetDefault("Test");
+            Tooltip.SetDefault("Slow reloads, but fast and high damaging bullets!");
         
         }
 
         public override void SetDefaults()
         {
-            item.damage = 37;
+            item.damage = 33;
             item.ranged = true;
             item.width = 64;
             item.height = 30;

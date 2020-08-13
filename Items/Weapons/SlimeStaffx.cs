@@ -24,7 +24,7 @@ namespace nalydmod.Items.Weapons
             item.height = 48;
             item.useTime = 12;
             item.useAnimation = 12;
-            item.useStyle = 5;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 1;
             item.value = 20000;
             item.rare = ItemRarityID.Cyan;

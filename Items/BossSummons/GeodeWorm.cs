@@ -24,7 +24,7 @@ namespace nalydmod.Items.BossSummons
             item.consumable = false;
             item.useAnimation = 30;
             item.useTime = 30;
-            item.useStyle = 4;
+            item.useStyle = ItemUseStyleID.HoldingUp;
             item.maxStack = 20;
             item.rare = ItemRarityID.White;
             item.consumable = true;

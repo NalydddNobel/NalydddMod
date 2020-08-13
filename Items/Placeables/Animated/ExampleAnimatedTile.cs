@@ -19,7 +19,7 @@ namespace nalydmod.Items.Placeables.Animated
         {
             item.width = 24;
             item.height = 24;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
         }
     }
 }

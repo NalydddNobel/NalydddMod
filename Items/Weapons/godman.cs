@@ -19,10 +19,10 @@ namespace nalydmod.Items.Weapons
             item.height = 40;
             item.useTime = 28;
             item.useAnimation = 10;
-            item.useStyle = 3;
+            item.useStyle = ItemUseStyleID.Stabbing;
             item.knockBack = 1;
             item.value = 2000;
-            item.rare = 0;
+            item.rare = ItemRarityID.White;
             item.UseSound = SoundID.Item7;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("Lemon");

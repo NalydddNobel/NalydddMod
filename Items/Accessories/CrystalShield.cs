@@ -28,7 +28,7 @@ namespace nalydmod.Items.Accessories
             item.width = 28;
             item.height = 36;
             item.value = 20000;
-            item.rare = 3;
+            item.rare = ItemRarityID.Orange;
             item.accessory = true;
         }
         public override void UpdateAccessory(Terraria.Player player, bool hideVisual)

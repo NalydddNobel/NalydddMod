@@ -26,12 +26,12 @@ namespace nalydmod.Npcs.Enemies
 			npc.height = 31;
 			npc.damage = 20;
 			npc.defense = 15;
-			npc.lifeMax = 3200;
+			npc.lifeMax = 606;
 			npc.boss = true;
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath1;
 			npc.value = 60f;
-			npc.knockBackResist = 2.22f;
+			npc.knockBackResist = 0.22f;
 			npc.aiStyle = 8;
 			npc.dripping = true;
 			npc.buffImmune[BuffID.Poisoned] = true;
@@ -80,7 +80,7 @@ namespace nalydmod.Npcs.Enemies
 					Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
 					direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-					int projectile = Projectile.NewProjectile(npc.Center, direction * 6, ProjectileID.Fireball, 45, 0, Main.myPlayer);
+					int projectile = Projectile.NewProjectile(npc.Center, direction * 6, ProjectileID.Fireball, 5, 0, Main.myPlayer);
 					Main.projectile[projectile].timeLeft = 300;
 					npc.netUpdate = true;
 				}
@@ -98,7 +98,7 @@ namespace nalydmod.Npcs.Enemies
 					Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
 					direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-					int projectile = Projectile.NewProjectile(npc.Center, direction * 4, ProjectileID.LostSoulHostile, 10, 0, Main.myPlayer);
+					int projectile = Projectile.NewProjectile(npc.Center, direction * 2, ProjectileID.LostSoulHostile, 10, 0, Main.myPlayer);
 					Main.projectile[projectile].timeLeft = 600;
 					npc.netUpdate = true;
 				}
@@ -107,7 +107,7 @@ namespace nalydmod.Npcs.Enemies
 					Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
 					direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-					int projectile = Projectile.NewProjectile(npc.Center, direction * 4, ProjectileID.CursedFlameHostile, 40, 0, Main.myPlayer);
+					int projectile = Projectile.NewProjectile(npc.Center, direction * 2, ProjectileID.CursedFlameHostile, 10, 0, Main.myPlayer);
 					Main.projectile[projectile].timeLeft = 600;
 					npc.netUpdate = true;
 				}
@@ -116,7 +116,7 @@ namespace nalydmod.Npcs.Enemies
 					Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
 					direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-					int projectile = Projectile.NewProjectile(npc.Center, direction * 6, ProjectileID.GoldenShowerHostile, 40, 0, Main.myPlayer);
+					int projectile = Projectile.NewProjectile(npc.Center, direction * 3, ProjectileID.GoldenShowerHostile, 5, 0, Main.myPlayer);
 					Main.projectile[projectile].timeLeft = 600;
 					npc.netUpdate = true;
 				}
@@ -125,7 +125,7 @@ namespace nalydmod.Npcs.Enemies
 					Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
 					direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-					int projectile = Projectile.NewProjectile(npc.Center, direction * 6, ProjectileID.InfernoHostileBolt, 40, 0, Main.myPlayer);
+					int projectile = Projectile.NewProjectile(npc.Center, direction * 3, ProjectileID.InfernoHostileBolt, 10, 0, Main.myPlayer);
 					Main.projectile[projectile].timeLeft = 600;
 					npc.netUpdate = true;
 				}
@@ -134,7 +134,7 @@ namespace nalydmod.Npcs.Enemies
 					Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
 					direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-					int projectile = Projectile.NewProjectile(npc.Center, direction * 6, ProjectileID.SandnadoHostile, 40, 0, Main.myPlayer);
+					int projectile = Projectile.NewProjectile(npc.Center, direction * 3, ProjectileID.SandnadoHostile, 10, 0, Main.myPlayer);
 					Main.projectile[projectile].timeLeft = 1200;
 					npc.netUpdate = true;
 				}
@@ -143,7 +143,7 @@ namespace nalydmod.Npcs.Enemies
 					Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
 					direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-					int projectile = Projectile.NewProjectile(npc.Center, direction * 6, ProjectileID.UnholyTridentHostile, 80, 0, Main.myPlayer);
+					int projectile = Projectile.NewProjectile(npc.Center, direction * 3, ProjectileID.UnholyTridentHostile, 20, 0, Main.myPlayer);
 					Main.projectile[projectile].timeLeft = 1200;
 					npc.netUpdate = true;
 				}

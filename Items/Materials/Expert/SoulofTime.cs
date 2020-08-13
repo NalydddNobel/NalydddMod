@@ -17,7 +17,10 @@ namespace nalydmod.Items.Materials.Expert
             Tooltip.SetDefault("You can see the entire world aging.");
             
         }
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
         public override void SetDefaults()
         {                      
             item.width = 20;

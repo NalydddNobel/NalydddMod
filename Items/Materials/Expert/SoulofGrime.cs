@@ -3,6 +3,8 @@ using IL.Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Exceptions;
+using Microsoft.Xna.Framework;
+
 
 namespace nalydmod.Items.Materials.Expert
 {
@@ -14,7 +16,10 @@ namespace nalydmod.Items.Materials.Expert
             Tooltip.SetDefault("Disgusting.");
             
         }
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
         public override void SetDefaults()
         {                      
             item.width = 30;

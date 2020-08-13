@@ -5,31 +5,27 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using nalydmod.Npcs;
 using static Terraria.ModLoader.ModContent;
-using Terraria.ModLoader.Exceptions;
-using nalydmod.NPCs;
-using Terraria.ModLoader.Audio;
-using nalydmod.Items.Placeables.Special;
-using Terraria.Audio;
-
 namespace nalydmod.Npcs.Enemies
 {
-	internal class GeodeWormHead : GeodeWorm
+	internal class TopazWormHead : TopazWorm
 	{
 		public override void SetDefaults()
 		{
 			// Head is 10 defence, body 20, tail 30.
 			npc.CloneDefaults(NPCID.DiggerHead);
-			npc.lifeMax = 1522;
+			npc.lifeMax = 75;
 			npc.defense = 2;
 			npc.width = 18;
 			npc.height = 30;
-			npc.damage = 10;
+			npc.damage = 25;
 			npc.aiStyle = -1;
-			npc.boss = true;
-			music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BossType1"); ;
-			musicPriority = MusicPriority.BossMedium;
+			banner = Item.NPCtoBanner(NPCID.Worm);
+			bannerItem = Item.BannerToItem(banner);
 		}
-
+		public override float SpawnChance(NPCSpawnInfo spawnInfo)
+		{
+			return SpawnCondition.Cavern.Chance * 0.0025f;
+		}
 
 		public override void Init()
 		{
@@ -63,7 +59,7 @@ namespace nalydmod.Npcs.Enemies
 					Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
 					direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-					int projectile = Projectile.NewProjectile(npc.Center, direction * 4, ProjectileID.WoodenArrowHostile, 5, 0, Main.myPlayer);
+					int projectile = Projectile.NewProjectile(npc.Center, direction * 5, ProjectileID.WoodenArrowHostile, 5, 0, Main.myPlayer);
 					Main.projectile[projectile].timeLeft = 3000;
 					attackCounter = 200;
 					npc.netUpdate = true;
@@ -72,12 +68,12 @@ namespace nalydmod.Npcs.Enemies
 		}
 	}
 
-	internal class GeodeWormBody : GeodeWorm
+	internal class TopazWormBody : TopazWorm
 	{
 		public override void SetDefaults()
 		{
 			npc.CloneDefaults(NPCID.DiggerBody);
-			npc.lifeMax = 1522;
+			npc.lifeMax = 75;
 			npc.defense = 7;
 			npc.width = 18;
 			npc.height = 30;
@@ -86,18 +82,17 @@ namespace nalydmod.Npcs.Enemies
 		}
 	}
 
-	internal class GeodeWormTail : GeodeWorm
+	internal class TopazWormTail : TopazWorm
 	{
 		public override void SetDefaults()
 		{
 			npc.CloneDefaults(NPCID.DiggerTail);
-			npc.lifeMax = 1522;
+			npc.lifeMax = 75;
 			npc.defense = 13;
 			npc.width = 18;
 			npc.height = 30;
 			npc.damage = 1;
 			npc.aiStyle = -1;
-			npc.color = Color.DarkRed;
 		}
 
 		public override void Init()
@@ -108,28 +103,28 @@ namespace nalydmod.Npcs.Enemies
 	}
 
 	// I made this 2nd base class to limit code repetition.
-	public abstract class GeodeWorm : WormGeode
+	public abstract class TopazWorm : WormTopaz
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Geode Worm");
+			DisplayName.SetDefault("Topaz Worm");
 		}
 
 		public override void Init()
 		{
-			minLength = 13;
-			maxLength = 15;
-			tailType = NPCType<GeodeWormTail>();
-			bodyType = NPCType<GeodeWormBody>();
-			headType = NPCType<GeodeWormHead>();
-			speed = 8.5f;
-			turnSpeed = 0.062f;
+			minLength = 4;
+			maxLength = 6;
+			tailType = NPCType<TopazWormTail>();
+			bodyType = NPCType<TopazWormBody>();
+			headType = NPCType<TopazWormHead>();
+			speed = 2.5f;
+			turnSpeed = 0.075f;
 		}
 	}
 
 	//ported from my tAPI mod because I'm lazy
 	// This abstract class can be used for non splitting worm type NPC.
-	public abstract class WormGeode : ModNPC
+	public abstract class WormTopaz : ModNPC
 	{
 		/* ai[0] = follower
 		 * ai[1] = following

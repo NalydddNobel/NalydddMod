@@ -24,6 +24,10 @@ namespace nalydmod.Items.Materials
             Terraria.Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 8));
 
         }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

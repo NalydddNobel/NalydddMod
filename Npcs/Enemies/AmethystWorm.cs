@@ -5,21 +5,19 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using nalydmod.Npcs;
 using static Terraria.ModLoader.ModContent;
-using nalydmod.NPCs;
-
 namespace nalydmod.Npcs.Enemies
 {
-	internal class RubyWormHead : RubyWorm
+	internal class AmethystWormHead : AmethystWorm
 	{
 		public override void SetDefaults()
 		{
 			// Head is 10 defence, body 20, tail 30.
 			npc.CloneDefaults(NPCID.DiggerHead);
-			npc.lifeMax = 122;
+			npc.lifeMax = 55;
 			npc.defense = 2;
 			npc.width = 18;
 			npc.height = 30;
-			npc.damage = 10;
+			npc.damage = 25;
 			npc.aiStyle = -1;
 			banner = Item.NPCtoBanner(NPCID.Worm);
 			bannerItem = Item.BannerToItem(banner);
@@ -70,12 +68,12 @@ namespace nalydmod.Npcs.Enemies
 		}
 	}
 
-	internal class RubyWormBody : RubyWorm
+	internal class AmethystWormBody : AmethystWorm
 	{
 		public override void SetDefaults()
 		{
 			npc.CloneDefaults(NPCID.DiggerBody);
-			npc.lifeMax = 122;
+			npc.lifeMax = 55;
 			npc.defense = 7;
 			npc.width = 18;
 			npc.height = 30;
@@ -84,12 +82,12 @@ namespace nalydmod.Npcs.Enemies
 		}
 	}
 
-	internal class RubyWormTail : RubyWorm
+	internal class AmethystWormTail : AmethystWorm
 	{
 		public override void SetDefaults()
 		{
 			npc.CloneDefaults(NPCID.DiggerTail);
-			npc.lifeMax = 122;
+			npc.lifeMax = 55;
 			npc.defense = 13;
 			npc.width = 18;
 			npc.height = 30;
@@ -105,28 +103,28 @@ namespace nalydmod.Npcs.Enemies
 	}
 
 	// I made this 2nd base class to limit code repetition.
-	public abstract class RubyWorm : WormRuby
+	public abstract class AmethystWorm : WormAmethyst
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ruby Worm");
+			DisplayName.SetDefault("Amethyst Worm");
 		}
 
 		public override void Init()
 		{
-			minLength = 3;
-			maxLength = 6;
-			tailType = NPCType<RubyWormTail>();
-			bodyType = NPCType<RubyWormBody>();
-			headType = NPCType<RubyWormHead>();
-			speed = 3.5f;
+			minLength = 4;
+			maxLength = 19;
+			tailType = NPCType<AmethystWormTail>();
+			bodyType = NPCType<AmethystWormBody>();
+			headType = NPCType<AmethystWormHead>();
+			speed = 5.5f;
 			turnSpeed = 0.055f;
 		}
 	}
 
 	//ported from my tAPI mod because I'm lazy
 	// This abstract class can be used for non splitting worm type NPC.
-	public abstract class WormRuby : ModNPC
+	public abstract class WormAmethyst : ModNPC
 	{
 		/* ai[0] = follower
 		 * ai[1] = following
@@ -379,20 +377,7 @@ namespace nalydmod.Npcs.Enemies
 						}
 					}
 				}
-				else 
-				{
-					if (!flies && npc.behindTiles && npc.soundDelay == 0) {
-						float num195 = num193 / 40f;
-						if (num195 < 10f) {
-							num195 = 10f;
-						}
-						if (num195 > 20f) {
-							num195 = 20f;
-						}
-						npc.soundDelay = (int)num195;
-						Main.PlaySound(SoundID.Roar, npc.position, 1);
-					}
-				}
+				else
 				{
 					num193 = (float)System.Math.Sqrt((double)(num191 * num191 + num192 * num192));
 					float num196 = System.Math.Abs(num191);

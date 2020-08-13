@@ -23,6 +23,10 @@ namespace nalydmod.Items.Materials.Special
 			item.height = 32;
 			item.rare = ItemRarityID.Quest;
 		}
+		public override Color? GetAlpha(Color lightColor)
+		{
+			return Color.White;
+		}
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

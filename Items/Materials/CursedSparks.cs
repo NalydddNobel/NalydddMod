@@ -17,7 +17,6 @@ namespace nalydmod.Items.Materials
             Tooltip.SetDefault("Might start a permament fire.");
 
         }
-
         public override void SetDefaults()
         {
             item.width = 40;
@@ -27,9 +26,10 @@ namespace nalydmod.Items.Materials
             item.rare = ItemRarityID.White;
             Terraria.Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 3));
         }
-
-
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

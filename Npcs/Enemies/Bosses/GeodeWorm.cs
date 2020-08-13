@@ -5,28 +5,40 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using nalydmod.Npcs;
 using static Terraria.ModLoader.ModContent;
+using Terraria.ModLoader.Exceptions;
 using nalydmod.NPCs;
+using Terraria.ModLoader.Audio;
+using nalydmod.Items.Placeables.Special;
+using Terraria.Audio;
 
-namespace nalydmod.Npcs.Enemies
+namespace nalydmod.Npcs.Enemies.Bosses
 {
-	internal class RubyWormHead : RubyWorm
+	internal class GeodeWormHead : GeodeWorm
 	{
 		public override void SetDefaults()
 		{
 			// Head is 10 defence, body 20, tail 30.
 			npc.CloneDefaults(NPCID.DiggerHead);
-			npc.lifeMax = 122;
-			npc.defense = 2;
-			npc.width = 18;
-			npc.height = 30;
-			npc.damage = 10;
+			npc.lifeMax = 1522;
+			npc.defense = 4;
+			npc.width = 35;
+			npc.height = 32;
+			npc.damage = 45;
 			npc.aiStyle = -1;
-			banner = Item.NPCtoBanner(NPCID.Worm);
-			bannerItem = Item.BannerToItem(banner);
+			npc.boss = true;
+			music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BossType1"); ;
+			musicPriority = MusicPriority.BossLow;
 		}
-		public override float SpawnChance(NPCSpawnInfo spawnInfo)
-		{
-			return SpawnCondition.Cavern.Chance * 0.0025f;
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+			potionType = mod.ItemType("LifeFragment");
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LifeFragment"), 5);
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AmethystFragment"), 15);
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TopazFragment"), 20);
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SapphireFragment"), 20);
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EmeraldFragment"), 25);
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RubyFragment"), 25);
+			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DiamondFragment"), 35) ;
 		}
 
 		public override void Init()
@@ -61,39 +73,39 @@ namespace nalydmod.Npcs.Enemies
 					Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
 					direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-					int projectile = Projectile.NewProjectile(npc.Center, direction * 4, ProjectileID.WoodenArrowHostile, 5, 0, Main.myPlayer);
-					Main.projectile[projectile].timeLeft = 3000;
-					attackCounter = 200;
+					int projectile = Projectile.NewProjectile(npc.Center, direction * 9, ProjectileID.WoodenArrowHostile, 5, 0, Main.myPlayer);
+					Main.projectile[projectile].timeLeft = 100;
+					attackCounter = 100;
 					npc.netUpdate = true;
 				}
 			}
 		}
 	}
 
-	internal class RubyWormBody : RubyWorm
+	internal class GeodeWormBody : GeodeWorm
 	{
 		public override void SetDefaults()
 		{
 			npc.CloneDefaults(NPCID.DiggerBody);
-			npc.lifeMax = 122;
-			npc.defense = 7;
-			npc.width = 18;
-			npc.height = 30;
-			npc.damage = 4;
+			npc.lifeMax = 1522;
+			npc.defense = 10;
+			npc.width = 35;
+			npc.height = 32;
+			npc.damage = 14;
 			npc.aiStyle = -1;
 		}
 	}
 
-	internal class RubyWormTail : RubyWorm
+	internal class GeodeWormTail : GeodeWorm
 	{
 		public override void SetDefaults()
 		{
 			npc.CloneDefaults(NPCID.DiggerTail);
-			npc.lifeMax = 122;
-			npc.defense = 13;
-			npc.width = 18;
-			npc.height = 30;
-			npc.damage = 1;
+			npc.lifeMax = 1522;
+			npc.defense = 24;
+			npc.width = 35;
+			npc.height = 32;
+			npc.damage = 12;
 			npc.aiStyle = -1;
 		}
 
@@ -105,28 +117,28 @@ namespace nalydmod.Npcs.Enemies
 	}
 
 	// I made this 2nd base class to limit code repetition.
-	public abstract class RubyWorm : WormRuby
+	public abstract class GeodeWorm : WormGeode
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ruby Worm");
+			DisplayName.SetDefault("Geode Worm");
 		}
 
 		public override void Init()
 		{
-			minLength = 3;
-			maxLength = 6;
-			tailType = NPCType<RubyWormTail>();
-			bodyType = NPCType<RubyWormBody>();
-			headType = NPCType<RubyWormHead>();
-			speed = 3.5f;
-			turnSpeed = 0.055f;
+			minLength = 15;
+			maxLength = 19;
+			tailType = NPCType<GeodeWormTail>();
+			bodyType = NPCType<GeodeWormBody>();
+			headType = NPCType<GeodeWormHead>();
+			speed = 10.5f;
+			turnSpeed = 0.172f;
 		}
 	}
 
 	//ported from my tAPI mod because I'm lazy
 	// This abstract class can be used for non splitting worm type NPC.
-	public abstract class WormRuby : ModNPC
+	public abstract class WormGeode : ModNPC
 	{
 		/* ai[0] = follower
 		 * ai[1] = following
@@ -379,20 +391,7 @@ namespace nalydmod.Npcs.Enemies
 						}
 					}
 				}
-				else 
-				{
-					if (!flies && npc.behindTiles && npc.soundDelay == 0) {
-						float num195 = num193 / 40f;
-						if (num195 < 10f) {
-							num195 = 10f;
-						}
-						if (num195 > 20f) {
-							num195 = 20f;
-						}
-						npc.soundDelay = (int)num195;
-						Main.PlaySound(SoundID.Roar, npc.position, 1);
-					}
-				}
+				else
 				{
 					num193 = (float)System.Math.Sqrt((double)(num191 * num191 + num192 * num192));
 					float num196 = System.Math.Abs(num191);

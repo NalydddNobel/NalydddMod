@@ -1,5 +1,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+
 
 namespace nalydmod.Items.Materials.Expert
 {
@@ -26,9 +28,10 @@ namespace nalydmod.Items.Materials.Expert
             ItemID.Sets.ItemNoGravity[item.type] = true;
             ItemID.Sets.ItemIconPulse[item.type] = true;
         }
-
-
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

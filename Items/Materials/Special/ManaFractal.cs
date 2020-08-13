@@ -1,5 +1,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace nalydmod.Items.Materials.Special
 {
@@ -10,6 +11,10 @@ namespace nalydmod.Items.Materials.Special
             DisplayName.SetDefault("Mana Fractal");
             Tooltip.SetDefault("Increases max mana by 40.");
 
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
         public override void SetDefaults()
         {

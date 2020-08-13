@@ -1,6 +1,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
-
+using Microsoft.Xna.Framework;
 namespace nalydmod.Items.Materials
 {
     public class corrupteyes : ModItem
@@ -22,9 +22,10 @@ namespace nalydmod.Items.Materials
             item.maxStack = 999;
             item.rare = ItemRarityID.LightPurple;
         }
-
-
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

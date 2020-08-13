@@ -1,5 +1,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace nalydmod.Items.Materials
 {
@@ -20,9 +21,10 @@ namespace nalydmod.Items.Materials
             item.maxStack = 999;
             item.rare = ItemRarityID.LightRed;
         }
-
-
-
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

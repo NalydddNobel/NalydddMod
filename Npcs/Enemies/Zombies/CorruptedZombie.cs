@@ -2,26 +2,26 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace nalydmod.Npcs.Enemies
+namespace nalydmod.Npcs.Enemies.Zombies
 {
-    class CrimsonZombie : ModNPC
+    class CorruptedZombie : ModNPC
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crimson Zombie");
+            DisplayName.SetDefault("Corrupted Zombie");
             Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Zombie];
         }
 		public override void SetDefaults()
 		{
 			npc.width = 18;
 			npc.height = 40;
-			npc.damage = 55;
-			npc.defense = 5;
-			npc.lifeMax = 220;
+			npc.damage = 45;
+			npc.defense = 3;
+			npc.lifeMax = 180;
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath2;
 			npc.value = 60f;
-			npc.knockBackResist = 0.15f;
+			npc.knockBackResist = 0.35f;
 			npc.aiStyle = 3;
 			npc.dripping = true;
 			npc.onFire2 = false;
@@ -32,13 +32,17 @@ namespace nalydmod.Npcs.Enemies
 		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			return SpawnCondition.Crimson.Chance * 10f;
+			if (Terraria.Main.dayTime == false)
+			{
+				return SpawnCondition.Corruption.Chance * 0.3f;
+			}
+			else return 0;
 		}
 		public override void HitEffect(int hitDirection, double damage)
 		{
 			for (int i = 0; i < 10; i++)
 			{
-				int dustType = 219;
+				int dustType = 220;
 				int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, dustType);
 				Dust dust = Main.dust[dustIndex];
 				dust.velocity.X = dust.velocity.X + Main.rand.Next(-50, 51) * 0.01f;

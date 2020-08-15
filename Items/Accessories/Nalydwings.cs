@@ -50,7 +50,7 @@ namespace nalydmod.Items.Accessories
         public override void HorizontalWingSpeeds(Terraria.Player player, ref float speed, ref float acceleration)
         {
             speed = 9;
-            acceleration = 2.5f;          
+            acceleration = 1.5f;          
         }       
     }
 }

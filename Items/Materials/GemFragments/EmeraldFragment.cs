@@ -7,21 +7,29 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace nalydmod.Items.Materials
+namespace nalydmod.Items.Materials.GemFragments
 {
     public class EmeraldFragment : ModItem
     {
+        public override string Texture => "nalydmod/Items/Materials/GemFragments/BasicFragment";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Emerald Fragment");           
+            DisplayName.SetDefault("Emerald Fragment");
+            Tooltip.SetDefault("Drops from Emerald Creatures");
         }
         public override void SetDefaults()
         {
             item.width = 10;
-            item.height = 10;            
+            item.height = 10;
             item.maxStack = 999;
-            Terraria.Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 8));
-
+            item.alpha = 189;
+            item.color = Color.Green;
+            ItemID.Sets.ItemNoGravity[item.type] = true;
+            ItemID.Sets.ItemIconPulse[item.type] = true;
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.Green;
         }
         public override void AddRecipes()
         {

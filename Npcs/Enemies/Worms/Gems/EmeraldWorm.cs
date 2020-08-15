@@ -3,16 +3,18 @@ using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using nalydmod.Npcs;
 using static Terraria.ModLoader.ModContent;
-namespace nalydmod.Npcs.Enemies
+namespace nalydmod.Npcs.Enemies.Worms.Gem
 {
-	internal class AmethystWormHead : AmethystWorm
+	
+	internal class EmeraldWormHead : EmeraldWorm
 	{
+		public override string Texture => "nalydmod/Npcs/Enemies/Worms/Gems/GemWormHead";
 		public override void SetDefaults()
 		{
 			// Head is 10 defence, body 20, tail 30.
 			npc.CloneDefaults(NPCID.DiggerHead);
+			npc.color = Color.Green;
 			npc.lifeMax = 55;
 			npc.defense = 2;
 			npc.width = 18;
@@ -24,7 +26,7 @@ namespace nalydmod.Npcs.Enemies
 		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			return SpawnCondition.Cavern.Chance * 0.0025f;
+			return SpawnCondition.Cavern.Chance * 0.002f;
 		}
 
 		public override void Init()
@@ -68,11 +70,13 @@ namespace nalydmod.Npcs.Enemies
 		}
 	}
 
-	internal class AmethystWormBody : AmethystWorm
+	internal class EmeraldWormBody : EmeraldWorm
 	{
+		public override string Texture => "nalydmod/Npcs/Enemies/Worms/Gems/GemWormBody";
 		public override void SetDefaults()
 		{
 			npc.CloneDefaults(NPCID.DiggerBody);
+			npc.color = Color.Green;
 			npc.lifeMax = 55;
 			npc.defense = 7;
 			npc.width = 18;
@@ -82,11 +86,13 @@ namespace nalydmod.Npcs.Enemies
 		}
 	}
 
-	internal class AmethystWormTail : AmethystWorm
+	internal class EmeraldWormTail : EmeraldWorm
 	{
+		public override string Texture => "nalydmod/Npcs/Enemies/Worms/Gems/GemWormTail";
 		public override void SetDefaults()
 		{
 			npc.CloneDefaults(NPCID.DiggerTail);
+			npc.color = Color.Green;
 			npc.lifeMax = 55;
 			npc.defense = 13;
 			npc.width = 18;
@@ -103,28 +109,29 @@ namespace nalydmod.Npcs.Enemies
 	}
 
 	// I made this 2nd base class to limit code repetition.
-	public abstract class AmethystWorm : WormAmethyst
+	public abstract class EmeraldWorm : WormEmerald
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Amethyst Worm");
+			DisplayName.SetDefault("Emerald Worm");
 		}
 
 		public override void Init()
 		{
 			minLength = 4;
 			maxLength = 19;
-			tailType = NPCType<AmethystWormTail>();
-			bodyType = NPCType<AmethystWormBody>();
-			headType = NPCType<AmethystWormHead>();
-			speed = 5.5f;
-			turnSpeed = 0.055f;
+			tailType = NPCType<EmeraldWormTail>();
+			bodyType = NPCType<EmeraldWormBody>();
+			headType = NPCType<EmeraldWormHead>();
+			speed = 9.5f;
+			turnSpeed = 0.105f;
+
 		}
 	}
 
 	//ported from my tAPI mod because I'm lazy
 	// This abstract class can be used for non splitting worm type NPC.
-	public abstract class WormAmethyst : ModNPC
+	public abstract class WormEmerald : ModNPC
 	{
 		/* ai[0] = follower
 		 * ai[1] = following
@@ -379,6 +386,20 @@ namespace nalydmod.Npcs.Enemies
 				}
 				else
 				{
+					if (!flies && npc.behindTiles && npc.soundDelay == 0)
+					{
+						float num195 = num193 / 40f;
+						if (num195 < 10f)
+						{
+							num195 = 10f;
+						}
+						if (num195 > 20f)
+						{
+							num195 = 20f;
+						}
+						npc.soundDelay = (int)num195;
+						Main.PlaySound(SoundID.Roar, npc.position, 1);
+					}
 					num193 = (float)System.Math.Sqrt((double)(num191 * num191 + num192 * num192));
 					float num196 = System.Math.Abs(num191);
 					float num197 = System.Math.Abs(num192);

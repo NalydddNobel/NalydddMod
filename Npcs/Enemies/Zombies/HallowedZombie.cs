@@ -2,36 +2,41 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace nalydmod.Npcs.Enemies
+namespace nalydmod.Npcs.Enemies.Zombies
 {
-    class HallowedEye : ModNPC
+    class HallowedZombie : ModNPC
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Demon Eye");
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.DemonEye];
+            DisplayName.SetDefault("Zombie");
+            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Zombie];
         }
 		public override void SetDefaults()
 		{
-			npc.width = 38;
-			npc.height = 23;
+			npc.width = 18;
+			npc.height = 40;
 			npc.damage = 80;
 			npc.defense = 15;
 			npc.lifeMax = 320;
 			npc.HitSound = SoundID.NPCHit1;
-			npc.DeathSound = SoundID.NPCDeath1;
+			npc.DeathSound = SoundID.NPCDeath2;
 			npc.value = 60f;
-			npc.knockBackResist = 0.15f;
-			npc.aiStyle = 2;
+			npc.knockBackResist = 0.25f;
+			npc.aiStyle = 3;
 			npc.dripping = true;
-			aiType = NPCID.DemonEye;
-			animationType = NPCID.DemonEye;
-			banner = Item.NPCtoBanner(NPCID.DemonEye);
+			npc.onFire2 = false;
+			aiType = NPCID.AngryBones;
+			animationType = NPCID.Zombie;
+			banner = Item.NPCtoBanner(NPCID.Zombie);
 			bannerItem = Item.BannerToItem(banner);
 		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-			return SpawnCondition.OverworldHallow.Chance;
+			if (Terraria.Main.dayTime == false)
+			{
+				return SpawnCondition.OverworldHallow.Chance * 0.2f;
+			}
+			else return 0;
 		}
 		public override void HitEffect(int hitDirection, double damage)
 		{

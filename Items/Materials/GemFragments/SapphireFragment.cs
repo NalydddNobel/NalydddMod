@@ -7,21 +7,29 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace nalydmod.Items.Materials
+namespace nalydmod.Items.Materials.GemFragments
 {
     public class SapphireFragment : ModItem
     {
+        public override string Texture => "nalydmod/Items/Materials/GemFragments/BasicFragment";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sapphire Fragment");           
+            DisplayName.SetDefault("Sapphire Fragment");
+            Tooltip.SetDefault("Drops from Sapphire Creatures");
         }
         public override void SetDefaults()
         {
             item.width = 10;
-            item.height = 10;            
+            item.height = 10;
             item.maxStack = 999;
-            Terraria.Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 8));
-
+            item.alpha = 189;
+            item.color = Color.Blue;
+            ItemID.Sets.ItemNoGravity[item.type] = true;
+            ItemID.Sets.ItemIconPulse[item.type] = true;
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.Blue;
         }
         public override void AddRecipes()
         {

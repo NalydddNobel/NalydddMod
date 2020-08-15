@@ -1,29 +1,40 @@
-(Disclaimer. Many items in this mod are unobtainable and unfinished. Use a cheat mod if you want to see all items.)
-Nalyd Moddd V1.1.1 is a project I'm working on in order to try out some 'C#' code. Has some items, most of them don't do anything. But as I update the mod, and learn new things, I will add new items and features, or learn that I cannot do some features. So far this mod includes:
--77 Items
+(Disclaimer. Many things in this mod are unobtainable and unfinished. Use a cheat mod if you want to see everything.)
+Nalyd Moddd V2.0.0 is a project I'm working on in order to try out some 'C#' code. Has some items, most of them don't do anything. But as I update the mod, and learn new things, I will add new items and features, or learn that I cannot do some features. So far this mod includes:
+-85 Items
 -9 Npcs 
 -2 Bosses
 -8 Projectiles
--9 Tiles
--5 Music Tracks
+-13 Tiles
+-7 Music Tracks
 -1 Tree Variant
-Version History
-V1.1.1
--Fixed the staff issue
--15 New Items
--New material type - Gem Fragments
--1 New Accessory
--3 new Weapons
--1 new Ore
--2 New Projectiles
--2 Bosses added
--3 Worm Enemies
--1 new soul
--Ore World Generation Added
--Starting game Summoner Weapon
--New Boss Drops
--New / Changed Recipes
--Item Balancing 
+.
+V2.0.0 Changelog
+.
+(~) A Bigger and Better Picture (~)
+.
+Fixes -
+.
+-The Music "Cave Shrine Alt"'s volume has been lowered because of how loud it was
+-Mod Item Balancing
+.
+Minor Changes -
+.
+-Resprited Every Mod Item to be in HD
+-Resprited Every Mod NPC to be in HD
+-Music Boxes now have actual Textures
+-Sell / Reforge Prices of items Altered
+-Scorpion Tails are now an actual Currency
+-Fractalite is now post EoW / BoC
+-Fractalite has custom sounds now
+-Fractalite now can be crafted into bars
+.
+New Stuff -
+.
+-8 New Items 
+-1 New Music Track
+-Desert Devoter Added
+-Fractalite Armor Added
+.
 .
 .
 .

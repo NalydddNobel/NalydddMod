@@ -14,9 +14,8 @@ namespace nalydmod.Tiles
         }
         public override int DropWood()
         {
-            return mod.ItemType("CoveredBlueBricks");     //this is what the tree will drop
+            return mod.ItemType("CoveredBlueBricks"); //this is what the tree will drop
         }
-
         public override Texture2D GetTexture()
         {
             return mod.GetTexture("Tiles/DungeonTreeTreeTile");        //add where is u'r tree tile

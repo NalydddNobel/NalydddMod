@@ -101,6 +101,10 @@ namespace nalydmod.NPCs
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GoblinPowder"));
                 }
+                if (Main.rand.Next(10) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WaxWoodPipe"));
+                }
             }
             if (npc.type == NPCID.GoblinArcher)
             {
@@ -123,6 +127,10 @@ namespace nalydmod.NPCs
                 if (Main.rand.Next(16) == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WaxWoodBow"));
+                }
+                if (Main.rand.Next(16) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WaxWoodPipe"));
                 }
                 if (Main.rand.Next(4) == 0)
                 {
@@ -174,6 +182,10 @@ namespace nalydmod.NPCs
                 if (Main.rand.Next(4) == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood3"));
+                }
+                if (Main.rand.Next(16) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WaxWoodPipe"));
                 }
                 if (Main.rand.Next(4) == 0)
                 {
@@ -312,6 +324,10 @@ namespace nalydmod.NPCs
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GoblinPowder"));
                 }
+                if (Main.rand.Next(16) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WaxWoodPipe"));
+                }
             }
             if (npc.type == NPCID.BoundGoblin)
             {
@@ -330,6 +346,10 @@ namespace nalydmod.NPCs
                 if (Main.rand.Next(4) == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GoblinPowder"));
+                }
+                if (Main.rand.Next(16) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WaxWoodPipe"));
                 }
             }
         }

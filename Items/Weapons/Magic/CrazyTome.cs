@@ -29,8 +29,8 @@ namespace nalydmod.Items.Weapons.Magic
             item.mana = 12;             //mana use
             item.UseSound = SoundID.Item21;            //this is the sound when you use the item
             item.autoReuse = true;
-            item.shoot = ProjectileID.TopazBolt;
-            item.shootSpeed = 5;    //projectile speed when shoot
+            item.shoot = mod.ProjectileType("CrazyBall");
+            item.shootSpeed = 6;    //projectile speed when shoot
         }
-    }
+	}
 }

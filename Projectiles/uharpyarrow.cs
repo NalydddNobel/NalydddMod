@@ -16,9 +16,7 @@ namespace nalydmod.Projectiles
             projectile.friendly = true;
             projectile.melee = true;
             projectile.tileCollide = true;
-            projectile.penetrate = 0;
             projectile.timeLeft = 400;
-            projectile.light = 0;
             projectile.extraUpdates = 1;
             projectile.ignoreWater = true;
         }

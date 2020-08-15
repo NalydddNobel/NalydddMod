@@ -37,21 +37,14 @@ namespace nalydmod.Projectiles
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             projectile.localAI[0] += 1f;
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void Kill(int timeLeft)
         {
-            target.AddBuff(BuffID.ShadowFlame, 48);
-        }
-        public override bool PreDraw(SpriteBatch sb, Color lightColor)
-        {
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 5)
+            int RandomTome = Main.rand.Next(1, 1); ;
+
+            if (RandomTome == 1)
             {
-                projectile.frame++;
-                projectile.frameCounter = 0;
-                if (projectile.frame > 3)
-                    projectile.frame = 0;
+                
             }
-            return true;
         }
     }
 }

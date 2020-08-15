@@ -15,5 +15,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Npcs\Enemies\Bosses\" />
+    <Folder Include="Sounds\Items\" />
   </ItemGroup>
 </Project>

@@ -1,9 +1,5 @@
-using IL.Terraria;
-using System.Collections;
-using System.Collections.Generic;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
 
 namespace nalydmod.Items.Accessories
 {
@@ -20,9 +16,6 @@ namespace nalydmod.Items.Accessories
             DisplayName.SetDefault("Brittle Wings");
             Tooltip.SetDefault("It feels like it can fall apart any second");
         }
-
-
-
         public override void SetDefaults()
         {
             item.width = 28;
@@ -44,14 +37,14 @@ namespace nalydmod.Items.Accessories
             ascentWhenRising = 0.05f;
             maxCanAscendMultiplier = 0.5f;
             maxAscentMultiplier = 1f;
-            constantAscend = 0.035f;         
+            constantAscend = 0.035f;
         }
 
         public override void HorizontalWingSpeeds(Terraria.Player player, ref float speed, ref float acceleration)
         {
             speed = 5;
-            acceleration = 0.5f;          
-        }       
+            acceleration = 0.5f;
+        }
     }
 }
 

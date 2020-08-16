@@ -1,9 +1,5 @@
-using IL.Terraria;
-using System.Collections;
-using System.Collections.Generic;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
 
 namespace nalydmod.Items.Accessories
 {
@@ -20,9 +16,6 @@ namespace nalydmod.Items.Accessories
             DisplayName.SetDefault("Crystal Shield");
             Tooltip.SetDefault("Prevents knockback.\nIncreases Damage by 5%.\nCan feel how deep into the Planet you are.\nExpert");
         }
-
-
-
         public override void SetDefaults()
         {
             item.width = 28;

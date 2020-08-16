@@ -15,6 +15,7 @@ namespace nalydmod.Npcs.Enemies
 			// Head is 10 defence, body 20, tail 30.
 			npc.CloneDefaults(NPCID.DiggerHead);
 			npc.color = Color.Yellow;
+			npc.rarity = 1;
 			npc.lifeMax = 75;
 			npc.defense = 2;
 			npc.width = 18;

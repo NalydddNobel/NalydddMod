@@ -5,5 +5,5 @@ hideCode = true
 hideResources = true
 includeSource = false
 includePBD = False
-buildignore = .csproj
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*
 homepage = https://forums.terraria.org/index.php?threads/nalydmod-work-in-progress.96822/

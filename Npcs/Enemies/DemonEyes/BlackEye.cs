@@ -31,7 +31,7 @@ namespace nalydmod.Npcs.Enemies.DemonEyes
 		}
 		public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{	
-				return SpawnCondition.OverworldNight.Chance * 0.01f;
+				return SpawnCondition.OverworldNight.Chance * 0.024f;
 		}
 		public override void HitEffect(int hitDirection, double damage)
 		{
@@ -44,7 +44,7 @@ namespace nalydmod.Npcs.Enemies.DemonEyes
             {
 				for (int i = 0; i < 10; i++)
 				{
-					int dustType = 219;
+					int dustType = 5;
 					int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, dustType);
 					Dust dust = Main.dust[dustIndex];
 					dust.velocity.X = dust.velocity.X + Main.rand.Next(-50, 51) * 0.01f;

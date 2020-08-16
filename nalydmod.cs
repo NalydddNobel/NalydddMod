@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
-
+using nalydmod.Npcs.Enemies.Zombies.Seaweed;
 
 namespace nalydmod
 {
@@ -18,12 +18,14 @@ namespace nalydmod
             if (NPC.AnyNPCs(Terraria.ID.NPCID.KingSlime))
             {
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/KingSlime"); ;
-                priority = MusicPriority.BossMedium;
+                priority = MusicPriority.BossLow;
             }
-            
-        }
-
-
+            if (NPC.AnyNPCs(Terraria.ID.NPCID.EyeofCthulhu))
+            {
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/EyeofCuthulu"); ;
+                priority = MusicPriority.BossLow;
+            }
+        } 
         public static int CustomCurrencyID;
 
         public override void Load()
@@ -34,6 +36,7 @@ namespace nalydmod
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/CaveShrineAlt"), ItemType("MusicBoxcaveshrinealt"), TileType("MusicBoxcaveshrinealtTile"));
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/BossType1"), ItemType("MusicBoxboss1"), TileType("MusicBoxboss1Tile"));
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/KingSlime"), ItemType("MusicBoxkingslime"), TileType("MusicBoxkingslimeTile"));
+            AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/EyeofCuthulu"), ItemType("MusicBoxEyeofCuthulu"), TileType("MusicBoxEyeofCuthuluTile"));
             AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/LunarEvil"), ItemType("MusicBoxlunar"), TileType("MusicBoxlunarTile"));
         }
     }

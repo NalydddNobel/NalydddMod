@@ -19,7 +19,7 @@ namespace nalydmod.Npcs.Enemies.Bosses
 		{
 			// Head is 10 defence, body 20, tail 30.
 			npc.CloneDefaults(NPCID.DiggerHead);
-			npc.lifeMax = 1522;
+			npc.lifeMax = 1322;
 			npc.defense = 4;
 			npc.width = 35;
 			npc.height = 32;
@@ -28,19 +28,7 @@ namespace nalydmod.Npcs.Enemies.Bosses
 			npc.boss = true;
 			music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BossType1"); ;
 			musicPriority = MusicPriority.BossLow;
-		}
-        public override void BossLoot(ref string name, ref int potionType)
-        {
-			potionType = mod.ItemType("LifeFragment");
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LifeFragment"), 5);
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AmethystFragment"), 15);
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TopazFragment"), 20);
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SapphireFragment"), 20);
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EmeraldFragment"), 25);
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RubyFragment"), 25);
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DiamondFragment"), 35) ;
-		}
-
+		}  
 		public override void Init()
 		{
 			base.Init();

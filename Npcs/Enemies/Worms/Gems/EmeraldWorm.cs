@@ -15,6 +15,7 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
 			// Head is 10 defence, body 20, tail 30.
 			npc.CloneDefaults(NPCID.DiggerHead);
 			npc.color = Color.Green;
+			npc.rarity = 1;
 			npc.lifeMax = 55;
 			npc.defense = 2;
 			npc.width = 18;

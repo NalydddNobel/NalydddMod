@@ -49,7 +49,7 @@ namespace nalydmod.Npcs.Enemies
 			bool alreadySpawned = Terraria.NPC.AnyNPCs(mod.NPCType("WaterMage"));
 			if (alreadySpawned == false)
 			{
-				bool MagicAttract = NPC.downedBoss2 = true;
+				bool MagicAttract = NPC.downedBoss2 == true;
 				if (MagicAttract == true)
 				{
 					return SpawnCondition.Meteor.Chance * 0.2f;
@@ -57,7 +57,6 @@ namespace nalydmod.Npcs.Enemies
 				else return SpawnCondition.Meteor.Chance * 0.0096f;
 			}
 			else return 0;
-
 		}
 		public override void HitEffect(int hitDirection, double damage)
 		{

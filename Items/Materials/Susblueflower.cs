@@ -9,13 +9,9 @@ namespace nalydmod.Items.Materials
         {
             DisplayName.SetDefault("Blue Flower");
             Tooltip.SetDefault("Looks like its magical.");
-
         }
-
         public override void SetDefaults()
         {
-
-
             item.width = 32;
             item.height = 32;
             item.value = 2000;
@@ -33,15 +29,15 @@ namespace nalydmod.Items.Materials
             recipe.AddTile(TileID.BloomingHerbs);
             recipe.SetResult(this, 2);
             recipe.AddRecipe();
-            
-            recipe = new ModRecipe(mod);            
+
+            recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("Susblueflower"), 25);
             recipe.AddIngredient(ItemID.ManaCrystal, 1);
             recipe.AddIngredient(ItemID.ManaPotion, 4);
             recipe.AddTile(TileID.DyeVat);
             recipe.SetResult(itemID: ItemID.NaturesGift);
             recipe.AddRecipe();
-        }        
+        }
     }
 }
 

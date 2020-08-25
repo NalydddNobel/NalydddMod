@@ -1,56 +1,203 @@
-﻿using nalydmod;
-using nalydmod.Items.Accessories;
+﻿using nalydmod.Items.Expert.Accessories;
+using nalydmod.Items.Expert.Dev;
+using nalydmod.Items.Expert.Souls;
 using nalydmod.Items.Materials;
-using nalydmod.Items.Materials.Expert;
-using nalydmod.Items.Weapons;
+using nalydmod.Items.Weapons.Magic;
+using nalydmod.Items.Weapons.Magic.Staff;
+using nalydmod.Items.Weapons.Melee.Boomerangs;
+using nalydmod.Items.Weapons.Melee.Swords.ShortSwords;
+using nalydmod.Items.Weapons.Ranged.UsesBullet;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-
 namespace nalydmod.Items.Global
 {
-	public class BossBags : GlobalItem
-	{
-		public override void OpenVanillaBag(string context, Player player, int arg)
-		{
-			// This method shows adding items to Fishrons boss bag. 
-			// Typically you'll also want to also add an item to the non-expert boss drops, that code can be found in ExampleGlobalNPC.NPCLoot. Use this and that to add drops to bosses.
-			if (context == "bossBag" && arg == ItemID.KingSlimeBossBag)
-			{
-				player.QuickSpawnItem(ItemType<SlimyBar>(), Main.rand.Next(40, 60));
-				player.QuickSpawnItem(ItemType<SoulofSlime>(), Main.rand.Next(20, 35));
-				player.QuickSpawnItem(ItemType<RoyalGel>(), Main.rand.Next(12, 25));
-				player.QuickSpawnItem(ItemType<BrittleWings>());
-				if (Main.rand.Next(5) == 0)
-			    {
-					player.QuickSpawnItem(ItemType<SlimeShortsword>());
-				}
-				if (Main.rand.Next(5) == 0)
-				{
-					player.QuickSpawnItem(ItemType<SlimeShooter>());
-				}
-				if (Main.rand.Next(5) == 0)
-				{
-					player.QuickSpawnItem(ItemType<SlimeSniper>());
-				}
-				if (Main.rand.Next(5) == 0)
-				{
-					player.QuickSpawnItem(ItemType<SlimeTome>());
-				}
-				if (Main.rand.Next(5) == 0)
-				{
-					player.QuickSpawnItem(ItemType<SlimeStaffx>());
-				}
-				if (Main.rand.Next(5) == 0)
-				{
-					player.QuickSpawnItem(ItemID.SlimeStaff);
-				}
-			}
-			if (context == "bossBag" && arg == ItemID.CultistBossBag)
-			{
-				player.QuickSpawnItem(ItemType<Nalydwings>());
-			}
-		}
-	}
+    public class BossBags : GlobalItem
+    {
+        public override void OpenVanillaBag(string context, Player player, int arg)
+        {
+            if (context == "bossBag" && arg == ItemID.KingSlimeBossBag)
+            {
+                player.QuickSpawnItem(ItemType<SoulofSlime>(), Main.rand.Next(20, 35));
+                player.QuickSpawnItem(ItemType<RoyalGel>(), Main.rand.Next(12, 25));
+                player.QuickSpawnItem(ItemType<BrittleWings>());
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeShortsword>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeShooter>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeSniper>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeTome>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeStaffx>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.SlimeStaff);
+                }
+            }
+            if (context == "bossBag" && arg == ItemID.EyeOfCthulhuBossBag)
+            {
+                player.QuickSpawnItem(ItemType<SoulofTime>(), Main.rand.Next(15, 30));
+                player.QuickSpawnItem(ItemType<corrupteyes>(), Main.rand.Next(1, 3));
+                player.QuickSpawnItem(ItemType<crimsoneyes>(), Main.rand.Next(1, 3));
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<CursedBeamStaff>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeShooter>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeSniper>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeTome>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeStaffx>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.SlimeStaff);
+                }
+            }
+            if (context == "bossBag" && arg == ItemID.EaterOfWorldsBossBag)
+            {
+                player.QuickSpawnItem(ItemType<SoulofCrime>(), Main.rand.Next(15, 30));
+                player.QuickSpawnItem(ItemType<MassiveWormTooth>(), Main.rand.Next(1, 3));
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeShortsword>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeShooter>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeSniper>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeTome>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeStaffx>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.SlimeStaff);
+                }
+            }
+            if (context == "bossBag" && arg == ItemID.BrainOfCthulhuBossBag)
+            {
+                player.QuickSpawnItem(ItemType<SoulofCrime>(), Main.rand.Next(15, 30));
+                player.QuickSpawnItem(ItemType<MassiveWormTooth>(), Main.rand.Next(1, 3));
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<CrimsonMachete>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeShooter>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeSniper>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeTome>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeStaffx>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.SlimeStaff);
+                }
+            }
+            if (context == "bossBag" && arg == ItemID.SkeletronBossBag)
+            {
+                player.QuickSpawnItem(ItemType<SoulofSpine>(), Main.rand.Next(15, 30));
+                player.QuickSpawnItem(ItemType<MassiveWormTooth>(), Main.rand.Next(1, 3));
+                player.QuickSpawnItem(ItemID.Bone, Main.rand.Next(22, 66));
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<CrimsonMachete>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeShooter>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeSniper>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeTome>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeStaffx>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.SlimeStaff);
+                }
+            }
+            if (context == "bossBag" && arg == ItemID.WallOfFleshBossBag)
+            {
+                player.QuickSpawnItem(ItemType<SoulofGrime>(), Main.rand.Next(22, 44));
+                player.QuickSpawnItem(ItemType<MassiveWormTooth>(), Main.rand.Next(1, 3));
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<CrimsonMachete>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeShooter>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeSniper>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeTome>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<SlimeStaffx>());
+                }
+                if (Main.rand.Next(5) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.SlimeStaff);
+                }
+            }
+            if (context == "bossBag" && arg == ItemID.CultistBossBag)
+            {
+                player.QuickSpawnItem(ItemType<Nalydwings>());
+            }
+        }
+    }
 }

@@ -1,7 +1,4 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,12 +11,10 @@ namespace nalydmod.Items.ZCheat
         {
             Tooltip.SetDefault("Starts a Blood Moon\nIf day, sets the time to 7:30pm\nCheat Item.");
         }
-
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.SuspiciousLookingEye);
             item.scale = 2;
-            item.color = Color.Red;
             item.consumable = false;
             item.maxStack = 1;
         }

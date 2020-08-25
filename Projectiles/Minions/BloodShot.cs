@@ -1,6 +1,4 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -43,8 +41,8 @@ namespace nalydmod.Projectiles.Minions
             {
                 Main.dust[dust].velocity += projectile.velocity * 0.2f;
             }
-            Main.dust[dust].position.X = projectile.Center.X + 4f + (float)Main.rand.Next(-2, 3);
-            Main.dust[dust].position.Y = projectile.Center.Y + (float)Main.rand.Next(-2, 3);
+            Main.dust[dust].position.X = projectile.Center.X + 4f + Main.rand.Next(-2, 3);
+            Main.dust[dust].position.Y = projectile.Center.Y + Main.rand.Next(-2, 3);
             Main.dust[dust].noGravity = true;
         }
     }

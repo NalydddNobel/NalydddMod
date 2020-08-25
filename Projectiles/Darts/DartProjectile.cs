@@ -1,8 +1,3 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ID;
-using System;
 using Terraria.ModLoader;
 namespace nalydmod.Projectiles.Darts
 {
@@ -10,8 +5,8 @@ namespace nalydmod.Projectiles.Darts
     {
         public override void SetDefaults()
         {
-            projectile.width = 6;
-            projectile.height = 8;
+            projectile.width = 16;
+            projectile.height = 12;
             projectile.friendly = true;
             projectile.ranged = true;
             projectile.tileCollide = true;

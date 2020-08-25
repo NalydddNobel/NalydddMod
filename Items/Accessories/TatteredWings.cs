@@ -1,9 +1,5 @@
-using IL.Terraria;
-using System.Collections;
-using System.Collections.Generic;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
 
 namespace nalydmod.Items.Accessories
 {
@@ -37,12 +33,12 @@ namespace nalydmod.Items.Accessories
             ascentWhenRising = 0.02f;
             maxCanAscendMultiplier = 0.2f;
             maxAscentMultiplier = 0.22f;
-            constantAscend = 0.012f;         
+            constantAscend = 0.012f;
         }
         public override void HorizontalWingSpeeds(Terraria.Player player, ref float speed, ref float acceleration)
         {
             speed = 16;
-            acceleration = .066f;          
+            acceleration = .066f;
         }
         public override void AddRecipes()
         {

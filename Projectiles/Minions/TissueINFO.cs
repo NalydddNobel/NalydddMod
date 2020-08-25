@@ -1,8 +1,6 @@
-using System;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace nalydmod.Projectiles.Minions
 {
@@ -29,7 +27,7 @@ namespace nalydmod.Projectiles.Minions
         public override void Behavior()
         {
             Player player = Main.player[projectile.owner];
-            float spacing = (float)projectile.width * spacingMult;
+            float spacing = projectile.width * spacingMult;
             for (int k = 0; k < 1000; k++)
             {
                 Projectile otherProj = Main.projectile[k];
@@ -116,7 +114,7 @@ namespace nalydmod.Projectiles.Minions
                         num++;
                     }
                 }
-                direction.X -= (float)((10 + num * 40) * player.direction);
+                direction.X -= (10 + num * 40) * player.direction;
                 direction.Y -= 70f;
                 float distanceTo = direction.Length();
                 if (distanceTo > 200f && speed < 9f)

@@ -1,4 +1,3 @@
-using IL.Terraria;
 using Terraria.ModLoader;
 
 
@@ -22,7 +21,7 @@ namespace nalydmod.Projectiles
         }
         public override void AI()
         {
-            projectile.rotation = (float)System.Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            projectile.rotation = (float)System.Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
         }
     }
 }

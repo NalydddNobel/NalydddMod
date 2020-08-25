@@ -1,9 +1,5 @@
-using IL.Terraria;
-using nalydmod.Projectiles;
-using System.Collections;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
 
 namespace nalydmod.Items.Weapons.Ammo
 {
@@ -11,7 +7,7 @@ namespace nalydmod.Items.Weapons.Ammo
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Worm Arrow"); 
+            DisplayName.SetDefault("Worm Arrow");
             Tooltip.SetDefault("Goes through blocks.");
         }
 

@@ -1,6 +1,6 @@
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace nalydmod.Items.Materials
 {
@@ -17,7 +17,7 @@ namespace nalydmod.Items.Materials
         {
             item.width = 40;
             item.height = 20;
-            item.value = 20000;
+            item.value = 1000;
             item.maxStack = 999;
             item.rare = ItemRarityID.LightRed;
         }

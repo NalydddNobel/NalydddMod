@@ -1,22 +1,13 @@
-using IL.Terraria;
-using nalydmod.Projectiles;
-using System.Collections;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
 
 namespace nalydmod.Items.Weapons.Ammo.Darts
 {
     public class Dart : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Dart"); 
-        }
-
         public override void SetDefaults()
         {
-            item.damage = 8;
+            item.damage = 5;
             item.ranged = true;
             item.width = 6;
             item.height = 8;
@@ -25,11 +16,10 @@ namespace nalydmod.Items.Weapons.Ammo.Darts
             item.value = 125;
             item.rare = ItemRarityID.White;
             item.shoot = mod.ProjectileType("DartProjectile");
-            item.shootSpeed = 2;
+            item.shootSpeed = 1.27f;
             item.ammo = AmmoID.Dart;
 
         }
-
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

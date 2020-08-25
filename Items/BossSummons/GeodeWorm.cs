@@ -1,9 +1,3 @@
-using IL.Terraria;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using On.Terraria;
-using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -32,14 +26,14 @@ namespace nalydmod.Items.BossSummons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("AmethystFragment"), 10);
-            recipe.AddIngredient(mod.ItemType("TopazFragment"), 15);
-            recipe.AddIngredient(mod.ItemType("SapphireFragment"), 20);
-            recipe.AddIngredient(mod.ItemType("EmeraldFragment"), 25);
-            recipe.AddIngredient(mod.ItemType("RubyFragment"), 30);
-            recipe.AddIngredient(mod.ItemType("DiamondFragment"), 35);
+            recipe.AddIngredient(mod.ItemType("AmethystFragment"), 35);
+            recipe.AddIngredient(mod.ItemType("TopazFragment"), 30);
+            recipe.AddIngredient(mod.ItemType("SapphireFragment"), 25);
+            recipe.AddIngredient(mod.ItemType("EmeraldFragment"), 20);
+            recipe.AddIngredient(mod.ItemType("RubyFragment"), 15);
+            recipe.AddIngredient(mod.ItemType("DiamondFragment"), 10);
             recipe.AddIngredient(ItemID.Worm);
-            recipe.AddTile(TileID.SkullLanterns);
+            recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

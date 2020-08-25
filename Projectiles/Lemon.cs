@@ -1,6 +1,3 @@
-using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,7 +18,7 @@ namespace nalydmod.Projectiles
             projectile.ignoreWater = true;
             projectile.aiStyle = 1;
         }
-        public override void AI()      
+        public override void AI()
         {
             if (projectile.timeLeft == 149)
             {

@@ -1,8 +1,4 @@
-using IL.Terraria;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using On.Terraria;
-using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,14 +9,15 @@ namespace nalydmod.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Diamond Fragment");           
+            DisplayName.SetDefault("Diamond Fragment");
         }
         public override void SetDefaults()
         {
             item.width = 10;
-            item.height = 10;            
+            item.height = 10;
             item.maxStack = 999;
-            item.rare = -12;
+            item.value = 10000;
+            item.rare = ItemRarityID.Blue;
             Terraria.Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 8));
 
         }

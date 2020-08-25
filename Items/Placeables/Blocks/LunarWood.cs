@@ -1,10 +1,5 @@
-using IL.Terraria;
-using System.Collections;
-using System.Collections.Generic;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
-
 namespace nalydmod.Items.Placeables.Blocks
 {
     public class LunarWood : ModItem
@@ -27,10 +22,5 @@ namespace nalydmod.Items.Placeables.Blocks
             item.consumable = true;
             item.createTile = mod.TileType("LunarWoodTile");
         }
-
     }
 }
-
-
-
-

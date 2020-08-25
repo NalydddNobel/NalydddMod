@@ -1,6 +1,6 @@
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,11 +14,11 @@ namespace nalydmod.Projectiles
             projectile.width = 48;
             projectile.height = 48;
             projectile.friendly = true;
-            projectile.penetrate = 2;                       
-            Main.projFrames[projectile.type] = 4;           
+            projectile.penetrate = 2;
+            Main.projFrames[projectile.type] = 4;
             projectile.hostile = false;
-            projectile.magic = true;                       
-            projectile.tileCollide = false;                 
+            projectile.magic = true;
+            projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 45;
         }
@@ -27,7 +27,7 @@ namespace nalydmod.Projectiles
         {
             int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.t_Slime);
             int dust2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.t_Slime);
-            Main.dust[dust].velocity /= 120f;  
+            Main.dust[dust].velocity /= 120f;
             Main.dust[dust2].velocity /= 60f;
             Main.dust[dust].scale = 0.5f;
             Main.dust[dust2].scale = 0.75f;

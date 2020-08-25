@@ -2,3 +2,6 @@
 
 # CS0642: Possible mistaken empty statement
 dotnet_diagnostic.CS0642.severity = error
+
+# ChangeMagicNumberToID: Change magic numbers into appropriate ID values
+dotnet_diagnostic.ChangeMagicNumberToID.severity = none

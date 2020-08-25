@@ -1,9 +1,5 @@
-using IL.Terraria;
-using nalydmod.Projectiles;
-using System.Collections;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
 
 namespace nalydmod.Items.Weapons.Ammo
 {
@@ -11,7 +7,7 @@ namespace nalydmod.Items.Weapons.Ammo
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Dirt Arrow"); 
+            DisplayName.SetDefault("Dirt Arrow");
             Tooltip.SetDefault("May poision enemies.");
         }
 
@@ -30,7 +26,6 @@ namespace nalydmod.Items.Weapons.Ammo
             item.ammo = AmmoID.Arrow;
 
         }
-
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

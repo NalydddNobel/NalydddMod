@@ -14,7 +14,7 @@ namespace nalydmod.Tiles.Spreads
             Main.tileLighted[Type] = true;
             dustType = 1;
             drop = mod.ItemType("CoveredBlueBricks");
-            AddMapEntry(new Color(000, 100, 200));
+            AddMapEntry(new Color(50, 170, 100));
             SetModTree(new DungeonTree());
         }
         public override int SaplingGrowthType(ref int style)

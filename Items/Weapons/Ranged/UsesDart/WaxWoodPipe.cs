@@ -1,7 +1,5 @@
-using IL.Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
 
 namespace nalydmod.Items.Weapons.Ranged.UsesDart
 {
@@ -15,7 +13,7 @@ namespace nalydmod.Items.Weapons.Ranged.UsesDart
 
         public override void SetDefaults()
         {
-            item.damage = 15;
+            item.damage = 20;
             item.crit = 12;
             item.ranged = true;
             item.width = 15;

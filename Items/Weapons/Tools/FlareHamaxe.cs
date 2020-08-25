@@ -1,6 +1,4 @@
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using Terraria.ID;
-using nalydmod.Items;
 using Terraria.ModLoader;
 
 namespace nalydmod.Items.Weapons.Tools
@@ -22,7 +20,7 @@ namespace nalydmod.Items.Weapons.Tools
             item.useTime = 5;
             item.useAnimation = 5;
             item.axe = 18;
-            item.hammer = 95;
+            item.hammer = 60;
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 3;
             item.value = 10000;
@@ -30,7 +28,7 @@ namespace nalydmod.Items.Weapons.Tools
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
-            
+
         }
 
         public override void AddRecipes()

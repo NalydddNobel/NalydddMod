@@ -1,7 +1,5 @@
-using IL.Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
 
 namespace nalydmod.Items.Weapons.Ranged.UsesArrow
 {

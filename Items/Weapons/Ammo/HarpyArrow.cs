@@ -1,9 +1,5 @@
-using IL.Terraria;
-using nalydmod.Projectiles;
-using System.Collections;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
 
 namespace nalydmod.Items.Weapons.Ammo
 {
@@ -11,13 +7,13 @@ namespace nalydmod.Items.Weapons.Ammo
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("HarpyArrow"); 
+            DisplayName.SetDefault("HarpyArrow");
             Tooltip.SetDefault("Aerodynamic and razor sharp. Also hates the ground, these arrows get easily destroyed by most ground tiles.");
         }
 
         public override void SetDefaults()
         {
-            
+
             item.damage = 10;
             item.ranged = true;
             item.width = 24;

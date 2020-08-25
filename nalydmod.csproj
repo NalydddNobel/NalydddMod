@@ -14,7 +14,9 @@
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Npcs\Enemies\Bosses\" />
-    <Folder Include="Sounds\Items\" />
+    <Reference Include="Microsoft.Build.Framework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Npcs\Enemies\Bosses\WaterMage\" />
   </ItemGroup>
 </Project>

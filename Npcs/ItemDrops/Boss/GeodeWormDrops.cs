@@ -1,7 +1,4 @@
-using nalydmod.Items;
-using nalydmod.Items.Materials;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace nalydmod.NPCs.ItemDrops.Boss
@@ -10,7 +7,7 @@ namespace nalydmod.NPCs.ItemDrops.Boss
     {
         public override void NPCLoot(NPC npc)
         {
-            if (npc.type == mod.NPCType("GeodeWormHead"))    
+            if (npc.type == mod.NPCType("GeodeWormHead"))
             {
                 if (Main.expertMode == false)
                 {
@@ -26,7 +23,7 @@ namespace nalydmod.NPCs.ItemDrops.Boss
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GeodeTreasureBag"));
                 }
-            }                                                                                             
+            }
         }
     }
 }

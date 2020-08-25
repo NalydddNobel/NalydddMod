@@ -1,9 +1,5 @@
-using IL.Terraria;
-using IL.Terraria.DataStructures;
-using System;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
 
 namespace nalydmod.Items.Placeables.Animated
 {
@@ -14,7 +10,7 @@ namespace nalydmod.Items.Placeables.Animated
             DisplayName.SetDefault("Example Animated Tile");
             Tooltip.SetDefault("Animated Firefly");
 
-        }     
+        }
         public override void SetDefaults()
         {
             item.width = 24;

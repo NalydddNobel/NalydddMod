@@ -1,6 +1,4 @@
 ﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,7 +18,7 @@ namespace nalydmod.Projectiles.Throwing
             projectile.timeLeft = 600;
             projectile.light = 0.5f;
             projectile.extraUpdates = 1;
-             
+
         }
         public override void AI()
         {

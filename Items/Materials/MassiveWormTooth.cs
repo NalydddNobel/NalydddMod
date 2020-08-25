@@ -9,7 +9,6 @@ namespace nalydmod.Items.Materials
         {
             DisplayName.SetDefault("Eater of World's Tooth");
         }
-
         public override void SetDefaults()
         {
 
@@ -20,9 +19,6 @@ namespace nalydmod.Items.Materials
             item.maxStack = 999;
             item.rare = ItemRarityID.LightPurple;
         }
-
-
-
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -31,15 +27,15 @@ namespace nalydmod.Items.Materials
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            
-            recipe = new ModRecipe(mod);            
+
+            recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("MassiveWormTooth"), 1);
             recipe.AddIngredient(ItemID.ShadowScale, 1);
             recipe.AddIngredient(ItemID.WoodenArrow, 500);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(itemID: ItemID.UnholyArrow, 500);
             recipe.AddRecipe();
-        }        
+        }
     }
 }
 

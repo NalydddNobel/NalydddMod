@@ -1,9 +1,5 @@
-using IL.Terraria;
-using System.Collections;
-using System.Collections.Generic;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
 
 namespace nalydmod.Items.Placeables.Blocks
 {

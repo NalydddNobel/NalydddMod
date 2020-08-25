@@ -1,6 +1,3 @@
-using System;
-using System.Runtime.CompilerServices;
-using IL.Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;

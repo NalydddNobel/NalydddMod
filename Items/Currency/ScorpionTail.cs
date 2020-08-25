@@ -1,8 +1,5 @@
-using System.Collections.Generic;
-using System.Drawing;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 
 namespace nalydmod.Items.Currency

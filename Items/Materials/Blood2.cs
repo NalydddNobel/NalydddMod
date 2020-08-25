@@ -1,8 +1,3 @@
-using IL.Terraria;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using On.Terraria;
-using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,7 +17,7 @@ namespace nalydmod.Items.Materials
         {
             item.width = 20;
             item.height = 10;
-            item.value = 20000;
+            item.value = 100;
             item.maxStack = 999;
             item.rare = ItemRarityID.White;
             Terraria.Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 3));
@@ -86,7 +81,7 @@ namespace nalydmod.Items.Materials
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(ItemID.Musket);
             recipe.AddRecipe();
-        }        
+        }
     }
 }
 

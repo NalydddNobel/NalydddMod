@@ -1,61 +1,152 @@
-using System;
+using nalydmod.Npcs.Enemies.Bosses.LunarPillar;
 using System.Collections.Generic;
-using System.IO;
-using IL.Terraria.GameContent.Generation;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using nalydmod.Projectiles.Minions;
-using nalydmod.Tiles;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 using Terraria.World.Generation;
-
 namespace nalydmod
 {
-	public class MyWorld : ModWorld
-	{
-		private const int saveVersion = 0;
-		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
-		{
-			// Because world generation is like layering several images ontop of each other, we need to do some steps between the original world generation steps.
-
-			// The first step is an Ore. Most vanilla ores are generated in a step called "Shinies", so for maximum compatibility, we will also do this.
-			// First, we find out which step "Shinies" is.
-			int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
-			if (ShiniesIndex != -1)
-			{
-				// Next, we insert our step directly after the original "Shinies" step. 
-				// ExampleModOres is a method seen below.
-				tasks.Insert(ShiniesIndex + 1, new Terraria.GameContent.Generation.PassLegacy("FractaliteTile", NewModOres));
-			}
-		}
-		private void NewModOres(GenerationProgress progress)
-		{
-			// progress.Message is the message shown to the user while the following code is running. Try to make your message clear. You can be a little bit clever, but make sure it is descriptive enough for troubleshooting purposes. 
-			progress.Message = "Adding New Mod Ores";
-
-			// Ores are quite simple, we simply use a for loop and the WorldGen.TileRunner to place splotches of the specified Tile in the world.
-			// "6E-05" is "scientific notation". It simply means 0.00006 but in some ways is easier to read.
-			for (int k = 0; k < (int)((Main.maxTilesX * Main.maxTilesY) * 6E-05); k++)
-			{
-				// The inside of this for loop corresponds to one single splotch of our Ore.
-				// First, we randomly choose any coordinate in the world by choosing a random x and y value.
-				int x = WorldGen.genRand.Next(0, Main.maxTilesX);
-				int y = WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY); // WorldGen.worldSurfaceLow is actually the highest surface tile. In practice you might want to use WorldGen.rockLayer or other WorldGen values.
-
-				// Then, we call WorldGen.TileRunner with random "strength" and random "steps", as well as the Tile we wish to place. Feel free to experiment with strength and step to see the shape they generate.
-				WorldGen.TileRunner(x, y, WorldGen.genRand.Next(12, 16), WorldGen.genRand.Next(4, 8), mod.TileType("FractaliteTile"));
-
-				// Alternately, we could check the tile already present in the coordinate we are interested. Wrapping WorldGen.TileRunner in the following condition would make the ore only generate in Snow.
-				// Tile tile = Framing.GetTileSafely(x, y);
-				// if (tile.active() && tile.type == TileID.SnowBlock)
-				// {
-				// 	WorldGen.TileRunner(.....);
-				// }
-			}
-		}
-	}
+    public class MyWorld : ModWorld
+    {
+        public const int maxLunarPillarPeonsKilled = 150;
+        public static int LunarPillarPeonsKilled;
+        public static bool PostMoonLord1;
+        public static bool PostMoonLord2;
+        public static bool DownedMage1;
+        public static bool PillarSpawn;
+        public static bool ModExpertMode;
+        public override TagCompound Save()
+        {
+            return new TagCompound
+            {
+                {"LunarPillarPeonsKilled", LunarPillarPeonsKilled},
+                {"PostMoonLord1", PostMoonLord1},
+                {"PostMoonLord2", PostMoonLord2},
+                {"DownedMage1", DownedMage1},
+            };
+        }
+        public override void Load(TagCompound tag)
+        {
+            LunarPillarPeonsKilled = tag.GetInt("LunarPillarPeonsKilled");
+            PostMoonLord1 = tag.GetBool("PostMoonLord1");
+            PostMoonLord2 = tag.GetBool("PostMoonLord2");
+            DownedMage1 = tag.GetBool("DownedMage1");
+        }
+        public override void PreUpdate()
+        {
+            if (LunarPillarPeonsKilled > maxLunarPillarPeonsKilled)
+            {
+                LunarPillarPeonsKilled = maxLunarPillarPeonsKilled;
+            }
+            if (PostMoonLord1 == true && PillarSpawn == false)
+            {
+                NPC.NewNPC((Main.spawnTileX + 5) * 16, Main.spawnTileY * 16, ModContent.NPCType<LunarPillar>(), 0, 0f, 0f, 0f, 0f, 255);
+                PillarSpawn = true;
+            }
+            if (!NPC.AnyNPCs(ModContent.NPCType<LunarPillar>()))
+            {
+                PillarSpawn = false;
+            }
+        }
+        public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
+        {
+            int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
+            if (ShiniesIndex != -1)
+            {
+                tasks.Insert(ShiniesIndex + 1, new Terraria.GameContent.Generation.PassLegacy("FractaliteTile", NewModOres));
+            }
+        }
+        private void NewModOres(GenerationProgress progress)
+        {
+            progress.Message = "Adding New Mod Ores";
+            for (int k = 0; k < (int)((Main.maxTilesX * Main.maxTilesY) * 6E-06); k++)
+            {
+                int x = WorldGen.genRand.Next(0, Main.maxTilesX);
+                int y = WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY); // WorldGen.worldSurfaceLow is actually the highest surface tile. In practice you might want to use WorldGen.rockLayer or other WorldGen values.
+                WorldGen.TileRunner(x, y, WorldGen.genRand.Next(12, 16), WorldGen.genRand.Next(4, 8), mod.TileType("FractaliteTile"));
+            }
+            int count = 0;
+            while (count < 1)
+            {
+                for (int k = 0; k < (int)((Main.maxTilesX * Main.maxTilesY) * 6E-04); k++)
+                {
+                    int x = WorldGen.genRand.Next(0, Main.maxTilesX);
+                    int y = WorldGen.genRand.Next((int)WorldGen.worldSurface, Main.maxTilesY);
+                    Tile tile = Framing.GetTileSafely(x, y);
+                    if (tile.active() && tile.type == TileID.Mud || tile.type == TileID.JungleGrass)
+                    {
+                        WorldGen.TileRunner(x, y, WorldGen.genRand.Next(4, 6), WorldGen.genRand.Next(3, 6), mod.TileType("LunarWoodTile"));
+                    }
+                }
+                count++;
+            }
+        }
+        public override void PostWorldGen()
+        {
+            int[] itemsToPlaceInGoldChests = { mod.ItemType("LifeBand"), mod.ItemType("LifeBand") };
+            int itemsToPlaceInGoldChestsChoice = 0;
+            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
+            {
+                Chest chest = Main.chest[chestIndex];
+                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 1 * 36)
+                {
+                    if (Main.rand.Next(4) == 0)
+                    {
+                        for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                        {
+                            if (chest.item[inventoryIndex].type == ItemID.None)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInGoldChests));
+                                itemsToPlaceInGoldChestsChoice = (itemsToPlaceInGoldChestsChoice + 1) % itemsToPlaceInGoldChests.Length;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            int[] itemsToPlaceInShadowChests = { ItemID.LavaCharm };
+            int itemsToPlaceInShadowChestsChoice = 0;
+            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
+            {
+                Chest chest = Main.chest[chestIndex];
+                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 4 * 36)
+                {
+                    if (Main.rand.Next(3) == 0)
+                    {
+                        for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                        {
+                            if (chest.item[inventoryIndex].type == ItemID.None)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInShadowChests));
+                                itemsToPlaceInShadowChestsChoice = (itemsToPlaceInShadowChestsChoice + 1) % itemsToPlaceInShadowChests.Length;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            int[] itemsToPlaceInGoldDungeonChests = { mod.ItemType("DungeonBoomerang") };
+            int itemsToPlaceInGoldDungeonChestsChoice = 0;
+            for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
+            {
+                Chest chest = Main.chest[chestIndex];
+                if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 2 * 36)
+                {
+                    if (Main.rand.Next(3) == 0)
+                    {
+                        for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
+                        {
+                            if (chest.item[inventoryIndex].type == ItemID.None)
+                            {
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInGoldDungeonChests));
+                                itemsToPlaceInGoldDungeonChestsChoice = (itemsToPlaceInGoldDungeonChestsChoice + 1) % itemsToPlaceInGoldDungeonChests.Length;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

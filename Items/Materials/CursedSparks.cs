@@ -1,8 +1,4 @@
-using IL.Terraria;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using On.Terraria;
-using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -21,7 +17,7 @@ namespace nalydmod.Items.Materials
         {
             item.width = 40;
             item.height = 20;
-            item.value = 20000;
+            item.value = 500;
             item.maxStack = 999;
             item.rare = ItemRarityID.White;
             Terraria.Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 3));
@@ -38,7 +34,7 @@ namespace nalydmod.Items.Materials
             recipe.AddTile(TileID.SkullLanterns);
             recipe.SetResult(this);
             recipe.AddRecipe();
-        }        
+        }
     }
 }
 

@@ -1,6 +1,6 @@
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 namespace nalydmod.Items.Materials
 {
     public class corrupteyes : ModItem
@@ -18,7 +18,7 @@ namespace nalydmod.Items.Materials
 
             item.width = 40;
             item.height = 20;
-            item.value = 20000;
+            item.value = 1000;
             item.maxStack = 999;
             item.rare = ItemRarityID.LightPurple;
         }
@@ -34,13 +34,13 @@ namespace nalydmod.Items.Materials
             recipe.AddTile(TileID.SkullLanterns);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            
-            recipe = new ModRecipe(mod);            
+
+            recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("corrupteyes"), 2);
             recipe.AddTile(TileID.DyeVat);
             recipe.SetResult(itemID: ItemID.CorruptSeeds);
             recipe.AddRecipe();
-        }        
+        }
     }
 }
 

@@ -1,9 +1,5 @@
-using IL.Terraria;
-using nalydmod.Projectiles;
-using System.Collections;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.Exceptions;
 
 namespace nalydmod.Items.Weapons.Ammo
 {
@@ -11,7 +7,7 @@ namespace nalydmod.Items.Weapons.Ammo
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ultimate Harpy Arrow (NP)"); 
+            DisplayName.SetDefault("Ultimate Harpy Arrow (NP)");
             Tooltip.SetDefault("Aerodynamic, razor sharp, and infinite. " +
                 "Hates the ground, these arrows get easily destroyed by most ground tiles. " +
                 "This arrow cannot pierce, so its best in bows that shoot multiple arrows, " +
@@ -20,7 +16,7 @@ namespace nalydmod.Items.Weapons.Ammo
 
         public override void SetDefaults()
         {
-            
+
             item.damage = 25;
             item.ranged = true;
             item.width = 24;

@@ -14,7 +14,7 @@ namespace nalydmod.Items.Materials
         {
             item.width = 40;
             item.height = 20;
-            item.value = 2000;
+            item.value = 20000;
             item.maxStack = 999;
             item.rare = ItemRarityID.Blue;
         }

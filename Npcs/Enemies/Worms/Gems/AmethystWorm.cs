@@ -33,9 +33,9 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
         {
             if (!MyWorld.DownedGeodeWorm)
             {
-                return SpawnCondition.Cavern.Chance * 0.22f;
+                return SpawnCondition.Cavern.Chance * 0.06f;
             }
-            else return SpawnCondition.Cavern.Chance * 0.06f;
+            else return SpawnCondition.Cavern.Chance * 0.006f;
         }
 
         public override void Init()

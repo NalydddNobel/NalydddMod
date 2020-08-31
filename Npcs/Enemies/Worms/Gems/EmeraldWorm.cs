@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 namespace nalydmod.Npcs.Enemies.Worms.Gem
 {
-
     internal class EmeraldWormHead : EmeraldWorm
     {
         public override string Texture => "nalydmod/Npcs/Enemies/Worms/Gems/GemWormHead";
@@ -35,9 +34,9 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
         {
             if (!MyWorld.DownedGeodeWorm)
             {
-                return SpawnCondition.Cavern.Chance * 0.16f;
+                return SpawnCondition.Cavern.Chance * 0.04f;
             }
-            else return SpawnCondition.Cavern.Chance * 0.04f;
+            else return SpawnCondition.Cavern.Chance * 0.004f;
         }
         public override void Init()
         {

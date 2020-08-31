@@ -39,7 +39,7 @@ namespace nalydmod.Items.Expert.TreasureBags
                 player.QuickSpawnItem(ItemID.GoldCoin, Main.rand.Next(2, 3));
                 player.QuickSpawnItem(ItemID.SilverCoin, Main.rand.Next(0, 100));
                 player.QuickSpawnItem(ItemID.CopperCoin, Main.rand.Next(0, 100));
-                player.QuickSpawnItem(ItemType<CrystalGlove>(), Main.rand.Next(10, 20));
+                player.QuickSpawnItem(ItemType<CrystalGlove>());
                 player.QuickSpawnItem(ItemType<SoulofShime>(), Main.rand.Next(10, 20));
                 player.QuickSpawnItem(ItemType<AmethystFragment>(), Main.rand.Next(40, 60));
                 player.QuickSpawnItem(ItemType<TopazFragment>(), Main.rand.Next(35, 55));
@@ -56,31 +56,6 @@ namespace nalydmod.Items.Expert.TreasureBags
                 if (Main.rand.Next(2) == 0)
                 {
                     player.QuickSpawnItem(ItemID.Diamond, Main.rand.Next(1, 2));
-                }
-                if (Main.rand.Next(3) == 0)
-                {
-                    player.QuickSpawnItem(ItemType<CrystalShield>());
-                }
-                if (Main.rand.Next(3) == 0)
-                {
-                    player.QuickSpawnItem(ItemID.HermesBoots);
-                }
-                if (Main.rand.Next(3) == 0)
-                {
-                    player.QuickSpawnItem(ItemID.BandofRegeneration);
-                }
-                if (Main.rand.Next(3) == 0)
-                {
-                    player.QuickSpawnItem(ItemID.CloudinaBottle);
-                }
-                if (Main.rand.Next(3) == 0)
-                {
-                    player.QuickSpawnItem(ItemType<LifeBand>());
-                }
-                if (Main.rand.Next(2) == 0)
-                {
-                    player.QuickSpawnItem(ItemID.FlareGun);
-                    player.QuickSpawnItem(ItemID.Flare, Main.rand.Next(20, 100));
                 }
             }
         }

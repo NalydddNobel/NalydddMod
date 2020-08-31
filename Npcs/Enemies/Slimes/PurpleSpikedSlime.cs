@@ -29,10 +29,9 @@ namespace nalydmod.Npcs.Enemies.Slimes
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            bool SlimeOutrage = NPC.downedSlimeKing == true;
-            if (SlimeOutrage == true)
+            if (NPC.downedSlimeKing)
             {
-                return SpawnCondition.OverworldDaySlime.Chance * 0.01f;
+                return SpawnCondition.OverworldDaySlime.Chance * 0.005f;
             }
             else return 0;
         }

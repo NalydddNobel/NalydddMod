@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-
 namespace nalydmod.Npcs.Enemies.Worms
 {
     internal class RubyWormHead : RubyWorm
@@ -35,9 +34,9 @@ namespace nalydmod.Npcs.Enemies.Worms
         {
             if (!MyWorld.DownedGeodeWorm)
             {
-                return SpawnCondition.Cavern.Chance * 0.15f;
+                return SpawnCondition.Cavern.Chance * 0.03f;
             }
-            else return SpawnCondition.Cavern.Chance * 0.03f;
+            else return SpawnCondition.Cavern.Chance * 0.003f;
         }
         public override void Init()
         {

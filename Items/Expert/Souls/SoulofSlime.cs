@@ -8,31 +8,22 @@ namespace nalydmod.Items.Expert.Souls
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soul Of Slime");
-            Tooltip.SetDefault("You cannot feel the soul itself, but you know that it's slimy.");
-
+            DisplayName.SetDefault("Soul of Slime");
+            Tooltip.SetDefault("'The essence of royal gelatins'\n'You cannot feel the soul itself, but you know that it's slimy'\nExpert");
         }
-
         public override void SetDefaults()
         {
             item.width = 40;
             item.height = 40;
             item.value = 2500;
             item.maxStack = 999;
-            item.rare = ItemRarityID.Expert;
-            item.expertOnly = true;
-            item.expert = true;
-            ItemID.Sets.ItemIconPulse[item.type] = true;
+            item.rare = 1;
             ItemID.Sets.ItemNoGravity[item.type] = true;
             Terraria.Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(10, 6));
         }
         public override Color? GetAlpha(Color lightColor)
         {
-            return Color.LightBlue;
+            return Color.White;
         }
     }
 }
-
-
-
-

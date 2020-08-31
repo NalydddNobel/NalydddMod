@@ -19,10 +19,10 @@ namespace nalydmod.Items.Weapons.Tools
             item.useTime = 8;
             item.useAnimation = 8;
             item.pick = 50;
-            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.useStyle = 1;
             item.knockBack = 0;
             item.value = 1;
-            item.rare = ItemRarityID.White;
+            item.rare = 1;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;

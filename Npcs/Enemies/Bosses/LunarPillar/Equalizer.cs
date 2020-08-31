@@ -29,6 +29,14 @@ namespace nalydmod.Npcs.Enemies.Bosses.LunarPillar
             banner = Item.NPCtoBanner(NPCID.Zombie);
             bannerItem = Item.BannerToItem(banner);
         }
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
+        {
+            if (MyPlayer.LunarZone)
+            {
+                return 1f;
+            }
+            return 0;
+        }
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0)
@@ -48,7 +56,6 @@ namespace nalydmod.Npcs.Enemies.Bosses.LunarPillar
         public override void NPCLoot()
         {
             MyWorld.LunarPillarPeonsKilled += 1;
-            Item.NewItem(npc.getRect(), ItemID.Bunny);
         }
     }
 }

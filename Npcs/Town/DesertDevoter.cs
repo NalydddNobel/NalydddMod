@@ -3,8 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
-namespace nalydmod.Npcs.Town         //We need this to basically indicate the folder where it is to be read from, so you the texture will load correctly
+namespace nalydmod.Npcs.Town
 {
     public class DesertDevoter : ModNPC
     {
@@ -15,27 +14,27 @@ namespace nalydmod.Npcs.Town         //We need this to basically indicate the fo
         }
         public override void SetDefaults()
         {
-            npc.townNPC = true; //This defines if the npc is a town Npc or not
-            npc.friendly = true;  //this defines if the npc can hur you or not()
-            npc.width = 18; //the npc sprite width
-            npc.height = 46;  //the npc sprite height
-            npc.aiStyle = 7; //this is the npc ai style, 7 is Pasive Ai
-            npc.defense = 25;  //the npc defense
-            npc.lifeMax = 250;// the npc life
-            npc.HitSound = SoundID.NPCHit1;  //the npc sound when is hit
-            npc.DeathSound = SoundID.NPCDeath1;  //the npc sound when he dies
-            npc.knockBackResist = 0.5f;  //the npc knockback resistance
-            Main.npcFrameCount[npc.type] = 25; //this defines how many frames the npc sprite sheet has
+            npc.townNPC = true;
+            npc.friendly = true;
+            npc.width = 18;
+            npc.height = 46;
+            npc.aiStyle = 7;
+            npc.defense = 25;
+            npc.lifeMax = 250;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
+            npc.knockBackResist = 0.5f;
+            Main.npcFrameCount[npc.type] = 25;
             NPCID.Sets.ExtraFramesCount[npc.type] = 9;
             NPCID.Sets.AttackFrameCount[npc.type] = 4;
-            NPCID.Sets.DangerDetectRange[npc.type] = 150; //this defines the npc danger detect range
-            NPCID.Sets.AttackType[npc.type] = 3; //this is the attack type,  0 (throwing), 1 (shooting), or 2 (magic). 3 (melee) 
-            NPCID.Sets.AttackTime[npc.type] = 30; //this defines the npc attack speed
-            NPCID.Sets.AttackAverageChance[npc.type] = 10;//this defines the npc atack chance
-            NPCID.Sets.HatOffsetY[npc.type] = 4; //this defines the party hat position
-            animationType = NPCID.Guide;  //this copy the guide animation
+            NPCID.Sets.DangerDetectRange[npc.type] = 150;
+            NPCID.Sets.AttackType[npc.type] = 3;
+            NPCID.Sets.AttackTime[npc.type] = 30;
+            NPCID.Sets.AttackAverageChance[npc.type] = 10;
+            NPCID.Sets.HatOffsetY[npc.type] = 4;
+            animationType = NPCID.Guide;
         }
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money) //Whether or not the conditions have been met for this town NPC to be able to move into town.
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
             if (Main.expertMode == true)
             {
@@ -83,51 +82,51 @@ namespace nalydmod.Npcs.Town         //We need this to basically indicate the fo
             }
         }
 
-        public override void SetupShop(Chest shop, ref int nextSlot)       //Allows you to add items to this town NPC's shop. Add an item by setting the defaults of shop.item[nextSlot] then incrementing nextSlot.
+        public override void SetupShop(Chest shop, ref int nextSlot)
         {
-            if (NPC.downedBoss1)   //this make so when the king slime is killed the town npc will sell this
+            shop.item[nextSlot].SetDefaults(ItemID.KingSlimeBossBag);
+            nextSlot++;
+            if (MyWorld.DownedGeodeWorm && Main.expertMode)
             {
-                shop.item[nextSlot].SetDefaults(ItemID.RecallPotion);  //an example of how to add a vanilla terraria item
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(ItemID.WormholePotion);
+                shop.item[nextSlot].SetDefaults(mod.ItemType("GeodeTreasureBag"));
                 nextSlot++;
             }
-            if (NPC.downedBoss3)   //this make so when Skeletron is killed the town npc will sell this
+            if (NPC.downedBoss1 && Main.expertMode)
             {
-                shop.item[nextSlot].SetDefaults(ItemID.BookofSkulls);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(ItemID.ClothierVoodooDoll);
+                shop.item[nextSlot].SetDefaults(ItemID.EyeOfCthulhuBossBag);
                 nextSlot++;
             }
-            shop.item[nextSlot].SetDefaults(ItemID.IronskinPotion);
-            nextSlot++;
-            shop.item[nextSlot].SetDefaults(mod.ItemType("corrupteyes"));  //this is an example of how to add a modded item
-            nextSlot++;
-
+            if (NPC.downedBoss2 && Main.expertMode)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.EaterOfWorldsBossBag);
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(ItemID.BrainOfCthulhuBossBag);
+                nextSlot++;
+            }
+            if (MyWorld.DownedMage1 && Main.expertMode)
+            {
+                shop.item[nextSlot].SetDefaults(mod.ItemType("Mage1TreasureBag"));
+                nextSlot++;
+            }
+            if (NPC.downedBoss3 && Main.expertMode)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.SkeletronBossBag);
+                nextSlot++;
+            }
+            if (NPC.downedQueenBee && Main.expertMode)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.QueenBeeBossBag);
+                nextSlot++;
+            }
+            if (Main.hardMode && Main.expertMode)
+            {
+                shop.item[nextSlot].SetDefaults(ItemID.WallOfFleshBossBag);
+                nextSlot++;
+            }
         }
-
-        public override string GetChat()       //Allows you to give this town NPC a chat message when a player talks to it.
+        public override string GetChat()
         {
-            int wizardNPC = NPC.FindFirstNPC(NPCID.Wizard);   //this make so when this npc is close to Wizard
-            if (wizardNPC >= 0 && Main.rand.Next(4) == 0)    //has 1 in 3 chance to show this message
-            {
-                return "Is " + Main.npc[wizardNPC] + " really a wizard? I wonder what magic he can do other than shoot fireballs.";
-            }
-            int guideNPC = NPC.FindFirstNPC(NPCID.Guide); //this make so when this npc is close to the Guide
-            if (guideNPC >= 0 && Main.rand.Next(4) == 0) //has 1 in 3 chance to show this message
-            {
-                return "You could try to ask " + Main.npc[guideNPC] + " about me. Except for the fact that my people's history has been destroyed with almost no trace.";
-            }
-            int anglerNPC = NPC.FindFirstNPC(NPCID.Angler);
-            if (anglerNPC >= 0 && Main.rand.Next(8) == 0)
-            {
-                return "I've never took my time to talk to " + Main.npc[anglerNPC] + ". Mostly because I hate the smell of fish.";
-            }
-            if (anglerNPC >= 0 && Main.rand.Next(8) == 0)
-            {
-                return "I've never took my time to talk to " + Main.npc[anglerNPC] + ". Mostly because I hate the water.";
-            }
-            switch (Main.rand.Next(4))    //this are the messages when you talk to the npc
+            switch (Main.rand.Next(4))
             {
                 case 0:
                     return "My kind will sell you wares. Only if you have the goods.";
@@ -139,7 +138,6 @@ namespace nalydmod.Npcs.Town         //We need this to basically indicate the fo
                     return "Ra";
                 default:
                     return "The desert is my home, friend.";
-
             }
         }
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)//  Allows you to determine the damage and knockback of this town NPC attack

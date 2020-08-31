@@ -16,7 +16,7 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
             npc.CloneDefaults(NPCID.DiggerHead);
             npc.color = Color.Blue;
             npc.rarity = 1;
-            npc.lifeMax = 85;
+            npc.lifeMax = 44;
             npc.defense = 2;
             npc.width = 18;
             npc.height = 30;
@@ -33,9 +33,12 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.Cavern.Chance * 0.044f;
+            if (!MyWorld.DownedGeodeWorm)
+            {
+                return SpawnCondition.Cavern.Chance * 0.19f;
+            }
+            else return SpawnCondition.Cavern.Chance * 0.05f;
         }
-
         public override void Init()
         {
             base.Init();
@@ -84,7 +87,7 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
         {
             npc.CloneDefaults(NPCID.DiggerBody);
             npc.color = Color.Blue;
-            npc.lifeMax = 85;
+            npc.lifeMax = 44;
             npc.defense = 7;
             npc.width = 18;
             npc.height = 30;
@@ -100,7 +103,7 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
         {
             npc.CloneDefaults(NPCID.DiggerTail);
             npc.color = Color.Blue;
-            npc.lifeMax = 85;
+            npc.lifeMax = 44;
             npc.defense = 13;
             npc.width = 18;
             npc.height = 30;

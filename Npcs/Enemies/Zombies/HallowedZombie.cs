@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.Npcs.Enemies.Zombies
 {
     class HallowedZombie : ModNPC
@@ -32,7 +31,7 @@ namespace nalydmod.Npcs.Enemies.Zombies
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Terraria.Main.dayTime == false)
+            if (Main.dayTime == false)
             {
                 return SpawnCondition.OverworldHallow.Chance * 0.2f;
             }

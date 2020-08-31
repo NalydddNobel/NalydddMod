@@ -7,7 +7,7 @@ namespace nalydmod.Items.Placeables.Special
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Music Box (Eye of Cuthulu)");
+            DisplayName.SetDefault("Music Box (Eye of Cthulhu)");
         }
 
         public override void SetDefaults()

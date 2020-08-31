@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace nalydmod.Items.Materials.GemFragmentsq
+namespace nalydmod.Items.Materials.GemFragments
 {
     public class RubyFragment : ModItem
     {

@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -41,11 +42,15 @@ namespace nalydmod.Npcs.Enemies.Zombies
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Terraria.Main.dayTime == false)
+            if (Main.dayTime == false)
             {
                 return SpawnCondition.Corruption.Chance * 0.3f;
             }
             else return 0;
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
         public override void HitEffect(int hitDirection, double damage)
         {

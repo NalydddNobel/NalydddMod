@@ -8,20 +8,16 @@ namespace nalydmod.Items.Expert.Souls
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soul Of Shime");
-            Tooltip.SetDefault("Shime is a word? right?\nDrops from Shiny Creatures");
-
+            DisplayName.SetDefault("Soul of Shime");
+            Tooltip.SetDefault("'The essence of gemstones'\n'Shime is a word? right?'\nExpert");
         }
-
         public override void SetDefaults()
         {
             item.width = 40;
             item.height = 40;
             item.value = 5000;
             item.maxStack = 999;
-            item.rare = ItemRarityID.Expert;
-            item.expertOnly = true;
-            item.expert = true;
+            item.rare = 1;
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
             Terraria.Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
@@ -32,7 +28,3 @@ namespace nalydmod.Items.Expert.Souls
         }
     }
 }
-
-
-
-

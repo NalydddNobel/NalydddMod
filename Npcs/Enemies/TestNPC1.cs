@@ -1,7 +1,6 @@
 ﻿using System;
 using Terraria;
 using Terraria.ModLoader;
-
 namespace nalydmod.Npcs.Enemies
 {
     class TestNPC1 : ModNPC

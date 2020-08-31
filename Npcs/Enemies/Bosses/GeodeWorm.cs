@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-
 namespace nalydmod.Npcs.Enemies.Bosses
 {
     [AutoloadBossHead]
@@ -20,26 +19,41 @@ namespace nalydmod.Npcs.Enemies.Bosses
             npc.damage = 45;
             npc.aiStyle = -1;
             npc.boss = true;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BossType1"); ;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/BossType1"); ;
             musicPriority = MusicPriority.BossLow;
+        }
+        public override void NPCLoot()
+        {
+            if (Main.expertMode == false)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LifeFragment"), Main.rand.Next(10, 20));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DiamondFragment"), Main.rand.Next(10, 20));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RubyFragment"), Main.rand.Next(15, 25));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SapphireFragment"), Main.rand.Next(20, 30));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EmeraldFragment"), Main.rand.Next(25, 35));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TopazFragment"), Main.rand.Next(30, 40));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AmethystFragment"), Main.rand.Next(25, 35));
+            }
+            if (Main.expertMode == true)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GeodeTreasureBag"));
+            }
+            MyWorld.DownedGeodeWorm = true;
         }
         public override void Init()
         {
             base.Init();
             head = true;
         }
-
         private int attackCounter;
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write(attackCounter);
         }
-
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             attackCounter = reader.ReadInt32();
         }
-
         public override void CustomBehavior()
         {
             if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -63,7 +77,6 @@ namespace nalydmod.Npcs.Enemies.Bosses
             }
         }
     }
-
     internal class GeodeWormBody : GeodeWorm
     {
         public override void SetDefaults()

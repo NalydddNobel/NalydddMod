@@ -7,9 +7,8 @@ namespace nalydmod.Items.Expert.Souls
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soul Of Grime");
-            Tooltip.SetDefault("Disgusting.");
-
+            DisplayName.SetDefault("Soul of Grime");
+            Tooltip.SetDefault("'The essence of thy flesh being consumed'\nExpert");
         }
         public override Color? GetAlpha(Color lightColor)
         {
@@ -21,9 +20,7 @@ namespace nalydmod.Items.Expert.Souls
             item.height = 30;
             item.value = 25000;
             item.maxStack = 999;
-            item.rare = ItemRarityID.Expert;
-            item.expertOnly = true;
-            item.expert = true;
+            item.rare = 4;
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }

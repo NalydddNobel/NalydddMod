@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace nalydmod.Items.Expert.Souls
@@ -8,9 +7,8 @@ namespace nalydmod.Items.Expert.Souls
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soul Of Crime");
-            Tooltip.SetDefault("Drops from monsters of evil.");
-
+            DisplayName.SetDefault("Soul of Crime");
+            Tooltip.SetDefault("'The essence of infectious properties'\nExpert");
         }
         public override Color? GetAlpha(Color lightColor)
         {
@@ -22,12 +20,9 @@ namespace nalydmod.Items.Expert.Souls
             item.height = 30;
             item.value = 10000;
             item.maxStack = 999;
-            item.rare = ItemRarityID.Expert;
-            item.expertOnly = true;
-            item.expert = true;
+            item.rare = 2;
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
-
         }
     }
 }

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -26,6 +27,11 @@ namespace nalydmod.Items.Materials.GemFragments
         {
             return Color.Purple;
         }
+        public override void HoldItem(Player player)
+        {
+            Vector2 position = player.RotatedRelativePoint(new Vector2(player.itemLocation.X + 12f * player.direction + player.velocity.X, player.itemLocation.Y - 14f + player.velocity.Y), true);
+            Lighting.AddLight(position, 1f, 1f, 1f);
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -36,7 +42,3 @@ namespace nalydmod.Items.Materials.GemFragments
         }
     }
 }
-
-
-
-

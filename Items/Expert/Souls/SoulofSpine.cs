@@ -8,7 +8,7 @@ namespace nalydmod.Items.Expert.Souls
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Soul Of Spine");
-            Tooltip.SetDefault("Has back problems.\nDrops from Boney creatures.");
+            Tooltip.SetDefault("'The essence of the bone zone'.\n'Has back problems'\nExpert");
 
         }
         public override Color? GetAlpha(Color lightColor)
@@ -21,12 +21,9 @@ namespace nalydmod.Items.Expert.Souls
             item.height = 24;
             item.value = 15000;
             item.maxStack = 999;
-            item.rare = ItemRarityID.Expert;
-            item.expertOnly = true;
-            item.expert = true;
+            item.rare = 3;
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
-
         }
     }
 }

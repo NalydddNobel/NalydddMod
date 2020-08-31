@@ -1,52 +1,50 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.Items.BossSummons
 {
     public class InfEye : ModItem
     {
+        public static bool buffedEoC;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Infinite Suspious Looking Eye");
-            Tooltip.SetDefault("Summons The Eye of Cuthulu.");
+            DisplayName.SetDefault("Eye-shaped Matter");
+            Tooltip.SetDefault("Summons a buffed Eye of Cthulhu.\nCan be used infinitly.\nExpert");
         }
-
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.SuspiciousLookingEye);
             item.consumable = false;
             item.maxStack = 1;
-            item.rare = ItemRarityID.Blue;
+            item.rare = 1;
         }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.EbonstoneBlock);
-            recipe.AddIngredient(ItemID.CrimstoneBlock);
-            recipe.AddIngredient(mod.ItemType("SoulofTime"), 25);
+            recipe.AddIngredient(mod.ItemType("SoulofTime"), 30);
+            recipe.AddIngredient(mod.ItemType("SoulofAxiom"), 30);
+            recipe.AddIngredient(mod.ItemType("corrupteyes"), 15);
+            recipe.AddIngredient(mod.ItemType("crimsoneyes"), 15);
+            recipe.AddIngredient(ItemID.EoCShield);
             recipe.AddIngredient(ItemID.SuspiciousLookingEye);
-            recipe.AddTile(TileID.SkullLanterns);
+            recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-        public override bool CanUseItem(Terraria.Player player)
+        public override bool CanUseItem(Player player)
         {
-            if (Terraria.Main.dayTime == false)
+            if (!Main.dayTime && Main.expertMode)
             {
-                bool alreadySpawned = Terraria.NPC.AnyNPCs(NPCID.EyeofCthulhu);
-                return !alreadySpawned;
+                return !NPC.AnyNPCs(NPCID.EyeofCthulhu);
             }
             return false;
         }
-        public override bool UseItem(Terraria.Player player)
+        public override bool UseItem(Player player)
         {
-            Terraria.NPC.SpawnOnPlayer(player.whoAmI, NPCID.EyeofCthulhu);
-            Terraria.Main.PlaySound(SoundID.Roar, player.position, 0);
+            NPC.SpawnOnPlayer(player.whoAmI, NPCID.EyeofCthulhu);
+            buffedEoC = true;
+            Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
     }
 }
-
-
-
-

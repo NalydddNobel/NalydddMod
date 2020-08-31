@@ -6,21 +6,19 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 namespace nalydmod.Npcs.Enemies.Worms.Gem
 {
-
     internal class AmethystWormHead : AmethystWorm
     {
         public override string Texture => "nalydmod/Npcs/Enemies/Worms/Gems/GemWormHead";
         public override void SetDefaults()
         {
-            // Head is 10 defence, body 20, tail 30.
             npc.CloneDefaults(NPCID.DiggerHead);
             npc.color = Color.Purple;
             npc.rarity = 1;
-            npc.lifeMax = 55;
-            npc.defense = 2;
+            npc.lifeMax = 34;
+            npc.defense = 1;
+            npc.damage = 11;
             npc.width = 18;
             npc.height = 30;
-            npc.damage = 25;
             npc.aiStyle = -1;
             banner = Item.NPCtoBanner(NPCID.Worm);
             bannerItem = Item.BannerToItem(banner);
@@ -33,7 +31,11 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.Cavern.Chance * 0.06f;
+            if (!MyWorld.DownedGeodeWorm)
+            {
+                return SpawnCondition.Cavern.Chance * 0.22f;
+            }
+            else return SpawnCondition.Cavern.Chance * 0.06f;
         }
 
         public override void Init()
@@ -84,15 +86,14 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
         {
             npc.CloneDefaults(NPCID.DiggerBody);
             npc.color = Color.Purple;
-            npc.lifeMax = 55;
-            npc.defense = 7;
+            npc.lifeMax = 34;
+            npc.defense = 0;
+            npc.damage = 4;
             npc.width = 18;
             npc.height = 30;
-            npc.damage = 4;
             npc.aiStyle = -1;
         }
     }
-
     internal class AmethystWormTail : AmethystWorm
     {
         public override string Texture => "nalydmod/Npcs/Enemies/Worms/Gems/GemWormTail";
@@ -100,22 +101,19 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
         {
             npc.CloneDefaults(NPCID.DiggerTail);
             npc.color = Color.Purple;
-            npc.lifeMax = 55;
-            npc.defense = 13;
+            npc.lifeMax = 34;
+            npc.defense = 3;
+            npc.damage = 1;
             npc.width = 18;
             npc.height = 30;
-            npc.damage = 1;
             npc.aiStyle = -1;
         }
-
         public override void Init()
         {
             base.Init();
             tail = true;
         }
     }
-
-    // I made this 2nd base class to limit code repetition.
     public abstract class AmethystWorm : WormAmethyst
     {
         public override void SetStaticDefaults()

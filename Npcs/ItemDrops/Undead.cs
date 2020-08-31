@@ -1,128 +1,17 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.NPCs
 {
     public class Undead : GlobalNPC
     {
         public override void NPCLoot(NPC npc)
         {
-            if (npc.type == NPCID.Zombie || npc.type == NPCID.ZombieDoctor)
+            if (npc.type == NPCID.Zombie || npc.type == NPCID.ZombieDoctor || npc.type == NPCID.ZombieEskimo || npc.type == NPCID.ZombieRaincoat || npc.type == NPCID.ZombieSuperman || npc.type == NPCID.ZombieSweater || npc.type == NPCID.ZombieXmas || npc.type == NPCID.ArmedZombie || npc.type == NPCID.ArmedZombieCenx || npc.type == NPCID.ArmedZombieEskimo || npc.type == NPCID.ArmedZombiePincussion || npc.type == NPCID.ArmedZombieSlimed)
             {
                 if (Main.rand.Next(2) == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"), Main.rand.Next(0, 2));
-                }
-            }
-            if (npc.type == NPCID.ZombieEskimo)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-            }
-            if (npc.type == NPCID.ZombieRaincoat)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-            }
-            if (npc.type == NPCID.ZombieSuperman)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-            }
-            if (npc.type == NPCID.ZombieSweater)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-            }
-            if (npc.type == NPCID.ZombieXmas)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-            }
-            if (npc.type == NPCID.ArmedZombie)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-            }
-            if (npc.type == NPCID.ArmedZombieCenx)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-            }
-            if (npc.type == NPCID.ArmedZombieEskimo)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-            }
-            if (npc.type == NPCID.ArmedZombiePincussion)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-            }
-            if (npc.type == NPCID.ArmedZombieSlimed)
-            {
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
-                }
-                if (Main.rand.Next(2) == 0)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Blood2"));
                 }
             }
             if (npc.type == NPCID.ArmedZombieSwamp)
@@ -600,7 +489,3 @@ namespace nalydmod.NPCs
         }
     }
 }
-
-
-
-

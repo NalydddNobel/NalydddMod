@@ -47,7 +47,3 @@ namespace nalydmod.Items.Materials.Special
         }
     }
 }
-
-
-
-

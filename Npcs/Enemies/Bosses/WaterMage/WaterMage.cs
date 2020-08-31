@@ -35,10 +35,9 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            bool alreadySpawned = NPC.AnyNPCs(mod.NPCType("WaterMage"));
-            if (!alreadySpawned)
+            if (NPC.AnyNPCs(mod.NPCType("WaterMage")))
             {
-                if (NPC.downedBoss2)
+                if (NPC.downedBoss1 && !MyWorld.DownedMage1)
                 {
                     return 1f;
                 }
@@ -65,10 +64,6 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
             npc.ai[0]++;
             npc.ai[1]++;
             npc.ai[2]++;
-            if (npc.behindTiles == true)
-            {
-                npc.position.Y -= 16;
-            }
             if (npc.ai[0] == 120)
             {
                 switch (projChoice)

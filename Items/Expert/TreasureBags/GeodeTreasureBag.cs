@@ -1,9 +1,7 @@
 using nalydmod.Items.Accessories;
 using nalydmod.Items.Expert.Accessories;
 using nalydmod.Items.Expert.Souls;
-using nalydmod.Items.Materials;
 using nalydmod.Items.Materials.GemFragments;
-using nalydmod.Items.Materials.GemFragmentsq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,6 +22,7 @@ namespace nalydmod.Items.Expert.TreasureBags
             item.consumable = true;
             item.maxStack = 999;
             item.expert = true;
+            item.value = Item.buyPrice(0, 13, 12, 53);
         }
         public override bool CanRightClick()
         {
@@ -40,7 +39,7 @@ namespace nalydmod.Items.Expert.TreasureBags
                 player.QuickSpawnItem(ItemID.GoldCoin, Main.rand.Next(2, 3));
                 player.QuickSpawnItem(ItemID.SilverCoin, Main.rand.Next(0, 100));
                 player.QuickSpawnItem(ItemID.CopperCoin, Main.rand.Next(0, 100));
-                player.QuickSpawnItem(ItemID.SiltBlock, Main.rand.Next(0, 100));
+                player.QuickSpawnItem(ItemType<CrystalGlove>(), Main.rand.Next(10, 20));
                 player.QuickSpawnItem(ItemType<SoulofShime>(), Main.rand.Next(10, 20));
                 player.QuickSpawnItem(ItemType<AmethystFragment>(), Main.rand.Next(40, 60));
                 player.QuickSpawnItem(ItemType<TopazFragment>(), Main.rand.Next(35, 55));
@@ -49,7 +48,6 @@ namespace nalydmod.Items.Expert.TreasureBags
                 player.QuickSpawnItem(ItemType<RubyFragment>(), Main.rand.Next(20, 40));
                 player.QuickSpawnItem(ItemType<DiamondFragment>(), Main.rand.Next(15, 35));
                 player.QuickSpawnItem(ItemType<LifeFragment>(), Main.rand.Next(10, 30));
-                player.QuickSpawnItem(ItemID.StoneBlock, Main.rand.Next(50, 200));
                 player.QuickSpawnItem(ItemID.Amethyst, Main.rand.Next(0, 3));
                 player.QuickSpawnItem(ItemID.Topaz, Main.rand.Next(0, 3));
                 player.QuickSpawnItem(ItemID.Sapphire, Main.rand.Next(0, 2));

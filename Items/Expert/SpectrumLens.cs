@@ -1,3 +1,4 @@
+using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,6 +18,7 @@ namespace nalydmod.Items.Expert
             item.value = 20000;
             item.maxStack = 999;
             item.rare = ItemRarityID.Blue;
+            Terraria.Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(12, 8));
         }
         public override Color? GetAlpha(Color lightColor)
         {

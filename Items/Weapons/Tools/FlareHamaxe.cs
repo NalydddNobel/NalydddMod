@@ -24,7 +24,7 @@ namespace nalydmod.Items.Weapons.Tools
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 3;
             item.value = 10000;
-            item.rare = ItemRarityID.Yellow;
+            item.rare = 0;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;

@@ -1,4 +1,5 @@
 using nalydmod.Items.Expert.Bars;
+using nalydmod.Items.Expert.Souls;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,6 +21,7 @@ namespace nalydmod.Items.Expert.TreasureBags
             item.consumable = true;
             item.maxStack = 999;
             item.expert = true;
+            item.value = Item.buyPrice(1, 15, 34, 19);
         }
         public override bool CanRightClick()
         {
@@ -37,6 +39,7 @@ namespace nalydmod.Items.Expert.TreasureBags
             player.QuickSpawnItem(ItemType<SolarBar>(), Main.rand.Next(5, 20));
             player.QuickSpawnItem(ItemType<StardustBar>(), Main.rand.Next(5, 20));
             player.QuickSpawnItem(ItemType<VortexBar>(), Main.rand.Next(5, 20));
+            player.QuickSpawnItem(ItemType<SoulofAxiom>(), Main.rand.Next(22, 55));
         }
     }
 }

@@ -10,7 +10,7 @@ namespace nalydmod.Items.Weapons.Magic.Staff
     {
         public override void SetStaticDefaults()
         {
-            Terraria.Item.staff[item.type] = true;
+            Item.staff[item.type] = true;
         }
         public override void SetDefaults()
         {

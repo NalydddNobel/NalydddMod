@@ -9,7 +9,7 @@ namespace nalydmod.Items.ZCheat
         public override string Texture => "nalydmod/Items/Materials/GemFragments/BasicFragment";
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Broken\nStarts a Cuthulu Moon\nIf day, sets the time to 7:30pm\nCheat Item.");
+            Tooltip.SetDefault("Broken\nStarts a Cthulhu Moon\nIf day, sets the time to 7:30pm\nCheat Item.");
         }
 
         public override void SetDefaults()

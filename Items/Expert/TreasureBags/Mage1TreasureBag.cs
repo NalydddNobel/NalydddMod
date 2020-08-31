@@ -21,6 +21,7 @@ namespace nalydmod.Items.Expert.TreasureBags
             item.consumable = true;
             item.maxStack = 999;
             item.expert = true;
+            item.value = Item.buyPrice(0, 18, 13, 31);
         }
         public override bool CanRightClick()
         {

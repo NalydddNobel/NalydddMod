@@ -9,11 +9,6 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
     [AutoloadBossHead]
     class AncientFlame : ModNPC
     {
-        public int projChoice;
-        public short chosen;
-        public short chosen2;
-        public int chosen3;
-        public int chosen4;
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[npc.type] = 4;

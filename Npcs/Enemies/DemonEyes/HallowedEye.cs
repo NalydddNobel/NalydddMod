@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.Npcs.Enemies.DemonEyes
 {
     class HallowedEye : ModNPC
@@ -15,12 +14,12 @@ namespace nalydmod.Npcs.Enemies.DemonEyes
         {
             npc.width = 38;
             npc.height = 23;
-            npc.damage = 80;
-            npc.defense = 15;
-            npc.lifeMax = 320;
+            npc.lifeMax = 188;
+            npc.defense = 5;
+            npc.damage = 33;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 5068;
+            npc.value = 2222;
             npc.knockBackResist = 0.18f;
             npc.aiStyle = 2;
             npc.dripping = true;
@@ -28,14 +27,40 @@ namespace nalydmod.Npcs.Enemies.DemonEyes
             animationType = NPCID.DemonEye;
             banner = Item.NPCtoBanner(NPCID.DemonEye);
             bannerItem = Item.BannerToItem(banner);
+            if (Main.hardMode && Main.expertMode && !NPC.downedGolemBoss)
+            {
+                npc.lifeMax = 244;
+                npc.defense = 12;
+                npc.damage = 52;
+                npc.value = 3333;
+
+            }
+            if (Main.hardMode && Main.expertMode && NPC.downedGolemBoss)
+            {
+                npc.lifeMax = 455;
+                npc.defense = 15;
+                npc.damage = 77;
+                npc.value = 4555;
+            }
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Terraria.Main.dayTime == false)
+            if (!Main.dayTime && Main.expertMode)
             {
                 return SpawnCondition.OverworldHallow.Chance * 0.3f;
             }
             else return 0;
+        }
+        public override void NPCLoot()
+        {
+            if (Main.rand.Next(3) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SpectrumLens"));
+            }
+            if (NPC.downedGolemBoss)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SpectrumLens"));
+            }
         }
         public override void HitEffect(int hitDirection, double damage)
         {

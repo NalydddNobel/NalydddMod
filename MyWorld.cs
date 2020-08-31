@@ -11,27 +11,36 @@ namespace nalydmod
     {
         public const int maxLunarPillarPeonsKilled = 150;
         public static int LunarPillarPeonsKilled;
-        public static bool PostMoonLord1;
-        public static bool PostMoonLord2;
-        public static bool DownedMage1;
+        public static bool AequusPillarSpawn;
+        public static bool DownedAequusPillar;
+        public static bool DownedMage1; 
+        public static bool DownedEoC2;
+        public static bool DownedGeodeWorm;
         public static bool PillarSpawn;
         public static bool ModExpertMode;
+        public static int ZoneLunar;
+        public static int BiomeLunar;
+        public static int wofWeakness;
         public override TagCompound Save()
         {
             return new TagCompound
             {
                 {"LunarPillarPeonsKilled", LunarPillarPeonsKilled},
-                {"PostMoonLord1", PostMoonLord1},
-                {"PostMoonLord2", PostMoonLord2},
+                {"AequusPillarSpawn", AequusPillarSpawn},
+                {"DownedAequusPillar", DownedAequusPillar},
                 {"DownedMage1", DownedMage1},
+                {"EoC2", DownedEoC2},
+                {"DownedGeodeWorm", DownedGeodeWorm},
             };
         }
         public override void Load(TagCompound tag)
         {
             LunarPillarPeonsKilled = tag.GetInt("LunarPillarPeonsKilled");
-            PostMoonLord1 = tag.GetBool("PostMoonLord1");
-            PostMoonLord2 = tag.GetBool("PostMoonLord2");
+            AequusPillarSpawn = tag.GetBool("AequusPillarSpawn");
+            DownedAequusPillar = tag.GetBool("DownedAequusPillar");
             DownedMage1 = tag.GetBool("DownedMage1");
+            DownedEoC2 = tag.GetBool("EoC2");
+            DownedGeodeWorm = tag.GetBool("DownedGeodeWorm");
         }
         public override void PreUpdate()
         {
@@ -39,9 +48,9 @@ namespace nalydmod
             {
                 LunarPillarPeonsKilled = maxLunarPillarPeonsKilled;
             }
-            if (PostMoonLord1 == true && PillarSpawn == false)
+            if (AequusPillarSpawn == true && PillarSpawn == false)
             {
-                NPC.NewNPC((Main.spawnTileX + 5) * 16, Main.spawnTileY * 16, ModContent.NPCType<LunarPillar>(), 0, 0f, 0f, 0f, 0f, 255);
+                NPC.NewNPC((Main.spawnTileX + 5) * 16, Main.spawnTileY * 8, ModContent.NPCType<LunarPillar>(), 0, 0f, 0f, 0f, 0f, 255);
                 PillarSpawn = true;
             }
             if (!NPC.AnyNPCs(ModContent.NPCType<LunarPillar>()))
@@ -54,7 +63,7 @@ namespace nalydmod
             int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
             if (ShiniesIndex != -1)
             {
-                tasks.Insert(ShiniesIndex + 1, new Terraria.GameContent.Generation.PassLegacy("FractaliteTile", NewModOres));
+                tasks.Insert(ShiniesIndex + 1, new Terraria.GameContent.Generation.PassLegacy("Fractalite", NewModOres));
             }
         }
         private void NewModOres(GenerationProgress progress)
@@ -63,7 +72,7 @@ namespace nalydmod
             for (int k = 0; k < (int)((Main.maxTilesX * Main.maxTilesY) * 6E-06); k++)
             {
                 int x = WorldGen.genRand.Next(0, Main.maxTilesX);
-                int y = WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY); // WorldGen.worldSurfaceLow is actually the highest surface tile. In practice you might want to use WorldGen.rockLayer or other WorldGen values.
+                int y = WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY);
                 WorldGen.TileRunner(x, y, WorldGen.genRand.Next(12, 16), WorldGen.genRand.Next(4, 8), mod.TileType("FractaliteTile"));
             }
             int count = 0;
@@ -84,50 +93,50 @@ namespace nalydmod
         }
         public override void PostWorldGen()
         {
-            int[] itemsToPlaceInGoldChests = { mod.ItemType("LifeBand"), mod.ItemType("LifeBand") };
-            int itemsToPlaceInGoldChestsChoice = 0;
+            int[] GoldChestLoot = { mod.ItemType("LifeBand"), mod.ItemType("LifeBand") };
+            int GoldChestsChoice = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
                 Chest chest = Main.chest[chestIndex];
                 if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 1 * 36)
                 {
-                    if (Main.rand.Next(4) == 0)
+                    if (Main.rand.Next(2) == 0)
                     {
                         for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                         {
                             if (chest.item[inventoryIndex].type == ItemID.None)
                             {
-                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInGoldChests));
-                                itemsToPlaceInGoldChestsChoice = (itemsToPlaceInGoldChestsChoice + 1) % itemsToPlaceInGoldChests.Length;
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(GoldChestLoot));
+                                GoldChestsChoice = (GoldChestsChoice + 1) % GoldChestLoot.Length;
                                 break;
                             }
                         }
                     }
                 }
             }
-            int[] itemsToPlaceInShadowChests = { ItemID.LavaCharm };
-            int itemsToPlaceInShadowChestsChoice = 0;
+            int[] HellChestsLoot = { mod.ItemType("LavaRing") };
+            int HellChestsChoice = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
                 Chest chest = Main.chest[chestIndex];
                 if (chest != null && Main.tile[chest.x, chest.y].type == TileID.Containers && Main.tile[chest.x, chest.y].frameX == 4 * 36)
                 {
-                    if (Main.rand.Next(3) == 0)
+                    if (Main.rand.Next(2) == 0)
                     {
                         for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                         {
                             if (chest.item[inventoryIndex].type == ItemID.None)
                             {
-                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInShadowChests));
-                                itemsToPlaceInShadowChestsChoice = (itemsToPlaceInShadowChestsChoice + 1) % itemsToPlaceInShadowChests.Length;
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(HellChestsLoot));
+                                HellChestsChoice = (HellChestsChoice + 1) % HellChestsLoot.Length;
                                 break;
                             }
                         }
                     }
                 }
             }
-            int[] itemsToPlaceInGoldDungeonChests = { mod.ItemType("DungeonBoomerang") };
-            int itemsToPlaceInGoldDungeonChestsChoice = 0;
+            int[] DungeonLoot = { mod.ItemType("DungeonBoomerang") };
+            int DungeonLootChoice = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
                 Chest chest = Main.chest[chestIndex];
@@ -139,14 +148,18 @@ namespace nalydmod
                         {
                             if (chest.item[inventoryIndex].type == ItemID.None)
                             {
-                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInGoldDungeonChests));
-                                itemsToPlaceInGoldDungeonChestsChoice = (itemsToPlaceInGoldDungeonChestsChoice + 1) % itemsToPlaceInGoldDungeonChests.Length;
+                                chest.item[inventoryIndex].SetDefaults(Main.rand.Next(DungeonLoot));
+                                DungeonLootChoice = (DungeonLootChoice + 1) % DungeonLoot.Length;
                                 break;
                             }
                         }
                     }
                 }
             }
+        }
+        public override void TileCountsAvailable(int[] tileCounts)
+        {
+            BiomeLunar = tileCounts[mod.TileType("LunarGrassTile")];
         }
     }
 }

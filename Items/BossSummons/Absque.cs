@@ -37,7 +37,3 @@ namespace nalydmod.Items.BossSummons
         }
     }
 }
-
-
-
-

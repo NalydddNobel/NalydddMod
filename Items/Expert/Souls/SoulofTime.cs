@@ -9,7 +9,7 @@ namespace nalydmod.Items.Expert.Souls
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Soul Of Time");
-            Tooltip.SetDefault("You can see the entire world aging.\nDrops from Eye creatures.");
+            Tooltip.SetDefault("'The essence of eyes'\n'You can see the entire world aging'\nExpert");
         }
         public override Color? GetAlpha(Color lightColor)
         {
@@ -21,9 +21,7 @@ namespace nalydmod.Items.Expert.Souls
             item.height = 20;
             item.value = 5000;
             item.maxStack = 999;
-            item.rare = ItemRarityID.Expert;
-            item.expertOnly = true;
-            item.expert = true;
+            item.rare = 2;
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
             Terraria.Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));

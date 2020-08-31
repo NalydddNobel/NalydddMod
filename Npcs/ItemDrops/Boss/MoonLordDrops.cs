@@ -16,7 +16,7 @@ namespace nalydmod.NPCs.ItemDrops.Boss
                 }
                 if (Main.expertMode == true)
                 {
-                    MyWorld.PostMoonLord1 = true;
+                    MyWorld.AequusPillarSpawn = true;
                     MyWorld.LunarPillarPeonsKilled = 0;
                 }
             }

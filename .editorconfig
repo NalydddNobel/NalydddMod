@@ -5,3 +5,6 @@ dotnet_diagnostic.CS0642.severity = error
 
 # ChangeMagicNumberToID: Change magic numbers into appropriate ID values
 dotnet_diagnostic.ChangeMagicNumberToID.severity = none
+
+# IDE1006: Naming Styles
+dotnet_diagnostic.IDE1006.severity = none

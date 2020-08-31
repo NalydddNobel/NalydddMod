@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.Npcs.Enemies.DemonEyes
 {
     class BlackEye : ModNPC

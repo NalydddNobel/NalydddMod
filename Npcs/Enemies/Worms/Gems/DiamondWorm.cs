@@ -20,7 +20,7 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
             npc.defense = 2;
             npc.width = 18;
             npc.height = 30;
-            npc.damage = 25;
+            npc.damage = 19;
             npc.aiStyle = -1;
             banner = Item.NPCtoBanner(NPCID.Worm);
             bannerItem = Item.BannerToItem(banner);
@@ -33,9 +33,12 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.Cavern.Chance * 0.012f;
+            if (!MyWorld.DownedGeodeWorm)
+            {
+                return SpawnCondition.Cavern.Chance * 0.11f;
+            }
+            else return SpawnCondition.Cavern.Chance * 0.02f;
         }
-
         public override void Init()
         {
             base.Init();

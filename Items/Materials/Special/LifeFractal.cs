@@ -1,10 +1,9 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.Items.Materials.Special
 {
-    internal class LifeFractal : ModItem
+    class LifeFractal : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -15,7 +14,7 @@ namespace nalydmod.Items.Materials.Special
             item.CloneDefaults(ItemID.LifeFruit);
             item.width = 24;
             item.height = 24;
-            item.rare = ItemRarityID.Purple;
+            item.rare = 11;
         }
         public override bool CanUseItem(Player player)
         {
@@ -32,6 +31,16 @@ namespace nalydmod.Items.Materials.Special
             player.GetModPlayer<MyPlayer>().LifeFractals += 1;
             return true;
         }
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = Global.BaseColor.LightPurple;
+                }
+            }
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
@@ -40,7 +49,7 @@ namespace nalydmod.Items.Materials.Special
             recipe.AddIngredient(ItemID.FragmentNebula, 5);
             recipe.AddIngredient(ItemID.FragmentStardust, 5);
             recipe.AddIngredient(ItemID.LunarBar, 5);
-            recipe.AddIngredient(mod.ItemType("FractaliteBar"), 5);
+            recipe.AddIngredient(mod.ItemType("HHSoulOfAxiom"), 5);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this);
             recipe.AddRecipe();

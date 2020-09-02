@@ -27,17 +27,20 @@ namespace nalydmod.Items.Accessories
         }
         public override bool CanEquipAccessory(Player player, int slot)
         {
-            if (slot < 10) // This allows the accessory to equip in Vanity slots with no reservations.
+            if (slot < 10)
             {
                 int maxAccessoryIndex = 5 + player.extraAccessorySlots;
                 for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    // We need "slot != i" because we don't care what is currently in the slot we will be replacing.
-                    if (slot != i && player.armor[i].type == mod.ItemType("LifeBand"))
+                    if (slot != i && player.armor[i].type == mod.ItemType("CovetedBeingBand"))
                     {
                         return false;
                     }
                     if (slot != i && player.armor[i].type == mod.ItemType("WellBeingBand"))
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType("LifeBand"))
                     {
                         return false;
                     }
@@ -57,21 +60,11 @@ namespace nalydmod.Items.Accessories
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("LifeBand"));
             recipe.AddIngredient(ItemID.BandofStarpower);
-            recipe.AddIngredient(ItemID.RottenChunk, 2);
-            recipe.AddIngredient(ItemID.Vertebrae, 2);
             recipe.AddIngredient(mod.ItemType("SoulofTime"), 10);
-            recipe.AddIngredient(mod.ItemType("CursedSparks"), 5);
-            recipe.AddIngredient(mod.ItemType("IchorDroplets"), 5);
-            recipe.AddIngredient(mod.ItemType("Blood"), 200);
-            recipe.AddIngredient(mod.ItemType("Blood2"), 100);
-            recipe.AddIngredient(mod.ItemType("Blood3"), 20);
+            recipe.AddIngredient(mod.ItemType("Blood3"), 50);
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
     }
 }
-
-
-
-

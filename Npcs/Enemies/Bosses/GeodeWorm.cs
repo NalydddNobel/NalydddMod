@@ -24,7 +24,7 @@ namespace nalydmod.Npcs.Enemies.Bosses
         }
         public override void NPCLoot()
         {
-            if (Main.expertMode == false)
+            if (!Main.expertMode)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LifeFragment"), Main.rand.Next(10, 20));
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DiamondFragment"), Main.rand.Next(10, 20));
@@ -33,10 +33,22 @@ namespace nalydmod.Npcs.Enemies.Bosses
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EmeraldFragment"), Main.rand.Next(25, 35));
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TopazFragment"), Main.rand.Next(30, 40));
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AmethystFragment"), Main.rand.Next(25, 35));
+                if (Main.rand.Next(6) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GeodeWormMask"));
+                }
+                if (Main.rand.Next(14) == 0)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MusicBoxboss1"));
+                }
             }
-            if (Main.expertMode == true)
+            if (Main.expertMode)
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GeodeTreasureBag"));
+            }
+            if (Main.rand.Next(9) == 0)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GeodeWormTrophy"));
             }
             MyWorld.DownedGeodeWorm = true;
         }
@@ -90,7 +102,6 @@ namespace nalydmod.Npcs.Enemies.Bosses
             npc.aiStyle = -1;
         }
     }
-
     internal class GeodeWormTail : GeodeWorm
     {
         public override void SetDefaults()
@@ -110,8 +121,6 @@ namespace nalydmod.Npcs.Enemies.Bosses
             tail = true;
         }
     }
-
-    // I made this 2nd base class to limit code repetition.
     public abstract class GeodeWorm : WormGeode
     {
         public override void SetStaticDefaults()

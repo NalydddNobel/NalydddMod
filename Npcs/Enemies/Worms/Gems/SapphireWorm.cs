@@ -44,18 +44,15 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
             base.Init();
             head = true;
         }
-
         private int attackCounter;
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write(attackCounter);
         }
-
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             attackCounter = reader.ReadInt32();
         }
-
         public override void CustomBehavior()
         {
             if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -71,15 +68,17 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
                     Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
                     direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-                    int projectile = Projectile.NewProjectile(npc.Center, direction * 4, ProjectileID.WoodenArrowHostile, 5, 0, Main.myPlayer);
+                    int projectile = Projectile.NewProjectile(npc.Center, direction * 6, ProjectileID.SapphireBolt, 5, 0, Main.myPlayer);
                     Main.projectile[projectile].timeLeft = 3000;
-                    attackCounter = 200;
+                    Main.projectile[projectile].hostile = true;
+                    Main.projectile[projectile].friendly = false;
+                    Main.projectile[projectile].damage = 9;
+                    attackCounter = 100;
                     npc.netUpdate = true;
                 }
             }
         }
     }
-
     internal class SapphireWormBody : SapphireWorm
     {
         public override string Texture => "nalydmod/Npcs/Enemies/Worms/Gems/GemWormBody";

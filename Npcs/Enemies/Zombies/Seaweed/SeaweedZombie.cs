@@ -37,7 +37,7 @@ namespace nalydmod.Npcs.Enemies.Zombies.Seaweed
             {
                 return SpawnCondition.OverworldNightMonster.Chance * 0.25f;
             }
-            else return SpawnCondition.OverworldNightMonster.Chance * 0.03f;
+            else return SpawnCondition.OverworldNightMonster.Chance * 0.003f;
         }
         public override void HitEffect(int hitDirection, double damage)
         {

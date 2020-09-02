@@ -1,6 +1,5 @@
 using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.Items.Placeables.Special
 {
     public class MusicBoxboss1 : ModItem
@@ -9,7 +8,6 @@ namespace nalydmod.Items.Placeables.Special
         {
             DisplayName.SetDefault("Music Box (Geode Worm)");
         }
-
         public override void SetDefaults()
         {
             item.useStyle = ItemUseStyleID.SwingThrow;
@@ -27,6 +25,3 @@ namespace nalydmod.Items.Placeables.Special
         }
     }
 }
-
-
-

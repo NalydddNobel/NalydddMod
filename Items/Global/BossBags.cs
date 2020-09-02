@@ -20,7 +20,7 @@ namespace nalydmod.Items.Global
         {
             if (context == "bossBag" && arg == ItemID.KingSlimeBossBag)
             {
-                player.QuickSpawnItem(ItemType<SoulofSlime>(), Main.rand.Next(20, 35));
+                player.QuickSpawnItem(ItemType<AASoulofSlime>(), Main.rand.Next(20, 35));
                 player.QuickSpawnItem(ItemType<RoyalGel>(), Main.rand.Next(12, 25));
                 player.QuickSpawnItem(ItemType<BrittleWings>());
                 if (Main.rand.Next(5) == 0)
@@ -50,7 +50,7 @@ namespace nalydmod.Items.Global
             }
             if (context == "bossBag" && arg == ItemID.EyeOfCthulhuBossBag)
             {
-                player.QuickSpawnItem(ItemType<SoulofTime>(), Main.rand.Next(15, 30));
+                player.QuickSpawnItem(ItemType<CCSoulofTime>(), Main.rand.Next(15, 30));
                 player.QuickSpawnItem(ItemType<corrupteyes>(), Main.rand.Next(1, 3));
                 player.QuickSpawnItem(ItemType<crimsoneyes>(), Main.rand.Next(1, 3));
                 player.QuickSpawnItem(ItemType<SpectrumLens>(), Main.rand.Next(1, 3));
@@ -81,7 +81,7 @@ namespace nalydmod.Items.Global
             }
             if (context == "bossBag" && arg == ItemID.EaterOfWorldsBossBag)
             {
-                player.QuickSpawnItem(ItemType<SoulofCrime>(), Main.rand.Next(15, 30));
+                player.QuickSpawnItem(ItemType<DDSoulofCrime>(), Main.rand.Next(15, 30));
                 player.QuickSpawnItem(ItemType<MassiveWormTooth>(), Main.rand.Next(1, 3));
                 if (Main.rand.Next(5) == 0)
                 {
@@ -110,7 +110,7 @@ namespace nalydmod.Items.Global
             }
             if (context == "bossBag" && arg == ItemID.BrainOfCthulhuBossBag)
             {
-                player.QuickSpawnItem(ItemType<SoulofCrime>(), Main.rand.Next(15, 30));
+                player.QuickSpawnItem(ItemType<DDSoulofCrime>(), Main.rand.Next(15, 30));
                 player.QuickSpawnItem(ItemType<MassiveWormTooth>(), Main.rand.Next(1, 3));
                 if (Main.rand.Next(5) == 0)
                 {
@@ -139,7 +139,7 @@ namespace nalydmod.Items.Global
             }
             if (context == "bossBag" && arg == ItemID.SkeletronBossBag)
             {
-                player.QuickSpawnItem(ItemType<SoulofSpine>(), Main.rand.Next(15, 30));
+                player.QuickSpawnItem(ItemType<EESoulofSpine>(), Main.rand.Next(15, 30));
                 player.QuickSpawnItem(ItemType<MassiveWormTooth>(), Main.rand.Next(1, 3));
                 player.QuickSpawnItem(ItemID.Bone, Main.rand.Next(22, 66));
                 if (Main.rand.Next(5) == 0)
@@ -169,7 +169,7 @@ namespace nalydmod.Items.Global
             }
             if (context == "bossBag" && arg == ItemID.WallOfFleshBossBag)
             {
-                player.QuickSpawnItem(ItemType<SoulofGrime>(), Main.rand.Next(22, 44));
+                player.QuickSpawnItem(ItemType<FFSoulofGrime>(), Main.rand.Next(22, 44));
                 player.QuickSpawnItem(ItemType<MassiveWormTooth>(), Main.rand.Next(1, 3));
                 if (Main.rand.Next(5) == 0)
                 {

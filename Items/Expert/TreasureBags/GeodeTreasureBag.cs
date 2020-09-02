@@ -40,7 +40,7 @@ namespace nalydmod.Items.Expert.TreasureBags
                 player.QuickSpawnItem(ItemID.SilverCoin, Main.rand.Next(0, 100));
                 player.QuickSpawnItem(ItemID.CopperCoin, Main.rand.Next(0, 100));
                 player.QuickSpawnItem(ItemType<CrystalGlove>());
-                player.QuickSpawnItem(ItemType<SoulofShime>(), Main.rand.Next(10, 20));
+                player.QuickSpawnItem(ItemType<BBSoulofShime>(), Main.rand.Next(10, 20));
                 player.QuickSpawnItem(ItemType<AmethystFragment>(), Main.rand.Next(40, 60));
                 player.QuickSpawnItem(ItemType<TopazFragment>(), Main.rand.Next(35, 55));
                 player.QuickSpawnItem(ItemType<EmeraldFragment>(), Main.rand.Next(30, 50));
@@ -50,12 +50,49 @@ namespace nalydmod.Items.Expert.TreasureBags
                 player.QuickSpawnItem(ItemType<LifeFragment>(), Main.rand.Next(10, 30));
                 player.QuickSpawnItem(ItemID.Amethyst, Main.rand.Next(0, 3));
                 player.QuickSpawnItem(ItemID.Topaz, Main.rand.Next(0, 3));
-                player.QuickSpawnItem(ItemID.Sapphire, Main.rand.Next(0, 2));
-                player.QuickSpawnItem(ItemID.Emerald, Main.rand.Next(0, 2));
-                player.QuickSpawnItem(ItemID.Ruby, Main.rand.Next(0, 1));
                 if (Main.rand.Next(2) == 0)
                 {
-                    player.QuickSpawnItem(ItemID.Diamond, Main.rand.Next(1, 2));
+                    player.QuickSpawnItem(ItemID.Sapphire);
+                }
+                if (Main.rand.Next(2) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.Sapphire);
+                }
+                if (Main.rand.Next(2) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.Sapphire);
+                }
+                if (Main.rand.Next(2) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.Emerald);
+                }
+                if (Main.rand.Next(2) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.Emerald);
+                }
+                if (Main.rand.Next(2) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.Emerald);
+                }
+                if (Main.rand.Next(2) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.Ruby);
+                }
+                if (Main.rand.Next(2) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.Ruby);
+                }
+                if (Main.rand.Next(2) == 0)
+                {
+                    player.QuickSpawnItem(ItemID.Diamond);
+                }
+                if (Main.rand.Next(6) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<Armor.Vanity.GeodeWormMask>());
+                }
+                if (Main.rand.Next(14) == 0)
+                {
+                    player.QuickSpawnItem(ItemType<Placeables.Special.MusicBoxboss1>());
                 }
             }
         }

@@ -38,7 +38,6 @@ namespace nalydmod.Items.Weapons.Magic.Staff
     }
     public class CursedBeamProjectile : ModProjectile
     {
-
         public override void SetDefaults()
         {
             projectile.width = 4;
@@ -47,13 +46,10 @@ namespace nalydmod.Items.Weapons.Magic.Staff
             projectile.friendly = true;
             projectile.magic = true;
             projectile.extraUpdates = 100;
-            projectile.timeLeft = 60; // lowered from 300
+            projectile.timeLeft = 60;
             projectile.penetrate = -1;
         }
-
-        // Note, this Texture is actually just a blank texture, FYI.
         public override string Texture => "Terraria/Projectile_" + ProjectileID.ShadowBeamFriendly;
-
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             if (projectile.velocity.X != oldVelocity.X)
@@ -66,9 +62,8 @@ namespace nalydmod.Items.Weapons.Magic.Staff
                 projectile.position.Y = projectile.position.Y + projectile.velocity.Y;
                 projectile.velocity.Y = -oldVelocity.Y;
             }
-            return false; // return false because we are handling collision
+            return false;
         }
-
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
             projectile.damage = (int)(projectile.damage * 0.8);
@@ -87,7 +82,6 @@ namespace nalydmod.Items.Weapons.Magic.Staff
                     Vector2 projectilePosition = projectile.position;
                     projectilePosition -= projectile.velocity * (i * 0.25f);
                     projectile.alpha = 255;
-                    // Important, changed 173 to 178!
                     int dust = Dust.NewDust(projectilePosition, 1, 1, 178, 0f, 0f, 0, default, 1f);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].position = projectilePosition;

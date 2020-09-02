@@ -33,11 +33,15 @@ namespace nalydmod.Items.Accessories
                 int maxAccessoryIndex = 5 + player.extraAccessorySlots;
                 for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    if (slot != i && player.armor[i].type == mod.ItemType("MagicLifeBand"))
+                    if (slot != i && player.armor[i].type == mod.ItemType("CovetedBeingBand"))
                     {
                         return false;
                     }
                     if (slot != i && player.armor[i].type == mod.ItemType("WellBeingBand"))
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType("MagicLifeBand"))
                     {
                         return false;
                     }
@@ -51,7 +55,3 @@ namespace nalydmod.Items.Accessories
         }
     }
 }
-
-
-
-

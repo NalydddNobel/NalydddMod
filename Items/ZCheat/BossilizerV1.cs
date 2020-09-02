@@ -42,8 +42,8 @@ namespace nalydmod.Items.ZCheat
             NPC.downedTowerSolar = false;
             NPC.downedTowerStardust = false;
             NPC.downedTowerVortex = false;
-            MyWorld.AequusPillarSpawn = false;
-            MyWorld.DownedAequusPillar = false;
+            MyWorld.pillarAequusInvasion = false;
+            MyWorld.SuperHardMode = false;
             return true;
         }
     }

@@ -1,6 +1,5 @@
 using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.Items.Weapons.Ranged.UsesBullet
 {
     public class SlimeShooter : ModItem
@@ -9,7 +8,6 @@ namespace nalydmod.Items.Weapons.Ranged.UsesBullet
         {
             DisplayName.SetDefault("Slime Shooter");
         }
-
         public override void SetDefaults()
         {
             item.damage = 7;
@@ -31,23 +29,15 @@ namespace nalydmod.Items.Weapons.Ranged.UsesBullet
             item.noMelee = true;
 
         }
-
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("SlimyBar"), 50);
-            recipe.AddIngredient(mod.ItemType("SoulofSlime"), 10);
+            recipe.AddIngredient(mod.ItemType("AASoulofSlime"), 10);
             recipe.AddIngredient(mod.ItemType("RoyalGel"), 10);
             recipe.AddIngredient(ItemID.Gel, 100);
             recipe.AddTile(TileID.Solidifier);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-
-
     }
 }
-
-
-
-

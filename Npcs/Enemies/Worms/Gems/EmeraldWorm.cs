@@ -43,18 +43,18 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
             base.Init();
             head = true;
         }
-
         private int attackCounter;
+        private int attackCounter2;
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write(attackCounter);
+            writer.Write(attackCounter2);
         }
-
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             attackCounter = reader.ReadInt32();
+            attackCounter2 = reader.ReadInt32();
         }
-
         public override void CustomBehavior()
         {
             if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -70,9 +70,21 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
                     Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
                     direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-                    int projectile = Projectile.NewProjectile(npc.Center, direction * 4, ProjectileID.WoodenArrowHostile, 5, 0, Main.myPlayer);
+                    int projectile = Projectile.NewProjectile(npc.Center, direction * 4, ProjectileID.EmeraldBolt, 5, 0, Main.myPlayer);
                     Main.projectile[projectile].timeLeft = 3000;
-                    attackCounter = 200;
+                    Main.projectile[projectile].hostile = true;
+                    Main.projectile[projectile].friendly = false;
+                    Main.projectile[projectile].damage = 10;
+                    if (attackCounter2 != 4)
+                    {
+                        attackCounter = 12;
+                        attackCounter2++;
+                    }
+                    if (attackCounter2 == 2)
+                    {
+                        attackCounter = 450;
+                        attackCounter2 = 0;
+                    }
                     npc.netUpdate = true;
                 }
             }

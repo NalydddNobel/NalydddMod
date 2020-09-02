@@ -1,55 +1,51 @@
-(Disclaimer. Many things in this mod are unobtainable, unfinished, and are very buggy in multiplayer. Don't use this mod in multiplayer, and use a cheat mod if you want to see everything.)
+(Disclaimer. Many things in this mod are unobtainable, unfinished, and are very buggy / unsynced in multiplayer. Don't use this mod in multiplayer, and use a cheat mod if you want to see everything.)
 Nalyd Moddd V2.0.0 is a project I'm working on in order to try out some 'C#' code. Has some items, most of them don't do anything. But as I update the mod, and learn new things, I will add new items and features, or learn that I cannot do some features. So far this mod includes:
--136 Items
--24 Npcs 
+-141 Items
+-24 Npcs (says 44 but worms count as 3 npcs)
 -Post Moonlord Content
--New Pillar
 -1 Main Boss
 -2 Minor Bosses
 -1 Sudo Boss
 -Custom Projectiles
 -Custom Dust
 -21 Tiles
--1 Wall
+-1 Wall (doesnt work and also places be larvae fsr)
 -12 Music Tracks
 -11 Accessories
 -1 Ore type
 -Custom Chest Loot
 -1 Tree Variant
--3 Pets
 -Customish AI for some bosses
 .
 V2.0.0 Changelog
 .
 Fixes -
 .
--Reworked all music
+-Reworked some music
 -Mod Item Balancing
 .
 Minor Changes -
 .
 -The item 'Slimy Bar' has been removed because it was pointless
--Resprited Every Mod Item
--Resprited Every Mod NPC
--Added new vannila enemy variants
+-Resprited most mod items
+-Resprited most mod Nps
+-Added some new vannila enemy variants
 -Music Boxes now have actual Textures
 -Sell / Reforge Prices of items Altered
--Scorpion Tails are now an actual Currency
 -Fractalite is now post EoW / BoC
--Fractalite has custom sounds now
 -Fractalite now can be crafted into bars / bricks
 -Expert mode boss loot now drops from their treasure bags
--Infinte summon items now summon kaizo versions of their boss
+-Most infinte summon items now summon kaizo versions of their boss
 -Added cheat items.
 .
 New Stuff -
 .
--59 New Items 
+-64 New Items 
 -15 New NPCs
 -6 New Music Tracks
 -Desert Devoter Added
 -Fractalite Armor Added
--Lunar Pillar Bars have Been added
+-The other lunar pillar bars have Been added
 -Life & Mana Fractals actually work
 -Pets now exist in my mod!
 .
@@ -57,5 +53,5 @@ New Stuff -
 .
 Extras / comments
 .
+-
 -Might one day try to get some people on this project so that I can get more stuff done
--Have a nice day. :)

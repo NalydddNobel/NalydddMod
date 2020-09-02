@@ -1,6 +1,5 @@
 using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.Items.Weapons.Melee.Swords.ShortSwords
 {
     public class SlimeShortsword : ModItem
@@ -8,9 +7,8 @@ namespace nalydmod.Items.Weapons.Melee.Swords.ShortSwords
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Slime Shortsword");
-
+            Tooltip.SetDefault("Shoots a slime spike");
         }
-
         public override void SetDefaults()
         {
             item.damage = 16;
@@ -32,7 +30,6 @@ namespace nalydmod.Items.Weapons.Melee.Swords.ShortSwords
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("SlimyBar"), 50);
             recipe.AddIngredient(mod.ItemType("SoulofSlime"), 10);
             recipe.AddIngredient(mod.ItemType("RoyalGel"), 10);
             recipe.AddIngredient(ItemID.Gel, 100);
@@ -40,11 +37,5 @@ namespace nalydmod.Items.Weapons.Melee.Swords.ShortSwords
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-
-
     }
 }
-
-
-
-

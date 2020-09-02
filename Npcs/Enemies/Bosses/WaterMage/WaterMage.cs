@@ -13,6 +13,8 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
         public int chosen3;
         public int chosen4;
         public static int teleport;
+        public static float posWaterMageX;
+        public static float posWaterMageY;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ancient Mage");
@@ -35,18 +37,30 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (NPC.AnyNPCs(mod.NPCType("WaterMage")))
+            if (!NPC.AnyNPCs(mod.NPCType("WaterMage")))
             {
-                if (NPC.downedBoss1 && !MyWorld.DownedMage1)
+                if (NPC.downedBoss2 && !MyWorld.DownedMage1)
                 {
-                    return 1f;
+                    return SpawnCondition.Meteor.Chance * 0.1f;
                 }
-                return SpawnCondition.Meteor.Chance * 0.0096f;
+                else return SpawnCondition.Meteor.Chance * 0.0096f;
             }
-            return 0;
+            else return 0;
         }
         public override void HitEffect(int hitDirection, double damage)
         {
+            if (npc.life <= 0)
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(8, 16) * 0.1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(7, 12) * 0.1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(5, 10) * 0.1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(4, 8) * 0.1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(2, 6) * 0.1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(2, 4) * 0.1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore13"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore14"), 1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore12"), 1f);
+            }
             for (int i = 0; i < 10; i++)
             {
                 int dustType = 43;
@@ -59,6 +73,8 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
         }
         public override void AI()
         {
+            posWaterMageX = npc.position.X;
+            posWaterMageY = npc.position.Y;
             projChoice = (int)Main.rand.NextFloat(1, 4);
             Player target = Main.player[npc.target];
             npc.ai[0]++;
@@ -151,8 +167,8 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
             else npc.dontTakeDamage = true;
             if (npc.ai[1] > 480)
             {
-                npc.position.X += 16;
-                npc.position.Y += 16;
+                npc.position.X = target.Center.X - 64;
+                npc.position.Y = target.Center.Y - 64;
                 npc.ai[0] = 0;
                 npc.ai[1] = 0;
                 npc.ai[3]++;
@@ -172,8 +188,11 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
             }
             if (npc.ai[3] == 3)
             {
+                int random = Main.rand.Next(66, 122);
                 npc.ai[3] = 0;
-                NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AncientFlame>());
+                int flame = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AncientFlame>());
+                Main.npc[flame].lifeMax = random;
+                Main.npc[flame].life = random;
             }
         }
         public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)

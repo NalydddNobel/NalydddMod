@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -6,6 +7,19 @@ namespace nalydmod.NPCs.ItemDrops.Boss
 {
     public class MoonLordDrops : GlobalNPC
     {
+        private void Talk(string message)
+        {
+            if (Main.netMode != NetmodeID.Server)
+            {
+                string text = Language.GetTextValue("Creatures of infection are invading", message);
+                Main.NewText(text, 255, 0, 255);
+            }
+            else
+            {
+                NetworkText text = NetworkText.FromKey("Creatures of infection are invading", message);
+                NetMessage.BroadcastChatMessage(text, new Color(255, 0, 255));
+            }
+        }
         public override void NPCLoot(NPC npc)
         {
             if (npc.type == NPCID.MoonLordCore)
@@ -16,7 +30,11 @@ namespace nalydmod.NPCs.ItemDrops.Boss
                 }
                 if (Main.expertMode == true)
                 {
-                    MyWorld.AequusPillarSpawn = true;
+                    if (!MyWorld.pillarAequusInvasion)
+                    {
+                        Talk("");
+                    }
+                    MyWorld.pillarAequusInvasion = true;
                     MyWorld.LunarPillarPeonsKilled = 0;
                 }
             }

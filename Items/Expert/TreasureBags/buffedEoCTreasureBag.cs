@@ -32,7 +32,7 @@ namespace nalydmod.Items.Expert.TreasureBags
             player.QuickSpawnItem(ItemID.GoldCoin, Main.rand.Next(79, 85));
             player.QuickSpawnItem(ItemID.SilverCoin, Main.rand.Next(0, 100));
             player.QuickSpawnItem(ItemID.CopperCoin, Main.rand.Next(0, 100));
-            player.QuickSpawnItem(ItemType<SoulofTime>(), Main.rand.Next(25, 50));
+            player.QuickSpawnItem(ItemType<CCSoulofTime>(), Main.rand.Next(25, 50));
             player.QuickSpawnItem(ItemID.Lens, Main.rand.Next(25, 50));
             player.QuickSpawnItem(ItemID.BlackLens, Main.rand.Next(0, 2));
             player.QuickSpawnItem(ItemType<corrupteyes>(), Main.rand.Next(10, 25));

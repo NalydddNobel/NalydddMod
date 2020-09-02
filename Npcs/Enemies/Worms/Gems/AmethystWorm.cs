@@ -49,12 +49,10 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
         {
             writer.Write(attackCounter);
         }
-
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             attackCounter = reader.ReadInt32();
         }
-
         public override void CustomBehavior()
         {
             if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -63,22 +61,23 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
                 {
                     attackCounter--;
                 }
-
                 Player target = Main.player[npc.target];
                 if (attackCounter <= 0 && Vector2.Distance(npc.Center, target.Center) < 200 && Collision.CanHit(npc.Center, 1, 1, target.Center, 1, 1))
                 {
                     Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
                     direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-                    int projectile = Projectile.NewProjectile(npc.Center, direction * 4, ProjectileID.WoodenArrowHostile, 5, 0, Main.myPlayer);
+                    int projectile = Projectile.NewProjectile(npc.Center, direction * 4, ProjectileID.AmethystBolt, 5, 0, Main.myPlayer);
                     Main.projectile[projectile].timeLeft = 3000;
+                    Main.projectile[projectile].hostile = true;
+                    Main.projectile[projectile].friendly = false;
+                    Main.projectile[projectile].damage = 8;
                     attackCounter = 200;
                     npc.netUpdate = true;
                 }
             }
         }
     }
-
     internal class AmethystWormBody : AmethystWorm
     {
         public override string Texture => "nalydmod/Npcs/Enemies/Worms/Gems/GemWormBody";

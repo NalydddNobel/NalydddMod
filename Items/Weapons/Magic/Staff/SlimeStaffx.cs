@@ -37,8 +37,7 @@ namespace nalydmod.Items.Weapons.Magic.Staff
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("SlimyBar"), 50);
-            recipe.AddIngredient(mod.ItemType("SoulofSlime"), 10);
+            recipe.AddIngredient(mod.ItemType("AASoulofSlime"), 10);
             recipe.AddIngredient(mod.ItemType("RoyalGel"), 10);
             recipe.AddIngredient(ItemID.Gel, 100);
             recipe.AddTile(TileID.Solidifier);
@@ -49,7 +48,3 @@ namespace nalydmod.Items.Weapons.Magic.Staff
 
     }
 }
-
-
-
-

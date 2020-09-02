@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.Drawing;
+using System.Security.Cryptography.X509Certificates;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,6 +11,8 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
     [AutoloadBossHead]
     class AncientFlame : ModNPC
     {
+        public int rotateTimer;
+        public int rotateX;
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[npc.type] = 4;
@@ -18,9 +22,9 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
             npc.width = 32;
             npc.height = 32;
             npc.npcSlots = 4;
+            npc.lifeMax = 100;
             npc.damage = 20;
-            npc.defense = 2;
-            npc.lifeMax = 55;
+            npc.defense = 22;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.teleporting = true;
@@ -46,10 +50,39 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
             npc.ai[0]++;
             npc.ai[1]++;
             npc.ai[2]++;
+            npc.position.X = WaterMage.posWaterMageX + rotateX;
+            npc.position.Y = WaterMage.posWaterMageY + rotateX;
+            if (npc.ai[0] >= 1)
+            {
+                npc.ai[0] = 0;
+                rotateTimer++;
+            }
+            if (rotateTimer < 360)
+            {
+                npc.position.X += rotateX * 0.01f;
+                rotateX++;
+            }
+            else if (rotateTimer < 720)
+            {
+                npc.position.X += rotateX * 0.01f;
+                rotateX--;
+            }
+            if (rotateTimer == 721)
+            {
+                npc.ai[0] = 0;
+            }
+            if (rotateX > 180)
+            {
+                rotateX = 180;
+            }
+            if (rotateX < -180)
+            {
+                rotateX = -180;
+            }
             if (WaterMage.teleport == 1)
             {
-                int dust = Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fireworks);
-                int dust2 = Dust.NewDust(npc.position, npc.width, npc.height, DustID.FlameBurst);
+                int dust = Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire);
+                int dust2 = Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire);
                 Main.dust[dust].velocity /= 120f;
                 Main.dust[dust2].velocity /= 60f;
                 Main.dust[dust].scale = 0.5f;
@@ -85,23 +118,12 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
             }
             if (npc.ai[2] < 25)
             {
-                npc.frame.Y = 34;
+                npc.frame.Y += 34;
+                npc.ai[2] = 0;
             }
-            if (npc.ai[2] > 26 && npc.ai[2] < 50)
-            {
-                npc.frame.Y = 68;
-            }
-            if (npc.ai[2] > 51 && npc.ai[2] < 75)
-            {
-                npc.frame.Y = 102;
-            }
-            if (npc.ai[2] > 76 && npc.ai[2] < 99)
+            if (npc.frame.Y < 102)
             {
                 npc.frame.Y = 0;
-            }
-            if (npc.ai[2] > 100)
-            {
-                npc.ai[2] = 0;
             }
             if (!NPC.AnyNPCs(mod.NPCType("WaterMage")))
             {

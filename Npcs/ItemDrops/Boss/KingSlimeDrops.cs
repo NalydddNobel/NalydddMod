@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.NPCs.ItemDrops.Boss
 {
     public class KingSlimeDrops : GlobalNPC
@@ -10,7 +9,7 @@ namespace nalydmod.NPCs.ItemDrops.Boss
         {
             if (npc.type == NPCID.KingSlime)
             {
-                if (Main.expertMode == false)
+                if (!Main.expertMode)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RoyalGel"), (int)Main.rand.NextFloat(5, 12));
                 }
@@ -18,7 +17,3 @@ namespace nalydmod.NPCs.ItemDrops.Boss
         }
     }
 }
-
-
-
-

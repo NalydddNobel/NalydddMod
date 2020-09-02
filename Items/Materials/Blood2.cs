@@ -1,18 +1,17 @@
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.Items.Materials
 {
     public class Blood2 : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Green Blood Droplet");
-            Tooltip.SetDefault("From undead creatures.");
+            DisplayName.SetDefault("Rushing Green Blood");
+            Tooltip.SetDefault("From corrupted creatures.");
 
         }
-
         public override void SetDefaults()
         {
             item.width = 20;
@@ -20,28 +19,19 @@ namespace nalydmod.Items.Materials
             item.value = 100;
             item.maxStack = 999;
             item.rare = ItemRarityID.White;
-            Terraria.Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 3));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 3));
         }
-
-
-
+        public override void Update(ref float gravity, ref float maxFallSpeed)
+        {
+            if (Main.rand.Next(44) == 0)
+            {
+                int dust = Dust.NewDust(item.position * Main.rand.Next(1, 2), item.width, item.height, mod.DustType("Blood2Dust"));
+                Main.dust[dust].scale = Main.rand.Next(6, 12) * .1f;
+            }
+        }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.EbonstoneBlock, 1);
-            recipe.AddIngredient(ItemID.CrimstoneBlock, 1);
-            recipe.AddIngredient(ItemID.RottenChunk, 1);
-            recipe.AddTile(TileID.SkullLanterns);
-            recipe.SetResult(this, 5);
-            recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.EbonstoneBlock, 1);
-            recipe.AddIngredient(ItemID.CrimstoneBlock, 1);
-            recipe.AddIngredient(ItemID.Vertebrae, 1);
-            recipe.AddTile(TileID.SkullLanterns);
-            recipe.SetResult(this, 5);
-            recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.RottenChunk, 5);
             recipe.AddIngredient(mod.ItemType("SoulofSlime"), 5);
             recipe.AddIngredient(mod.ItemType("CursedSparks"), 20);
@@ -59,7 +49,7 @@ namespace nalydmod.Items.Materials
             recipe.AddRecipe();
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.RottenChunk, 5);
-            recipe.AddIngredient(mod.ItemType("SoulofSlime"), 4);
+            recipe.AddIngredient(mod.ItemType("SoulofSlime"), 5);
             recipe.AddIngredient(mod.ItemType("CursedSparks"), 20);
             recipe.AddIngredient(mod.ItemType("Blood2"), 200);
             recipe.AddTile(TileID.Solidifier);
@@ -84,7 +74,3 @@ namespace nalydmod.Items.Materials
         }
     }
 }
-
-
-
-

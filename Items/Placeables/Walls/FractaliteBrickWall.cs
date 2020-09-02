@@ -1,6 +1,5 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.Items.Placeables.Walls
 {
     class FractaliteBrickWall : ModItem
@@ -9,7 +8,7 @@ namespace nalydmod.Items.Placeables.Walls
         {
             item.CloneDefaults(ItemID.WoodWall);
             item.rare = ItemRarityID.Blue;
-            item.createTile = mod.WallType("FractaliteBrickWallWall");
+            item.createWall = mod.WallType("FractaliteBrickWallWall");
         }
     }
 }

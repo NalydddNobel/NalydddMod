@@ -12,7 +12,6 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
         public override string Texture => "nalydmod/Npcs/Enemies/Worms/Gems/GemWormHead";
         public override void SetDefaults()
         {
-            // Head is 10 defence, body 20, tail 30.
             npc.CloneDefaults(NPCID.DiggerHead);
             npc.lifeMax = 85;
             npc.rarity = 1;
@@ -44,18 +43,18 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
             base.Init();
             head = true;
         }
-
         private int attackCounter;
+        private int attackCounter2;
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write(attackCounter);
+            writer.Write(attackCounter2);
         }
-
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             attackCounter = reader.ReadInt32();
+            attackCounter2 = reader.ReadInt32();
         }
-
         public override void CustomBehavior()
         {
             if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -64,22 +63,31 @@ namespace nalydmod.Npcs.Enemies.Worms.Gem
                 {
                     attackCounter--;
                 }
-
                 Player target = Main.player[npc.target];
                 if (attackCounter <= 0 && Vector2.Distance(npc.Center, target.Center) < 200 && Collision.CanHit(npc.Center, 1, 1, target.Center, 1, 1))
                 {
                     Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
-                    direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
-
-                    int projectile = Projectile.NewProjectile(npc.Center, direction * 4, ProjectileID.WoodenArrowHostile, 5, 0, Main.myPlayer);
+                    direction = direction.RotatedByRandom(MathHelper.ToRadians(2));
+                    int projectile = Projectile.NewProjectile(npc.Center, direction * 6.44f, ProjectileID.DiamondBolt, 5, 0, Main.myPlayer);
                     Main.projectile[projectile].timeLeft = 3000;
-                    attackCounter = 200;
+                    Main.projectile[projectile].hostile = true;
+                    Main.projectile[projectile].friendly = false;
+                    Main.projectile[projectile].damage = 15;
+                    if (attackCounter2 != 2)
+                    {
+                        attackCounter = 30;
+                        attackCounter2++;
+                    }
+                    if (attackCounter2 == 2)
+                    {
+                        attackCounter = 300;
+                        attackCounter2 = 0;
+                    }                  
                     npc.netUpdate = true;
                 }
             }
         }
     }
-
     internal class DiamondWormBody : DiamondWorm
     {
         public override string Texture => "nalydmod/Npcs/Enemies/Worms/Gems/GemWormBody";

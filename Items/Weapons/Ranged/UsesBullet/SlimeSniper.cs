@@ -36,7 +36,6 @@ namespace nalydmod.Items.Weapons.Ranged.UsesBullet
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("SlimyBar"), 75);
             recipe.AddIngredient(mod.ItemType("SoulofSlime"), 15);
             recipe.AddIngredient(mod.ItemType("RoyalGel"), 20);
             recipe.AddIngredient(ItemID.Gel, 100);
@@ -44,11 +43,5 @@ namespace nalydmod.Items.Weapons.Ranged.UsesBullet
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
-
-
     }
 }
-
-
-
-

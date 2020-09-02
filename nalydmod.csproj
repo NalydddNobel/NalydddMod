@@ -17,6 +17,7 @@
     <Reference Include="Microsoft.Build.Framework" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Items\Placeables\Animated\" />
     <Folder Include="Npcs\Enemies\Bosses\WaterMage\" />
   </ItemGroup>
 </Project>

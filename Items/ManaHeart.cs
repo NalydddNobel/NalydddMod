@@ -8,10 +8,8 @@ namespace nalydmod.Items
     {
         public override void SetDefaults()
         {
-            Item.lifeGrabRange = 5000;
-            Item.manaGrabRange = 5000;
             item.CloneDefaults(ItemID.Heart);
-            item.rare = 10;
+            item.rare = 1;
         }
         public override bool ItemSpace(Player player)
         {
@@ -27,7 +25,7 @@ namespace nalydmod.Items
             player.statLife += 10;
             player.statMana += 50;
             item.active = false;
-            return true;
+            return false;
         }
     }
 }

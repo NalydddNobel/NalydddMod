@@ -1,3 +1,4 @@
+using nalydmod.Items.Materials.GemFragments;
 using nalydmod.Npcs.Enemies.Bosses.LunarPillar;
 using System.Collections.Generic;
 using Terraria;
@@ -11,23 +12,23 @@ namespace nalydmod
     {
         public const int maxLunarPillarPeonsKilled = 150;
         public static int LunarPillarPeonsKilled;
-        public static bool AequusPillarSpawn;
-        public static bool DownedAequusPillar;
+        public static bool pillarAequusInvasion;
+        public static bool SuperHardMode;
         public static bool DownedMage1; 
         public static bool DownedEoC2;
         public static bool DownedGeodeWorm;
-        public static bool PillarSpawn;
         public static bool ModExpertMode;
         public static int ZoneLunar;
         public static int BiomeLunar;
         public static int wofWeakness;
+        bool spawn;
         public override TagCompound Save()
         {
             return new TagCompound
             {
                 {"LunarPillarPeonsKilled", LunarPillarPeonsKilled},
-                {"AequusPillarSpawn", AequusPillarSpawn},
-                {"DownedAequusPillar", DownedAequusPillar},
+                {"pillarAequusInvasion", pillarAequusInvasion},
+                {"SuperHardMode", SuperHardMode},
                 {"DownedMage1", DownedMage1},
                 {"EoC2", DownedEoC2},
                 {"DownedGeodeWorm", DownedGeodeWorm},
@@ -36,8 +37,8 @@ namespace nalydmod
         public override void Load(TagCompound tag)
         {
             LunarPillarPeonsKilled = tag.GetInt("LunarPillarPeonsKilled");
-            AequusPillarSpawn = tag.GetBool("AequusPillarSpawn");
-            DownedAequusPillar = tag.GetBool("DownedAequusPillar");
+            pillarAequusInvasion = tag.GetBool("pillarAequusInvasion");
+            SuperHardMode = tag.GetBool("SuperHardMode");
             DownedMage1 = tag.GetBool("DownedMage1");
             DownedEoC2 = tag.GetBool("EoC2");
             DownedGeodeWorm = tag.GetBool("DownedGeodeWorm");
@@ -48,14 +49,17 @@ namespace nalydmod
             {
                 LunarPillarPeonsKilled = maxLunarPillarPeonsKilled;
             }
-            if (AequusPillarSpawn == true && PillarSpawn == false)
+            if (pillarAequusInvasion && !spawn)
             {
-                NPC.NewNPC((Main.spawnTileX + 5) * 16, Main.spawnTileY * 8, ModContent.NPCType<LunarPillar>(), 0, 0f, 0f, 0f, 0f, 255);
-                PillarSpawn = true;
+                NPC.NewNPC((Main.spawnTileX + 5) * 16, Main.spawnTileY * 11, ModContent.NPCType<LunarPillar>(), 0, 0f, 0f, 0f, 0f, 255);
+                spawn = true;
             }
-            if (!NPC.AnyNPCs(ModContent.NPCType<LunarPillar>()))
+            if (!NPC.AnyNPCs(ModContent.NPCType<LunarPillar>()) && pillarAequusInvasion)
             {
-                PillarSpawn = false;
+                LunarPillarPeonsKilled = 0;
+                pillarAequusInvasion = false;
+                SuperHardMode = true;
+                spawn = false;
             }
         }
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
@@ -93,7 +97,7 @@ namespace nalydmod
         }
         public override void PostWorldGen()
         {
-            int[] GoldChestLoot = { mod.ItemType("LifeBand"), mod.ItemType("LifeBand") };
+            int[] GoldChestLoot = { mod.ItemType("LifeBand"), mod.ItemType("AAGeodeWorm") };
             int GoldChestsChoice = 0;
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {

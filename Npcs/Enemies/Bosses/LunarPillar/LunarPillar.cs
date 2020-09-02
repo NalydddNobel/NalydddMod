@@ -1,11 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Graphics;
-using ReLogic.Text;
-using System.Data.SqlTypes;
-using System.IO;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 namespace nalydmod.Npcs.Enemies.Bosses.LunarPillar
 {
@@ -57,6 +53,19 @@ namespace nalydmod.Npcs.Enemies.Bosses.LunarPillar
             }
             else npc.dontTakeDamage = true;
         }
+        private void Talk(string message)
+        {
+            if (Main.netMode != NetmodeID.Server)
+            {
+                string text = Language.GetTextValue("The portals lightyears away have opened up", Lang.GetNPCNameValue(npc.type), message);
+                Main.NewText(text, 128, 255, 0);
+            }
+            else
+            {
+                NetworkText text = NetworkText.FromKey("The portals lightyears away have opened up", Lang.GetNPCNameValue(npc.type), message);
+                NetMessage.BroadcastChatMessage(text, new Color(128, 255, 0));
+            }
+        }
         public override void DrawEffects(ref Color drawColor)
         {
             if (Main.rand.Next(7) == 0)
@@ -73,25 +82,19 @@ namespace nalydmod.Npcs.Enemies.Bosses.LunarPillar
                 Main.dust[dust2].noGravity = false;
             }
         }
-        public override void NPCLoot()
+        public override bool CheckActive()
         {
-            if (!Main.expertMode)
+            return false;
+        }
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LunarPillarTreasureBag"));
+            potionType = ItemID.SuperHealingPotion;
+            if (!MyWorld.SuperHardMode)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SolarBar"), Main.rand.Next(0, 25));
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("VortexBar"), Main.rand.Next(0, 25));
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NebulaBar"), Main.rand.Next(0, 25));
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("StardustBar"), Main.rand.Next(0, 25));
+                Talk("");
+                MyWorld.SuperHardMode = true;
             }
-            if (Main.expertMode)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LunarPillarTreasureBag"));
-            }
-            if (!MyWorld.DownedAequusPillar)
-            {
-                MyWorld.DownedAequusPillar = true;
-            }
-            MyWorld.AequusPillarSpawn = false;
-            MyWorld.LunarPillarPeonsKilled = 0;
         }
     }
 }

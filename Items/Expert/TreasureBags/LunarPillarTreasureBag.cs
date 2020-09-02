@@ -31,15 +31,15 @@ namespace nalydmod.Items.Expert.TreasureBags
         {
             player.TryGettingDevArmor();
             player.TryGettingDevArmor();
-            player.QuickSpawnItem(ItemID.FragmentNebula, Main.rand.Next(0, 50));
-            player.QuickSpawnItem(ItemID.FragmentSolar, Main.rand.Next(0, 50));
-            player.QuickSpawnItem(ItemID.FragmentStardust, Main.rand.Next(0, 50));
-            player.QuickSpawnItem(ItemID.FragmentVortex, Main.rand.Next(0, 50));
+            player.QuickSpawnItem(ItemID.FragmentNebula, Main.rand.Next(33, 50));
+            player.QuickSpawnItem(ItemID.FragmentSolar, Main.rand.Next(33, 50));
+            player.QuickSpawnItem(ItemID.FragmentStardust, Main.rand.Next(33, 50));
+            player.QuickSpawnItem(ItemID.FragmentVortex, Main.rand.Next(33, 50));
             player.QuickSpawnItem(ItemType<NebulaBar>(), Main.rand.Next(5, 20));
             player.QuickSpawnItem(ItemType<SolarBar>(), Main.rand.Next(5, 20));
             player.QuickSpawnItem(ItemType<StardustBar>(), Main.rand.Next(5, 20));
             player.QuickSpawnItem(ItemType<VortexBar>(), Main.rand.Next(5, 20));
-            player.QuickSpawnItem(ItemType<SoulofAxiom>(), Main.rand.Next(22, 55));
+            player.QuickSpawnItem(ItemType<HHSoulofAxiom>(), Main.rand.Next(33, 55));
         }
     }
 }

@@ -43,18 +43,15 @@ namespace nalydmod.Npcs.Enemies.Worms
             base.Init();
             head = true;
         }
-
         private int attackCounter;
         public override void SendExtraAI(BinaryWriter writer)
         {
             writer.Write(attackCounter);
         }
-
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             attackCounter = reader.ReadInt32();
         }
-
         public override void CustomBehavior()
         {
             if (Main.netMode != NetmodeID.MultiplayerClient)
@@ -63,22 +60,23 @@ namespace nalydmod.Npcs.Enemies.Worms
                 {
                     attackCounter--;
                 }
-
                 Player target = Main.player[npc.target];
                 if (attackCounter <= 0 && Vector2.Distance(npc.Center, target.Center) < 200 && Collision.CanHit(npc.Center, 1, 1, target.Center, 1, 1))
                 {
                     Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
                     direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-                    int projectile = Projectile.NewProjectile(npc.Center, direction * 4, ProjectileID.WoodenArrowHostile, 5, 0, Main.myPlayer);
+                    int projectile = Projectile.NewProjectile(npc.Center, direction * 7, ProjectileID.RubyBolt, 5, 0, Main.myPlayer);
                     Main.projectile[projectile].timeLeft = 3000;
-                    attackCounter = 200;
+                    Main.projectile[projectile].hostile = true;
+                    Main.projectile[projectile].friendly = false;
+                    Main.projectile[projectile].damage = 15;
+                    attackCounter = 250;
                     npc.netUpdate = true;
                 }
             }
         }
     }
-
     internal class RubyWormBody : RubyWorm
     {
         public override string Texture => "nalydmod/Npcs/Enemies/Worms/Gems/GemWormBody";

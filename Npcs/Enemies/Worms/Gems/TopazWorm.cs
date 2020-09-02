@@ -70,9 +70,12 @@ namespace nalydmod.Npcs.Enemies
                     Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
                     direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
 
-                    int projectile = Projectile.NewProjectile(npc.Center, direction * 5, ProjectileID.WoodenArrowHostile, 5, 0, Main.myPlayer);
+                    int projectile = Projectile.NewProjectile(npc.Center, direction * 5.25f, ProjectileID.TopazBolt, 5, 0, Main.myPlayer);
                     Main.projectile[projectile].timeLeft = 3000;
-                    attackCounter = 200;
+                    Main.projectile[projectile].hostile = true;
+                    Main.projectile[projectile].friendly = false;
+                    Main.projectile[projectile].damage = 5;
+                    attackCounter = 50;
                     npc.netUpdate = true;
                 }
             }

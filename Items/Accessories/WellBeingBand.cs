@@ -35,12 +35,15 @@ namespace nalydmod.Items.Accessories
         }
         public override bool CanEquipAccessory(Player player, int slot)
         {
-            if (slot < 10) // This allows the accessory to equip in Vanity slots with no reservations.
+            if (slot < 10)
             {
                 int maxAccessoryIndex = 5 + player.extraAccessorySlots;
                 for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    // We need "slot != i" because we don't care what is currently in the slot we will be replacing.
+                    if (slot != i && player.armor[i].type == mod.ItemType("CovetedBeingBand"))
+                    {
+                        return false;
+                    }
                     if (slot != i && player.armor[i].type == mod.ItemType("MagicLifeBand"))
                     {
                         return false;

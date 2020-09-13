@@ -51,19 +51,23 @@ namespace nalydmod.Npcs.Enemies.Bosses.LunarPillar
             {
                 npc.dontTakeDamage = false;
             }
-            else npc.dontTakeDamage = true;
+            else
+            {
+                npc.dontTakeDamage = true;
+            }
+            
         }
         private void Talk(string message)
         {
             if (Main.netMode != NetmodeID.Server)
             {
                 string text = Language.GetTextValue("The portals lightyears away have opened up", Lang.GetNPCNameValue(npc.type), message);
-                Main.NewText(text, 128, 255, 0);
+                Main.NewText(text, Main.DiscoColor);
             }
             else
             {
                 NetworkText text = NetworkText.FromKey("The portals lightyears away have opened up", Lang.GetNPCNameValue(npc.type), message);
-                NetMessage.BroadcastChatMessage(text, new Color(128, 255, 0));
+                NetMessage.BroadcastChatMessage(text, Main.DiscoColor);
             }
         }
         public override void DrawEffects(ref Color drawColor)
@@ -89,12 +93,16 @@ namespace nalydmod.Npcs.Enemies.Bosses.LunarPillar
         public override void BossLoot(ref string name, ref int potionType)
         {
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LunarPillarTreasureBag"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManaHeart"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManaHeart"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManaHeart"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManaHeart"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManaHeart"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManaHeart"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManaHeart"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManaHeart"));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ManaHeart"));
             potionType = ItemID.SuperHealingPotion;
-            if (!MyWorld.SuperHardMode)
-            {
-                Talk("");
-                MyWorld.SuperHardMode = true;
-            }
         }
     }
 }

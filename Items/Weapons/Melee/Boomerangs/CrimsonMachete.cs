@@ -1,3 +1,5 @@
+using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -7,13 +9,13 @@ namespace nalydmod.Items.Weapons.Melee.Boomerangs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Crimson Machete");
-            Tooltip.SetDefault("Stabbing grants regen.\nRight Click for an Ichor inflicting Boomerang.\nBoth buffs are based on chance.");
+            DisplayName.SetDefault("Crimson Dagger");
+            Tooltip.SetDefault("Right Click to throw a knife.");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 14;
+            item.damage = 22;
             item.melee = true;
             item.width = 30;
             item.height = 46;
@@ -28,11 +30,11 @@ namespace nalydmod.Items.Weapons.Melee.Boomerangs
             item.autoReuse = true;
             item.useTurn = true;
         }
-        public override bool AltFunctionUse(Terraria.Player player)
+        public override bool AltFunctionUse(Player player)
         {
             return true;
         }
-        public override bool CanUseItem(Terraria.Player player)
+        public override bool CanUseItem(Player player)
         {
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.noUseGraphic = true;
@@ -46,7 +48,7 @@ namespace nalydmod.Items.Weapons.Melee.Boomerangs
             {
                 for (int i = 0; i < 1000; ++i)
                 {
-                    if (Terraria.Main.projectile[i].active && Terraria.Main.projectile[i].owner == Terraria.Main.myPlayer && Terraria.Main.projectile[i].type == item.shoot)
+                    if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == item.shoot)
                     {
                         return false;
                     }
@@ -65,23 +67,12 @@ namespace nalydmod.Items.Weapons.Melee.Boomerangs
             }
             return base.CanUseItem(player);
         }
-        public override void OnHitNPC(Terraria.Player player, Terraria.NPC target, int damage, float knockBack, bool crit)
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            if (Terraria.Main.rand.Next(100) == 0)
+            player.statLife += (int)Math.Round(damage / 2f);
+            if (Main.myPlayer == player.whoAmI)
             {
-                player.AddBuff(BuffID.Lifeforce, 4000);
-            }
-            if (Terraria.Main.rand.Next(4) == 0)
-            {
-                player.AddBuff(BuffID.RapidHealing, 100);
-            }
-            if (Terraria.Main.rand.Next(2) == 0)
-            {
-                player.AddBuff(BuffID.Regeneration, 400);
-            }
-            if (Terraria.Main.rand.Next(2) == 0)
-            {
-                player.AddBuff(BuffID.ManaRegeneration, 800);
+                player.HealEffect((int)Math.Round(damage / 2f), true);
             }
         }
         public override void AddRecipes()

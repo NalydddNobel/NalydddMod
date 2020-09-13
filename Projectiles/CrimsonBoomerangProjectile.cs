@@ -9,8 +9,8 @@ namespace nalydmod.Projectiles
     {
         public override void SetDefaults()
         {
-            projectile.width = 24;
-            projectile.height = 36;
+            projectile.width = 16;
+            projectile.height = 16;
             projectile.aiStyle = 3;
             projectile.friendly = true;
             projectile.melee = true;
@@ -27,23 +27,12 @@ namespace nalydmod.Projectiles
             Main.dust[dust2].velocity /= 60f;
             Main.dust[dust].scale = 0.5f;
             Main.dust[dust2].scale = 0.75f;
-            Main.dust[dust].color.B = 255;
-            Main.dust[dust2].color.B = 155;
-            Main.dust[dust].alpha = 130;
-            Main.dust[dust2].alpha = 100;
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             projectile.localAI[0] += 1f;
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            if (Main.rand.Next(3) == 0)
-            {
-                target.AddBuff(BuffID.Ichor, 300);
-            }
-            if (Main.rand.Next(12) == 0)
-            {
-                target.AddBuff(BuffID.Bleeding, 1000);
-            }
+
         }
     }
 }

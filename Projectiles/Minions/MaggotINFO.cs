@@ -1,29 +1,25 @@
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-
 namespace nalydmod.Projectiles.Minions
 {
     public abstract class MaggotINFO : Maggot
     {
         protected float idleAccel = 0.05f;
         protected float spacingMult = 1f;
-        protected float viewDist = 400f;       //minion view Distance
-        protected float chaseDist = 300f;       //how far the minion can go 
+        protected float viewDist = 400f;       
+        protected float chaseDist = 300f;       
         protected float chaseAccel = 6f;
         protected float inertia = 40f;
-        protected float shootCool = 150f;       //how fast the minion can shoot 
+        protected float shootCool = 150f;
         protected float shootSpeed;
         protected int shoot;
-
         public virtual void CreateDust()
         {
         }
-
         public virtual void SelectFrame()
         {
         }
-
         public override void Behavior()
         {
             Player player = Main.player[projectile.owner];

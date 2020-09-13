@@ -1,5 +1,4 @@
 using Terraria.ModLoader;
-
 namespace nalydmod.Projectiles.Minions
 {
     public abstract class Maggot : ModProjectile
@@ -9,9 +8,7 @@ namespace nalydmod.Projectiles.Minions
             CheckActive();
             Behavior();
         }
-
         public abstract void CheckActive();
-
         public abstract void Behavior();
     }
 }

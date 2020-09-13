@@ -1,5 +1,4 @@
-using nalydmod.Items.Accessories;
-using nalydmod.Items.Expert.Accessories;
+using nalydmod.Items.Accessories.AExpert.ABoss;
 using nalydmod.Items.Expert.Souls;
 using nalydmod.Items.Materials.GemFragments;
 using Terraria;
@@ -17,11 +16,8 @@ namespace nalydmod.Items.Expert.TreasureBags
         }
         public override void SetDefaults()
         {
-            item.width = 24;
-            item.height = 24;
-            item.consumable = true;
-            item.maxStack = 999;
-            item.expert = true;
+            item.CloneDefaults(ItemID.EyeOfCthulhuBossBag);
+
             item.value = Item.buyPrice(0, 13, 12, 53);
         }
         public override bool CanRightClick()
@@ -39,7 +35,7 @@ namespace nalydmod.Items.Expert.TreasureBags
                 player.QuickSpawnItem(ItemID.GoldCoin, Main.rand.Next(2, 3));
                 player.QuickSpawnItem(ItemID.SilverCoin, Main.rand.Next(0, 100));
                 player.QuickSpawnItem(ItemID.CopperCoin, Main.rand.Next(0, 100));
-                player.QuickSpawnItem(ItemType<CrystalGlove>());
+                player.QuickSpawnItem(ItemType<BBBagofGems>());
                 player.QuickSpawnItem(ItemType<BBSoulofShime>(), Main.rand.Next(10, 20));
                 player.QuickSpawnItem(ItemType<AmethystFragment>(), Main.rand.Next(40, 60));
                 player.QuickSpawnItem(ItemType<TopazFragment>(), Main.rand.Next(35, 55));
@@ -92,9 +88,10 @@ namespace nalydmod.Items.Expert.TreasureBags
                 }
                 if (Main.rand.Next(14) == 0)
                 {
-                    player.QuickSpawnItem(ItemType<Placeables.Special.MusicBoxboss1>());
+                    player.QuickSpawnItem(ItemType<Placeables.Special.MusicBox.ABMusicBoxboss1>());
                 }
             }
         }
+        public override int BossBagNPC => NPCType<Npcs.GeodeWormBossImage>();
     }
 }

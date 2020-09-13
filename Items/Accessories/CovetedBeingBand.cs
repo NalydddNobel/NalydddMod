@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace nalydmod.Items.Accessories
 {
+    [AutoloadEquip(EquipType.HandsOn)]
     public class CovetedBeingBand : ModItem
     {
         public override bool Autoload(ref string name)

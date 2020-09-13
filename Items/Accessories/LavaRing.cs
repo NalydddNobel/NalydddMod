@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace nalydmod.Items.Accessories
 {
+    [AutoloadEquip(EquipType.HandsOn)]
     public class LavaRing : ModItem
     {
         public override bool Autoload(ref string name)
@@ -19,7 +20,7 @@ namespace nalydmod.Items.Accessories
             item.width = 20;
             item.height = 20;
             item.value = 20000;
-            item.rare = ItemRarityID.Blue;
+            item.rare = ItemRarityID.Green;
             item.accessory = true;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)

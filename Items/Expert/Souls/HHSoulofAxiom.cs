@@ -1,6 +1,9 @@
 using Microsoft.Xna.Framework;
+using nalydmod.Items.Global;
+using System.Collections.Generic;
 using Terraria.ID;
 using Terraria.ModLoader;
+
 namespace nalydmod.Items.Expert.Souls
 {
     public class HHSoulofAxiom : ModItem
@@ -15,18 +18,17 @@ namespace nalydmod.Items.Expert.Souls
             item.width = 30;
             item.height = 30;
             item.value = 50000;
-            item.rare = 11;
             item.maxStack = 999;
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = Global.BaseColor.LightPurple;
+                    line2.overrideColor = MyPlayer.BaseColor.RedBlueCycle;
                 }
             }
         }

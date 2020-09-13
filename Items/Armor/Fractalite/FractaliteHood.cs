@@ -7,10 +7,6 @@ namespace nalydmod.Items.Armor.Fractalite
     [AutoloadEquip(EquipType.Head)]
     public class FractaliteHood : ModItem
     {
-        public override bool Autoload(ref string name)
-        {
-            return base.Autoload(ref name);
-        }
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Increases max number of minions.\nIncreases summon damage by 5%");
@@ -20,7 +16,7 @@ namespace nalydmod.Items.Armor.Fractalite
             item.width = 28;
             item.height = 28;
             item.value = 20000;
-            item.rare = ItemRarityID.Green;
+            item.rare = 1;
             item.defense = 2;
         }
         public override void UpdateEquip(Player player)
@@ -35,13 +31,13 @@ namespace nalydmod.Items.Armor.Fractalite
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Increases max number of minions.";
-            player.maxMinions++;
+            player.setBonus = "Increases summon damage by 15%";
+            player.minionDamageMult = 1.15f;
         }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("FractaliteBar"), 20);
+            recipe.AddIngredient(mod.ItemType("FractaliteBar"), 8);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

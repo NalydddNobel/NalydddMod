@@ -1,7 +1,5 @@
 using Terraria.ID;
 using Terraria.ModLoader;
-
-
 namespace nalydmod.Items.Currency
 {
     public class ScorpionTail : ModItem
@@ -21,7 +19,3 @@ namespace nalydmod.Items.Currency
         }
     }
 }
-
-
-
-

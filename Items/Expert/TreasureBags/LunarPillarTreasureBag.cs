@@ -40,6 +40,14 @@ namespace nalydmod.Items.Expert.TreasureBags
             player.QuickSpawnItem(ItemType<StardustBar>(), Main.rand.Next(5, 20));
             player.QuickSpawnItem(ItemType<VortexBar>(), Main.rand.Next(5, 20));
             player.QuickSpawnItem(ItemType<HHSoulofAxiom>(), Main.rand.Next(33, 55));
+            if (MyWorld.DownedLunarPillar)
+            {
+                if (!MyWorld.openedLunarPillarBag)
+                {
+                    Main.NewText("The portals lightyears away open up", (byte)Main.DiscoR, (byte)Main.DiscoG, (byte)Main.DiscoB);
+                    MyWorld.openedLunarPillarBag = true;
+                }
+            }
         }
     }
 }

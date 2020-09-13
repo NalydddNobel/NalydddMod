@@ -1,20 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
 {
     [AutoloadBossHead]
     class WaterMage : ModNPC
     {
-        public int projChoice;
-        public short chosen;
-        public short chosen2;
-        public int chosen3;
-        public int chosen4;
-        public static int teleport;
-        public static float posWaterMageX;
-        public static float posWaterMageY;
+        static int phase;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ancient Mage");
@@ -34,26 +28,14 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
             npc.value = 60f;
             npc.knockBackResist = 0.22f;
             music = MusicID.Boss1;
-        }
-        public override float SpawnChance(NPCSpawnInfo spawnInfo)
-        {
-            if (!NPC.AnyNPCs(mod.NPCType("WaterMage")))
-            {
-                if (NPC.downedBoss2 && !MyWorld.DownedMage1)
-                {
-                    return SpawnCondition.Meteor.Chance * 0.1f;
-                }
-                else return SpawnCondition.Meteor.Chance * 0.0096f;
-            }
-            else return 0;
-        }
+        }     
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0)
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(8, 16) * 0.1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(7, 12) * 0.1f);
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(5, 10) * 0.1f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(8, 16) * 0.5f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(7, 12) * 0.5f);
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(5, 10) * 0.5f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(4, 8) * 0.1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(2, 6) * 0.1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/NpcGore15"), Main.rand.Next(2, 4) * 0.1f);
@@ -73,126 +55,27 @@ namespace nalydmod.Npcs.Enemies.Bosses.WaterMage
         }
         public override void AI()
         {
-            posWaterMageX = npc.position.X;
-            posWaterMageY = npc.position.Y;
-            projChoice = (int)Main.rand.NextFloat(1, 4);
-            Player target = Main.player[npc.target];
-            npc.ai[0]++;
-            npc.ai[1]++;
-            npc.ai[2]++;
-            if (npc.ai[0] == 120)
+            if (npc.ai[0] < 1)
             {
-                switch (projChoice)
+                if (Main.netMode != NetmodeID.Server)
                 {
-                    case 1:
-                        chosen = 6;
-                        chosen2 = ProjectileID.Fireball;
-                        chosen3 = 5;
-                        chosen4 = 300;
-                        break;
-                    case 2:
-                        chosen = 2;
-                        chosen2 = ProjectileID.LostSoulHostile;
-                        chosen3 = 10;
-                        chosen4 = 600;
-                        break;
-                    case 3:
-                        chosen = 2;
-                        chosen2 = ProjectileID.CursedFlameHostile;
-                        chosen3 = 16;
-                        chosen4 = 600;
-                        break;
-                    case 4:
-                        chosen = 2;
-                        chosen2 = ProjectileID.UnholyTridentHostile;
-                        chosen3 = 10;
-                        chosen4 = 600;
-                        break;
+                    string text = Language.GetTextValue("Ancient Mage has awoken", Lang.GetNPCNameValue(npc.type));
+                    Main.NewText(text, 171, 64, 255);
                 }
-                Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
-                direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
-                int projectile = Projectile.NewProjectile(npc.Center, direction * chosen, chosen2, chosen3, 0, Main.myPlayer);
-                Main.projectile[projectile].timeLeft = chosen4;
-                npc.netUpdate = true;
-            }
-
-            if (npc.ai[0] > 120 && npc.ai[0] < 149)
-            {
-                npc.frame.Y = 56;
-            }
-            if (npc.ai[0] == 150)
-            {
-                switch (projChoice)
+                else
                 {
-                    case 1:
-                        chosen = 6;
-                        chosen2 = ProjectileID.Fireball;
-                        chosen3 = 5;
-                        chosen4 = 300;
-                        break;
-                    case 2:
-                        chosen = 2;
-                        chosen2 = ProjectileID.LostSoulHostile;
-                        chosen3 = 10;
-                        chosen4 = 600;
-                        break;
-                    case 3:
-                        chosen = 2;
-                        chosen2 = ProjectileID.CursedFlameHostile;
-                        chosen3 = 16;
-                        chosen4 = 600;
-                        break;
-                    case 4:
-                        chosen = 2;
-                        chosen2 = ProjectileID.UnholyTridentHostile;
-                        chosen3 = 10;
-                        chosen4 = 600;
-                        break;
+                    NetworkText text = NetworkText.FromKey("Ancient Mage has awoken", Lang.GetNPCNameValue(npc.type));
+                    NetMessage.BroadcastChatMessage(text, new Color(171, 64, 255));
                 }
-                Vector2 direction = (target.Center - npc.Center).SafeNormalize(Vector2.UnitX);
-                direction = direction.RotatedByRandom(MathHelper.ToRadians(10));
-                int projectile = Projectile.NewProjectile(npc.Center, direction * chosen, chosen2, chosen3, 0, Main.myPlayer);
-                Main.projectile[projectile].timeLeft = chosen4;
-                npc.netUpdate = true;
+                npc.ai[0]++;
             }
-            if (npc.ai[0] > 150 && npc.ai[0] < 210)
+            if (npc.ai[0] < 2)
             {
-                npc.frame.Y = 112;
-            }
-            if (npc.ai[0] < 120 || npc.ai[0] > 211)
-            {
-                npc.dontTakeDamage = false;
-                npc.frame.Y = 0;
-            }
-            else npc.dontTakeDamage = true;
-            if (npc.ai[1] > 480)
-            {
-                npc.position.X = target.Center.X - 64;
-                npc.position.Y = target.Center.Y - 64;
-                npc.ai[0] = 0;
-                npc.ai[1] = 0;
-                npc.ai[3]++;
-                teleport = 1;
-            }
-            if (npc.ai[2] > 900)
-            {
-                npc.ai[0] = 0;
-                npc.ai[1] = 0;
-                npc.ai[2] = 0;
-                npc.ai[3]++;
-                teleport = 1;
-            }
-            if (npc.ai[2] == 5)
-            {
-                teleport = 0;
-            }
-            if (npc.ai[3] == 3)
-            {
-                int random = Main.rand.Next(66, 122);
-                npc.ai[3] = 0;
-                int flame = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AncientFlame>());
-                Main.npc[flame].lifeMax = random;
-                Main.npc[flame].life = random;
+                npc.velocity.Y--;
+                if (npc.velocity.Y < -12)
+                {
+                    npc.ai[0]++;
+                }
             }
         }
         public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)

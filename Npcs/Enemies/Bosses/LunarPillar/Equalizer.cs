@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.Npcs.Enemies.Bosses.LunarPillar
 {
     class Equalizer : ModNPC
@@ -39,10 +38,6 @@ namespace nalydmod.Npcs.Enemies.Bosses.LunarPillar
         }
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life <= 0)
-            {
-                MyWorld.LunarPillarPeonsKilled = MyWorld.LunarPillarPeonsKilled + 1;
-            }
             for (int i = 0; i < 10; i++)
             {
                 int dustType = 220;

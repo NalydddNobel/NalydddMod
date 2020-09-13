@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace nalydmod.Items.Accessories
 {
+    [AutoloadEquip(EquipType.Head)]
     public class HellstoneSkull : ModItem
     {
         public override bool Autoload(ref string name)
@@ -12,7 +13,7 @@ namespace nalydmod.Items.Accessories
         }
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Grants immunity to fire blocks.\nInflicts fire damage on attack.");
+            Tooltip.SetDefault("Grants immunity to fire blocks.\nInflicts fire damage on attack.\nCan be equiped on the head aswell, but only works as vanity");
         }
         public override void SetDefaults()
         {

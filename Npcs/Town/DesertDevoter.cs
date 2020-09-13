@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using nalydmod.Items.Expert.Toggles;
+using nalydmod.Items.Materials.Special;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -36,20 +38,28 @@ namespace nalydmod.Npcs.Town
         }
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            if (Main.expertMode == true)
+            for (int k = 0; k < 255; k++)
             {
-                if (NPC.downedSlimeKing)
+                Player player = Main.player[k];
+                if (!player.active)
                 {
-                    return true;
+                    continue;
+                }
+                foreach (Item item in player.inventory)
+                {
+                    if ((item.type == ModContent.ItemType<ZADryDoughnut>()) && MyWorld.firstNight)
+                    {
+                        return true;
+                    }
                 }
             }
-            return false;
+            return false;            
         }
-        public override bool CheckConditions(int left, int right, int top, int bottom)    //Allows you to define special conditions required for this town NPC's house
+        public override bool CheckConditions(int left, int right, int top, int bottom)    
         {
-            return true;  //so when a house is available the npc will  spawn
+            return true;  
         }
-        public override string TownNPCName()     //Allows you to give this town NPC any name when it spawns
+        public override string TownNPCName()     
         {
             switch (WorldGen.genRand.Next(6))
             {
@@ -69,16 +79,15 @@ namespace nalydmod.Npcs.Town
                     return "Daysert";
             }
         }
-
-        public override void SetChatButtons(ref string button, ref string button2)  //Allows you to set the text for the buttons that appear on this town NPC's chat window. 
+        public override void SetChatButtons(ref string button, ref string button2)  
         {
-            button = "Buy";   //this defines the buy button name
+            button = "Shop";   
         }
-        public override void OnChatButtonClicked(bool firstButton, ref bool openShop) //Allows you to make something happen whenever a button is clicked on this town NPC's chat window. The firstButton parameter tells whether the first button or second button (button and button2 from SetChatButtons) was clicked. Set the shop parameter to true to open this NPC's shop.
+        public override void OnChatButtonClicked(bool firstButton, ref bool openShop)  
         {
             if (firstButton)
             {
-                openShop = true;   //so when you click on buy button opens the shop
+                openShop = true;   
             }
         }
 

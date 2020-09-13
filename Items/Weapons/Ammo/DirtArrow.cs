@@ -1,6 +1,5 @@
 using Terraria.ID;
 using Terraria.ModLoader;
-
 namespace nalydmod.Items.Weapons.Ammo
 {
     public class DirtArrow : ModItem
@@ -10,7 +9,6 @@ namespace nalydmod.Items.Weapons.Ammo
             DisplayName.SetDefault("Dirt Arrow");
             Tooltip.SetDefault("May poision enemies.");
         }
-
         public override void SetDefaults()
         {
             item.damage = 3;
@@ -24,7 +22,6 @@ namespace nalydmod.Items.Weapons.Ammo
             item.shoot = mod.ProjectileType("DirtArrow");
             item.shootSpeed = 5;
             item.ammo = AmmoID.Arrow;
-
         }
         public override void AddRecipes()
         {
@@ -35,11 +32,5 @@ namespace nalydmod.Items.Weapons.Ammo
             recipe.SetResult(this, 20);
             recipe.AddRecipe();
         }
-
-
     }
 }
-
-
-
-

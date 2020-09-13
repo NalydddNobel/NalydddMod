@@ -1,3 +1,9 @@
+using IL.Terraria.GameContent.Biomes;
+using Microsoft.Xna.Framework;
+using nalydmod.Items.Global;
+using System;
+using System.Timers;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace nalydmod.Items.Weapons.Magic.Staff
@@ -26,16 +32,25 @@ namespace nalydmod.Items.Weapons.Magic.Staff
             item.shoot = mod.ProjectileType("MagicDirtBall");
             item.shootSpeed = 16f;
             item.noMelee = true;
-            item.rare = 11;
             item.mana = 11;
+            item.rare = 0;  
         }
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
         {
+            Color Rare;
+            switch (item.rare)
+            {
+                default: Rare = Color.White; break;
+                case -1: Rare = MyPlayer.BaseColor.RedBlueCycle; break;
+                case 0: Rare = MyPlayer.BaseColor.RedGreenCycle; break;
+                case 1: Rare = MyPlayer.BaseColor.RedBlueCycle; break;
+                case 2: Rare = MyPlayer.BaseColor.RedBlueCycle; break;
+            }
             foreach (TooltipLine line2 in list)
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = Global.BaseColor.LightPurple;
+                    line2.overrideColor = Rare;
                 }
             }
         }

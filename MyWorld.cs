@@ -1,4 +1,3 @@
-using nalydmod.Items.Materials.GemFragments;
 using nalydmod.Npcs.Enemies.Bosses.LunarPillar;
 using System.Collections.Generic;
 using Terraria;
@@ -10,41 +9,157 @@ namespace nalydmod
 {
     public class MyWorld : ModWorld
     {
+
+        //Lunar pillar stuff
+
         public const int maxLunarPillarPeonsKilled = 150;
         public static int LunarPillarPeonsKilled;
         public static bool pillarAequusInvasion;
-        public static bool SuperHardMode;
-        public static bool DownedMage1; 
+
+        //Boss downs
+
+        public static bool DownedMage1;
+        public static bool DownedLunarPillar;
         public static bool DownedEoC2;
         public static bool DownedGeodeWorm;
-        public static bool ModExpertMode;
+
+        //Treasure bags opened
+
+        public static bool openedKingSlimeBag;
+        public static bool openedBoss1Bag;
+        public static bool openedBoss2CorruptionBag;
+        public static bool openedBoss2CrimsonBag;
+        public static bool openedQueenBeeBag;
+        public static bool openedBoss3Bag;
+        public static bool openedGeodeWormBag;
+        public static bool openedMage1Bag;
+        public static bool openedLunarPillarBag;
+        public static bool openedEoC2Bag;
+
+        //Player events
+
+        public static bool extraBuffedMode;
+        public static bool SuperHardMode;
+
+        //Biomes
+
         public static int ZoneLunar;
         public static int BiomeLunar;
+
+        //??
+
         public static int wofWeakness;
         bool spawn;
+        public static bool firstNight;
+        public override void Initialize()
+        {
+            LunarPillarPeonsKilled = 0;
+            pillarAequusInvasion = false;
+            DownedMage1 = false;
+            DownedGeodeWorm = false;
+            DownedLunarPillar = false;
+            DownedEoC2 = false;
+            extraBuffedMode = false;
+            SuperHardMode = false;
+            firstNight = false;
+            openedKingSlimeBag = false;
+            openedBoss1Bag = false;
+            openedBoss2CorruptionBag = false;
+            openedBoss2CrimsonBag = false;
+            openedQueenBeeBag = false;
+            openedBoss3Bag = false;
+        }
+        public override void Load(TagCompound tag)
+        {
+
+            //Lunar pillar
+
+            LunarPillarPeonsKilled = tag.GetInt("LunarPillarPeonsKilled");
+            pillarAequusInvasion = tag.GetBool("pillarAequusInvasion");
+
+            //Boss downs
+
+            DownedMage1 = tag.GetBool("DownedMage1");
+            DownedEoC2 = tag.GetBool("EoC2");
+            DownedGeodeWorm = tag.GetBool("DownedGeodeWorm");
+
+            //Opened boss bags
+
+            openedKingSlimeBag = tag.GetBool("openedKingSlimeBag");
+            openedBoss1Bag = tag.GetBool("openedBoss1Bag");
+            openedBoss2CorruptionBag = tag.GetBool("openedBoss2CorruptionBag");
+            openedBoss2CrimsonBag = tag.GetBool("openedBoss2CrimsonBag");
+            openedQueenBeeBag = tag.GetBool("openedQueenBeeBag");
+            openedBoss3Bag = tag.GetBool("openedBoss3Bag");
+
+            //Player events
+
+            SuperHardMode = tag.GetBool("SuperHardMode");
+            extraBuffedMode = tag.GetBool("extraBuffedMode");
+
+            //??
+
+            firstNight = tag.GetBool("firstNight");
+
+        }
         public override TagCompound Save()
         {
             return new TagCompound
             {
+
+                //Lunar pillar 
+
                 {"LunarPillarPeonsKilled", LunarPillarPeonsKilled},
                 {"pillarAequusInvasion", pillarAequusInvasion},
-                {"SuperHardMode", SuperHardMode},
+
+                //Boss downs
+
                 {"DownedMage1", DownedMage1},
+                {"DownedLunarPillar", DownedLunarPillar},
                 {"EoC2", DownedEoC2},
                 {"DownedGeodeWorm", DownedGeodeWorm},
+
+                //Treasure bags opened
+
+                {"openedKingSlimeBag", openedKingSlimeBag},
+                {"openedBoss1Bag", openedBoss1Bag},
+                {"openedBoss2CorruptionBag", openedBoss2CorruptionBag},
+                {"openedBoss2CrimsonBag", openedBoss2CrimsonBag},
+                {"openedBoss3Bag", openedBoss3Bag},
+                {"openedQueenBeeBag", openedQueenBeeBag},
+
+                //Player events
+                
+                {"SuperHardMode", SuperHardMode},
+                {"extraBuffedMode", extraBuffedMode},
+
+                //??
+
+                {"firstNight", firstNight},
+
             };
-        }
-        public override void Load(TagCompound tag)
-        {
-            LunarPillarPeonsKilled = tag.GetInt("LunarPillarPeonsKilled");
-            pillarAequusInvasion = tag.GetBool("pillarAequusInvasion");
-            SuperHardMode = tag.GetBool("SuperHardMode");
-            DownedMage1 = tag.GetBool("DownedMage1");
-            DownedEoC2 = tag.GetBool("EoC2");
-            DownedGeodeWorm = tag.GetBool("DownedGeodeWorm");
         }
         public override void PreUpdate()
         {
+            if (!firstNight)
+            {
+                if (Main.dayTime && Main.time == 0)
+                {
+                    if (extraBuffedMode)
+                    {
+                        Main.NewText("The first night has passed... are you even ready for whats next?", 200, 200, 200);
+                    }
+                    else if (Main.expertMode)
+                    {
+                        Main.NewText("The first night has passed... good luck surviving", 200, 200, 200);
+                    }
+                    else
+                    {
+                        Main.NewText("The first night has passed... the world shall bend to your will", 200, 200, 200);
+                    }
+                    firstNight = true;
+                }
+            }
             if (LunarPillarPeonsKilled > maxLunarPillarPeonsKilled)
             {
                 LunarPillarPeonsKilled = maxLunarPillarPeonsKilled;
@@ -60,6 +175,10 @@ namespace nalydmod
                 pillarAequusInvasion = false;
                 SuperHardMode = true;
                 spawn = false;
+            }
+            if (pillarAequusInvasion && Main.LocalPlayer.position.X > 100 && Main.LocalPlayer.position.X < -100 && Main.LocalPlayer.position.Y > 100 && Main.LocalPlayer.position.Y < -100)
+            {
+                MyPlayer.LunarZone = true;
             }
         }
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
@@ -79,21 +198,21 @@ namespace nalydmod
                 int y = WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY);
                 WorldGen.TileRunner(x, y, WorldGen.genRand.Next(12, 16), WorldGen.genRand.Next(4, 8), mod.TileType("FractaliteTile"));
             }
-            int count = 0;
-            while (count < 1)
-            {
-                for (int k = 0; k < (int)((Main.maxTilesX * Main.maxTilesY) * 6E-04); k++)
-                {
-                    int x = WorldGen.genRand.Next(0, Main.maxTilesX);
-                    int y = WorldGen.genRand.Next((int)WorldGen.worldSurface, Main.maxTilesY);
-                    Tile tile = Framing.GetTileSafely(x, y);
-                    if (tile.active() && tile.type == TileID.Mud || tile.type == TileID.JungleGrass)
-                    {
-                        WorldGen.TileRunner(x, y, WorldGen.genRand.Next(4, 6), WorldGen.genRand.Next(3, 6), mod.TileType("LunarWoodTile"));
-                    }
-                }
-                count++;
-            }
+            //int count = 0;
+            //while (count < 1)
+            //{
+            //    for (int k = 0; k < (int)((Main.maxTilesX * Main.maxTilesY) * 6E-04); k++)
+            //    {
+            //        int x = WorldGen.genRand.Next(0, Main.maxTilesX);
+            //        int y = WorldGen.genRand.Next((int)WorldGen.worldSurface, Main.maxTilesY);
+            //        Tile tile = Framing.GetTileSafely(x, y);
+            //        if (tile.active() && tile.type == TileID.Mud || tile.type == TileID.JungleGrass)
+            //        {
+            //            WorldGen.TileRunner(x, y, WorldGen.genRand.Next(4, 6), WorldGen.genRand.Next(3, 6), mod.TileType("LunarWoodTile"));
+            //        }
+            //    }
+            //    count++;
+            //}
         }
         public override void PostWorldGen()
         {

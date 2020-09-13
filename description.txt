@@ -27,6 +27,7 @@ Fixes -
 Minor Changes -
 .
 -The item 'Slimy Bar' has been removed because it was pointless
+-The item 'Dungeon Sapling' has been removed because it was pointless
 -Resprited most mod items
 -Resprited most mod Nps
 -Added some new vannila enemy variants

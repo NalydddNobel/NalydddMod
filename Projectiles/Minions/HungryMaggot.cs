@@ -35,9 +35,9 @@ namespace nalydmod.Projectiles.Minions
             MyPlayer modPlayer = (MyPlayer)player.GetModPlayer(mod, "MyPlayer");
             if (player.dead)
             {
-                modPlayer.minionName = false;
+                modPlayer.hungryMaggot = false;
             }
-            if (modPlayer.minionName)
+            if (modPlayer.hungryMaggot)
             {
                 projectile.timeLeft = 2;
             }

@@ -1,7 +1,7 @@
 *.sln
 *.editorconfig
 .gitignore
-*/.vs/*
+*/.vs
 .vs/*
 */obj/*
 obj/*

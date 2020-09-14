@@ -1,3 +1,4 @@
+using nalydmod.Items.Placeables.Blocks.Ore;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -26,14 +27,10 @@ namespace nalydmod.Items.Placeables.Bars
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.MeteoriteBar, 5);
-            recipe.AddIngredient(this, 25);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(ModContent.ItemType<Fractalite>(), 3);
+            recipe.AddTile(TileID.Furnaces);
             recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }
-
-
-
-

@@ -9,6 +9,7 @@ namespace nalydmod
     public class nalydmod : Mod
     {
         public static int CustomCurrencyID;
+        public const int pages = 10;
         public override void UpdateMusic(ref int music, ref MusicPriority priority)
         {
             Player player = Main.player[Main.LocalPlayer.whoAmI];

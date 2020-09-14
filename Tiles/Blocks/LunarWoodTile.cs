@@ -12,8 +12,8 @@ namespace nalydmod.Tiles.Blocks
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
             Main.tileLighted[Type] = true;
-            dustType = 8;
-            drop = mod.ItemType("LunarWood");
+            dustType = mod.DustType("LunarWoodDust");
+            drop = ModContent.ItemType<Items.Placeables.Wood.LunarWood.ALunarWood>();
             AddMapEntry(new Color(200, 200, 200));
         }
     }

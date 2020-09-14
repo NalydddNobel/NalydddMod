@@ -19,10 +19,14 @@ namespace nalydmod.Items.Placeables.Blocks
             item.consumable = true;
             item.createTile = mod.TileType("FractaliteBrickTile");
         }
-
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(this);
+            recipe.AddIngredient(ItemID.StoneBlock);
+            recipe.AddTile(TileID.Furnaces);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }
-
-
-
-

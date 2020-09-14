@@ -14,7 +14,7 @@ namespace nalydmod.Items.Placeables.Blocks.Ore
             item.width = 24;
             item.height = 22;
             item.maxStack = 999;
-            item.rare = ItemRarityID.Blue;
+            item.rare = 1;
             item.useTurn = true;
             item.autoReuse = true;
             item.useAnimation = 15;
@@ -26,21 +26,11 @@ namespace nalydmod.Items.Placeables.Blocks.Ore
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(this);
-            recipe.AddIngredient(ItemID.StoneBlock);
-            recipe.AddTile(TileID.Furnaces);
-            recipe.SetResult(mod.ItemType("FractaliteBrick"));
+            recipe.AddIngredient(ItemID.StoneBlock, 10);
+            recipe.AddIngredient(ItemID.FallenStar, 1);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
             recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(this, 3);
-            recipe.AddTile(TileID.Furnaces);
-            recipe.SetResult(mod.ItemType("FractaliteBar"));
-            recipe.AddRecipe();
-
         }
     }
 }
-
-
-
-

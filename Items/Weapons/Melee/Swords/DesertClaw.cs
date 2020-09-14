@@ -1,3 +1,4 @@
+using nalydmod.Projectiles.Melee.Projectile;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,10 +12,10 @@ namespace nalydmod.Items.Weapons.Melee.Swords
         }
         public override void SetDefaults()
         {
-            item.damage = 12;
+            item.damage = 21;
             item.melee = true;
-            item.width = 40;
-            item.height = 40;
+            item.width = 24;
+            item.height = 36;
             item.useTime = 18;
             item.useAnimation = 18;
             item.useStyle = ItemUseStyleID.SwingThrow;
@@ -24,6 +25,8 @@ namespace nalydmod.Items.Weapons.Melee.Swords
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
+            item.shoot = ModContent.ProjectileType<SandPebble>();
+            item.shootSpeed = 9;
         }
     }
 }

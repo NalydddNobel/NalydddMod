@@ -75,7 +75,7 @@ namespace nalydmod.Items.Weapons.Melee.Boomerangs
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("SoulofSpine"), 10);
+            recipe.AddIngredient(mod.ItemType("EESoulofSpine"), 10);
             recipe.AddIngredient(ItemID.HellstoneBar, 12);
             recipe.AddIngredient(ItemID.AshBlock, 50);
             recipe.AddIngredient(ItemID.ThornChakram);

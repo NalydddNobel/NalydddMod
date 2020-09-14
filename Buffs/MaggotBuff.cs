@@ -3,23 +3,23 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 namespace nalydmod.Buffs
 {
-    public class BloodSkullBuff : ModBuff
+    public class MaggotBuff : ModBuff
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("Blood Skull");
-            Description.SetDefault("The bloody skull will fight for you");
+            DisplayName.SetDefault("Hungry Maggot");
+            Description.SetDefault("The hungry maggot will fight for you");
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
         }
         public override void Update(Player player, ref int buffIndex)
         {
             MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();
-            if (player.ownedProjectileCounts[ProjectileType<Projectiles.Minions.TissueSkull>()] > 0)
+            if (player.ownedProjectileCounts[ProjectileType<Projectiles.Minions.HungryMaggot>()] > 0)
             {
-                modPlayer.bloodSkull = true;
+                modPlayer.hungryMaggot = true;
             }
-            if (!modPlayer.bloodSkull)
+            if (!modPlayer.hungryMaggot)
             {
                 player.DelBuff(buffIndex);
                 buffIndex--;
@@ -28,7 +28,7 @@ namespace nalydmod.Buffs
             {
                 player.buffTime[buffIndex] = 18000;
             }
-            modPlayer.smallSummon += player.ownedProjectileCounts[ProjectileType<Projectiles.Minions.TissueSkull>()];
+            modPlayer.smallSummon += player.ownedProjectileCounts[ProjectileType<Projectiles.Minions.HungryMaggot>()];
         }
     }
 }

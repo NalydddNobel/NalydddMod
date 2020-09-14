@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace nalydmod.Items.Accessories
+namespace nalydmod.Items.Accessories.Summon.Small
 {
     public class SpectreScroll : ModItem
     {
@@ -12,7 +12,7 @@ namespace nalydmod.Items.Accessories
         }
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("Increases max number of minions.\nIncreases mana by 40.");
+            Tooltip.SetDefault("Increases max number of small minions by 3.\nIncreases mana by 40.");
         }
         public override void SetDefaults()
         {
@@ -29,7 +29,7 @@ namespace nalydmod.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.statManaMax2 += 20;
-            player.maxMinions++;
+            player.GetModPlayer<MyPlayer>().maxSmallSummon += 3;
         }
         public override void AddRecipes()
         {

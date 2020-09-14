@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace nalydmod.Items.Weapons.Summon
+namespace nalydmod.Items.Weapons.Summon.Small
 {
     public class BloodyTissue : ModItem
     {
@@ -16,11 +16,11 @@ namespace nalydmod.Items.Weapons.Summon
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.SlimeStaff);
-            item.damage = 5;
+            item.damage = 4;
             item.width = 26;
             item.height = 24;
             item.value = Item.buyPrice(0, 0, 8, 0);
-            item.rare = ItemRarityID.White;
+            item.rare = 0;
             item.shoot = mod.ProjectileType("TissueSkull");
             item.buffType = ModContent.BuffType<Buffs.BloodSkullBuff>();
         }

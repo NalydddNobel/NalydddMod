@@ -9,7 +9,7 @@ namespace nalydmod.Items.Expert.Toggles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Totem of Experteese");
-            Tooltip.SetDefault("Use in order to permanently activate 'Super Buffed Mode'\nIt buffs the enemies, not you\nWhy does every mod have something like this?\nIf unused after the first night or\nif the world isn't in Expert Mode, this item does nothing");
+            Tooltip.SetDefault("Use in order to permanently activate 'Super Buffed Mode'\nIt buffs the enemies, not you\nWhy does every mod have something like this?\nIf unused after the player has been through their first night\nor if the world isn't in Expert Mode, this item does nothing");
         }
         public override void SetDefaults()
         {

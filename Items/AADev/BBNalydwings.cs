@@ -16,7 +16,7 @@ namespace nalydmod.Items.AADev
         public override void SetDefaults()
         {
             item.width = 32;
-            item.height = 32;
+            item.height = 26;
             item.value = 1000000;
             item.rare = 10;
             item.accessory = true;

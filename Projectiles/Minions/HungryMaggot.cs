@@ -28,7 +28,6 @@ namespace nalydmod.Projectiles.Minions
             ProjectileID.Sets.LightPet[projectile.type] = true;
             Main.projPet[projectile.type] = true;
         }
-
         public override void CheckActive()
         {
             Player player = Main.player[projectile.owner];

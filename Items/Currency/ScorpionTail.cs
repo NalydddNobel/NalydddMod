@@ -7,7 +7,7 @@ namespace nalydmod.Items.Currency
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Scorpion Tail");
-            Tooltip.SetDefault("Can be traded with the Desert Devoter.");
+            Tooltip.SetDefault("Can be traded with the Desert Devoter.\nUnfinished");
         }
         public override void SetDefaults()
         {

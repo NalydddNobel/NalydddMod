@@ -223,10 +223,9 @@ namespace nalydmod.Projectiles.Minions
             projectile.height = 32;
             Main.projFrames[projectile.type] = 3;
             projectile.friendly = true;
-            Main.projPet[projectile.type] = true;
             projectile.minion = true;
             projectile.netImportant = true;
-            projectile.penetrate = 1;
+            projectile.penetrate = -1;
             projectile.timeLeft = 18000;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
@@ -242,7 +241,7 @@ namespace nalydmod.Projectiles.Minions
         {
             Player player = Main.player[projectile.owner];
             MyPlayer modPlayer = player.GetModPlayer<MyPlayer>();
-            if (player.dead)
+            if (player.dead || modPlayer.smallSummon > modPlayer.maxSmallSummon)
             {
                 modPlayer.bloodSkull = false;
             }

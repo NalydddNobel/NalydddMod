@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using nalydmod.Items.Expert.Toggles;
 using nalydmod.Items.Materials.Special;
+using nalydmod.Items.Weapons.Melee.Swords;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +12,6 @@ namespace nalydmod.Npcs.Town
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Desert Devoter");
             Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.DyeTrader];
         }
         public override void SetDefaults()
@@ -49,7 +49,10 @@ namespace nalydmod.Npcs.Town
                 {
                     if ((item.type == ModContent.ItemType<ZADryDoughnut>()) && MyWorld.firstNight)
                     {
-                        return true;
+                        if (NPC.downedBoss1 || MyWorld.DownedGeodeWorm)
+                        {
+                            return true;
+                        }
                     }
                 }
             }
@@ -138,42 +141,43 @@ namespace nalydmod.Npcs.Town
             switch (Main.rand.Next(4))
             {
                 case 0:
-                    return "My kind will sell you wares. Only if you have the goods.";
+                    return "I have wares, if you have the money.";
                 case 1:
-                    return "The deserts back in my land didn't even have life, except for my kind of course.";
+                    return "The deserts back home didn't even have any life, except for me of course.";
                 case 2:
                     return "I'd like this house better if it was more... dry.";
                 case 3:
-                    return "Ra";
+                    return "Ra.";
                 default:
-                    return "The desert is my home, friend.";
+                    return "I am unfinished...";
             }
         }
-        public override void TownNPCAttackStrength(ref int damage, ref float knockback)//  Allows you to determine the damage and knockback of this town NPC attack
+        public override void TownNPCAttackStrength(ref int damage, ref float knockback)
         {
-            damage = 15;  //npc damage
-            knockback = 2f;   //npc knockback
+            damage = 22;  
+            knockback = 1f;   
         }
-
-        public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)  //Allows you to determine the cooldown between each of this town NPC's attack. The cooldown will be a number greater than or equal to the first parameter, and less then the sum of the two parameters.
+        public override void TownNPCAttackCooldown(ref int cooldown, ref int randExtraCooldown)  
         {
-            cooldown = 5;
-            randExtraCooldown = 10;
+            cooldown = 2;
+            randExtraCooldown = 7;
         }
-        //------------------------------------This is an example of how to make the npc use a sward attack-------------------------------
-        public override void DrawTownAttackSwing(ref Texture2D item, ref int itemSize, ref float scale, ref Vector2 offset)//Allows you to customize how this town NPC's weapon is drawn when this NPC is swinging it (this NPC must have an attack type of 3). Item is the Texture2D instance of the item to be drawn (use Main.itemTexture[id of item]), itemSize is the width and height of the item's hitbox
+        public override void DrawTownAttackSwing(ref Texture2D item, ref int itemSize, ref float scale, ref Vector2 offset)
         {
-            scale = 1f;
-            item = Main.itemTexture[mod.ItemType("DesertClaw")]; //this defines the item that this npc will use
+            item = Main.itemTexture[mod.ItemType("DesertClaw")];
         }
-
-        public override void TownNPCAttackSwing(ref int itemWidth, ref int itemHeight) //  Allows you to determine the width and height of the item this town NPC swings when it attacks, which controls the range of this NPC's swung weapon.
+        public override void TownNPCAttackSwing(ref int itemWidth, ref int itemHeight)
         {
-            itemWidth = 56;
-            itemHeight = 56;
+            itemWidth = 24;
+            itemHeight = 36;
         }
-
-        //----------------------------------This is an example of how to make the npc use a gun and a projectile ----------------------------------
+        public override void NPCLoot()
+        {
+            if (Main.rand.Next(3) == 1)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<DesertClaw>());
+            }
+        }
         /*public override void DrawTownAttackGun(ref float scale, ref int item, ref int closeness) //Allows you to customize how this town NPC's weapon is drawn when this NPC is shooting (this NPC must have an attack type of 1). Scale is a multiplier for the item's drawing size, item is the ID of the item to be drawn, and closeness is how close the item should be drawn to the NPC.
           {
               scale = 1f;

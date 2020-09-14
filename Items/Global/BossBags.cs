@@ -107,10 +107,6 @@ namespace nalydmod.Items.Global
             {
                 player.QuickSpawnItem(ItemType<FFSoulofGrime>(), Main.rand.Next(22, 44));
             }
-            if (context == "bossBag" && arg == ItemID.CultistBossBag)
-            {
-                player.QuickSpawnItem(ItemType<AADev.BBNalydwings>());
-            }
         }
         public override void SetDefaults(Item item)
         {

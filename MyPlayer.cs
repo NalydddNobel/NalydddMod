@@ -72,14 +72,13 @@ namespace nalydmod
         {
             kingSlimeEffect = false;
             eoCEffect = false;
+
             lifeFractals = 0;
             manaFractals = 0;
         }
         public override void Load(TagCompound tag)
         {
-
-            //Perm buffs
-
+            //Perm 
             kingSlimeEffect = tag.GetBool("kingSlimeEffect");
             eoCEffect = tag.GetBool("eoCEffect");
 
@@ -87,14 +86,6 @@ namespace nalydmod
 
             lifeFractals = tag.GetInt("lifeFractals");
             manaFractals = tag.GetInt("manaFractals");
-            if (lifeFractals > maxLifeFractals)
-            {
-                lifeFractals = maxLifeFractals;
-            }
-            if (manaFractals > maxManaFractals)
-            {
-                manaFractals = maxManaFractals;
-            }
         }
         public override TagCompound Save()
         {
@@ -116,13 +107,14 @@ namespace nalydmod
             gemAccessory = false;
             spaceAccessory = false;
 
+            maxSmallSummon = 1;
+            smallSummon = 0;
+
             player.statLifeMax2 += lifeFractals * 25;
             player.statManaMax2 += manaFractals * 20;               
         }
         public override void PreUpdate()
         {
-            smallSummon = player.ownedProjectileCounts[ModContent.ProjectileType<Projectiles.Minions.TissueSkull>()];
-
             //customraritys
 
             if (!Main.dedServ)
@@ -238,7 +230,7 @@ namespace nalydmod
                     player.lifeRegen = 0;
                 }
                 player.lifeRegenTime = 0;
-                player.lifeRegen -= 16;
+                player.lifeRegen -= 22;
             }
         }
             [Obsolete]
@@ -293,9 +285,6 @@ namespace nalydmod
             {
                 if (npc.type == NPCID.MeteorHead)
                 {
-                    dmg = npc.damage;
-                    npc.damage = (int)Math.Round(npc.damage * 0.5);
-                    hit = true;
                 }
             }
         }
